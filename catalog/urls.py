@@ -64,5 +64,10 @@ urlpatterns = [
         views.order_success,
         name="order_success"
     ),
+path(
+    "product/<int:pk>/rate/",
+    views.rate_product,
+    name="rate_product"
+),
 
 ]

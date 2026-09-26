@@ -1,8 +1,12 @@
+from decimal import Decimal
+
 from django.shortcuts import (
     render,
     get_object_or_404,
     redirect,
 )
+
+from django.http import JsonResponse
 
 from .models import (
     Product,
@@ -18,12 +22,10 @@ from .models import (
 
 def home(request):
 
-    # Search
     search = request.GET.get(
         "q",
         ""
     ).strip()
-
 
     # =========================
     # AUTOMATIC CATEGORIES
@@ -37,10 +39,10 @@ def home(request):
     ]
 
     for name in category_names:
+
         Category.objects.get_or_create(
             name=name
         )
-
 
     # =========================
     # PRODUCTS
@@ -50,18 +52,13 @@ def home(request):
         available=True
     )
 
-
-    # Search by product name
     if search:
 
         products = products.filter(
             name__icontains=search
         )
 
-
-    # All categories
     categories = Category.objects.all()
-
 
     return render(
         request,
@@ -128,7 +125,8 @@ def add_to_cart(request, pk):
 
     product = get_object_or_404(
         Product,
-        pk=pk
+        pk=pk,
+        available=True
     )
 
     cart = request.session.get(
@@ -152,7 +150,31 @@ def add_to_cart(request, pk):
 
     request.session.modified = True
 
-    return redirect("cart")
+    # =========================
+    # AJAX REQUEST
+    # =========================
+
+    if request.headers.get(
+        "X-Requested-With"
+    ) == "XMLHttpRequest":
+
+        cart_count = sum(
+            cart.values()
+        )
+
+        return JsonResponse(
+            {
+                "success": True,
+
+                "message":
+                    "Товар добавлен в корзину",
+
+                "cart_count":
+                    cart_count,
+            }
+        )
+
+    return redirect("home")
 
 
 # =========================
@@ -220,7 +242,11 @@ def cart(request):
 
     products = []
 
-    total = 0
+    total = Decimal("0.00")
+
+    # =========================
+    # CALCULATE CART TOTAL
+    # =========================
 
     for product_id, quantity in cart_data.items():
 
@@ -238,17 +264,94 @@ def cart(request):
         products.append(
             {
                 "product": product,
+
                 "quantity": quantity,
+
                 "subtotal": subtotal,
             }
         )
+
+    # =========================
+    # PROMOCODE
+    # =========================
+
+    promo_code = request.session.get(
+        "promo_code",
+        ""
+    )
+
+    promo_error = ""
+
+    discount = Decimal("0.00")
+
+    # =========================
+    # APPLY PROMOCODE
+    # =========================
+
+    if request.method == "POST":
+
+        entered_code = request.POST.get(
+            "promo_code",
+            ""
+        ).strip().upper()
+
+        if entered_code == "CLOTHE10":
+
+            promo_code = "CLOTHE10"
+
+            request.session["promo_code"] = (
+                "CLOTHE10"
+            )
+
+        else:
+
+            promo_code = ""
+
+            request.session.pop(
+                "promo_code",
+                None
+            )
+
+            promo_error = (
+                "Неверный промокод."
+            )
+
+    # =========================
+    # CALCULATE DISCOUNT
+    # =========================
+
+    if promo_code == "CLOTHE10":
+
+        discount = (
+            total * Decimal("10") /
+            Decimal("100")
+        )
+
+    # =========================
+    # FINAL TOTAL
+    # =========================
+
+    final_total = (
+        total - discount
+    )
+
+    request.session.modified = True
 
     return render(
         request,
         "catalog/cart.html",
         {
             "products": products,
+
             "total": total,
+
+            "discount": discount,
+
+            "final_total": final_total,
+
+            "promo_code": promo_code,
+
+            "promo_error": promo_error,
         }
     )
 
@@ -272,6 +375,16 @@ def remove_from_cart(request, pk):
 
     request.session["cart"] = cart_data
 
+    # If cart becomes empty,
+    # remove promo code too
+
+    if not cart_data:
+
+        request.session.pop(
+            "promo_code",
+            None
+        )
+
     request.session.modified = True
 
     return redirect("cart")
@@ -288,25 +401,31 @@ def checkout(request):
         {}
     )
 
-    # If cart is empty
+    # =========================
+    # EMPTY CART
+    # =========================
+
     if not cart_data:
 
         return redirect("cart")
 
+    # =========================
+    # PRODUCTS
+    # =========================
 
-    # Get available products
     products = Product.objects.filter(
         id__in=cart_data.keys(),
         available=True
     )
 
-
     items = []
 
-    total = 0
+    total = Decimal("0.00")
 
+    # =========================
+    # CALCULATE TOTAL
+    # =========================
 
-    # Calculate total
     for product in products:
 
         quantity = cart_data.get(
@@ -323,13 +442,43 @@ def checkout(request):
         items.append(
             {
                 "product": product,
+
                 "quantity": quantity,
+
                 "subtotal": subtotal,
             }
         )
 
+    # =========================
+    # PROMOCODE
+    # =========================
 
-    # Create order
+    promo_code = request.session.get(
+        "promo_code",
+        ""
+    )
+
+    discount = Decimal("0.00")
+
+    if promo_code == "CLOTHE10":
+
+        discount = (
+            total * Decimal("10") /
+            Decimal("100")
+        )
+
+    # =========================
+    # FINAL TOTAL
+    # =========================
+
+    final_total = (
+        total - discount
+    )
+
+    # =========================
+    # CREATE ORDER
+    # =========================
+
     if request.method == "POST":
 
         name = request.POST.get(
@@ -347,19 +496,26 @@ def checkout(request):
             ""
         ).strip()
 
-
         order = Order.objects.create(
+
             name=name,
+
             phone=phone,
+
             address=address,
-            total=total,
+
+            # Save discounted total
+            total=final_total,
         )
 
+        # =========================
+        # ORDER ITEMS
+        # =========================
 
-        # Create order items
         for item in items:
 
             OrderItem.objects.create(
+
                 order=order,
 
                 product=item["product"],
@@ -367,28 +523,44 @@ def checkout(request):
                 quantity=item["quantity"],
 
                 price=item["product"].price,
+
             )
 
+        # =========================
+        # CLEAR CART
+        # =========================
 
-        # Clear cart
         request.session["cart"] = {}
+
+        request.session.pop(
+            "promo_code",
+            None
+        )
 
         request.session.modified = True
 
+        # =========================
+        # SUCCESS
+        # =========================
 
-        # Success page
         return redirect(
             "order_success",
             pk=order.pk
         )
-
 
     return render(
         request,
         "catalog/checkout.html",
         {
             "items": items,
+
             "total": total,
+
+            "discount": discount,
+
+            "final_total": final_total,
+
+            "promo_code": promo_code,
         }
     )
 
@@ -410,4 +582,51 @@ def order_success(request, pk):
         {
             "order": order,
         }
+    )
+
+
+# =========================
+# PRODUCT RATING
+# =========================
+
+def rate_product(request, pk):
+
+    product = get_object_or_404(
+        Product,
+        pk=pk
+    )
+
+    if request.method == "POST":
+
+        try:
+
+            rating = int(
+                request.POST.get(
+                    "rating",
+                    0
+                )
+            )
+
+        except ValueError:
+
+            rating = 0
+
+        if 1 <= rating <= 5:
+
+            total_rating = (
+                product.rating *
+                product.rating_count
+            )
+
+            product.rating_count += 1
+
+            product.rating = (
+                total_rating + rating
+            ) / product.rating_count
+
+            product.save()
+
+    return redirect(
+        "product_detail",
+        pk=product.pk
     )

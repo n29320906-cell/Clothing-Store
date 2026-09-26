@@ -28,6 +28,8 @@ class Product(models.Model):
         null=True
     )
     available = models.BooleanField(default=True)
+    rating = models.FloatField(default=0)
+    rating_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.name

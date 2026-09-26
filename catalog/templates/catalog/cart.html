@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
 
@@ -10,7 +10,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Shopping Cart</title>
+    <title>Корзина — CLOTHÉ</title>
 
 
     <style>
@@ -25,9 +25,9 @@
 
             font-family: Arial, sans-serif;
 
-            background: #f5f5f5;
+            background: #f5f0e9;
 
-            color: #111;
+            color: #28231f;
         }
 
 
@@ -36,7 +36,7 @@
         ========================= */
 
         header {
-            background: #111;
+            background: #28231f;
 
             color: white;
 
@@ -53,7 +53,11 @@
         header h1 {
             margin: 0;
 
+            font-family: Georgia, serif;
+
             font-size: 28px;
+
+            letter-spacing: 2px;
         }
 
 
@@ -62,12 +66,14 @@
 
             text-decoration: none;
 
-            font-size: 16px;
+            font-size: 15px;
+
+            transition: 0.2s;
         }
 
 
         header a:hover {
-            text-decoration: underline;
+            color: #e2aeb2;
         }
 
 
@@ -103,7 +109,9 @@
 
             gap: 25px;
 
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.05);
         }
 
 
@@ -127,6 +135,8 @@
             margin-top: 0;
 
             margin-bottom: 10px;
+
+            font-family: Georgia, serif;
 
             font-size: 22px;
         }
@@ -236,7 +246,112 @@
 
 
         .remove:hover {
-            background: #333;
+            background: #a45c61;
+        }
+
+
+        /* =========================
+           PROMO CODE
+        ========================= */
+
+        .promo-box {
+            background: white;
+
+            padding: 25px;
+
+            margin-top: 25px;
+
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.05);
+        }
+
+
+        .promo-box h3 {
+            margin-top: 0;
+
+            margin-bottom: 15px;
+
+            font-family: Georgia, serif;
+
+            font-size: 22px;
+        }
+
+
+        .promo-form {
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .promo-form input {
+            flex: 1;
+
+            padding: 13px 15px;
+
+            border: 1px solid #d5ccc2;
+
+            border-radius: 5px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background: white;
+        }
+
+
+        .promo-form input:focus {
+            border-color: #a45c61;
+        }
+
+
+        .promo-form button {
+            padding: 13px 22px;
+
+            border: none;
+
+            border-radius: 5px;
+
+            background: #28231f;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+
+        .promo-form button:hover {
+            background: #a45c61;
+        }
+
+
+        .promo-success {
+            color: #4c8055;
+
+            margin-bottom: 0;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .promo-error {
+            color: #b04444;
+
+            margin-bottom: 0;
+
+            font-size: 14px;
         }
 
 
@@ -247,20 +362,51 @@
         .total {
             background: white;
 
-            padding: 25px;
+            padding: 30px;
 
             border-radius: 10px;
 
             text-align: right;
 
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.05);
         }
 
 
-        .total h2 {
-            font-size: 28px;
+        .total-row {
+            display: flex;
 
-            margin-top: 0;
+            justify-content: flex-end;
+
+            gap: 25px;
+
+            margin-bottom: 10px;
+
+            font-size: 16px;
+        }
+
+
+        .old-total {
+            color: #888;
+
+            text-decoration: line-through;
+        }
+
+
+        .discount {
+            color: #a45c61;
+
+            font-weight: bold;
+        }
+
+
+        .final-total {
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin-top: 15px;
 
             margin-bottom: 20px;
         }
@@ -288,7 +434,7 @@
 
 
         .checkout:hover {
-            background: #333;
+            background: #a45c61;
         }
 
 
@@ -305,12 +451,16 @@
 
             border-radius: 10px;
 
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.05);
         }
 
 
         .empty h2 {
             margin-top: 0;
+
+            font-family: Georgia, serif;
         }
 
 
@@ -337,7 +487,7 @@
 
 
         .shop:hover {
-            background: #333;
+            background: #a45c61;
         }
 
 
@@ -383,8 +533,23 @@
             }
 
 
+            .promo-form {
+                flex-direction: column;
+            }
+
+
+            .promo-form button {
+                width: 100%;
+            }
+
+
             .total {
                 text-align: center;
+            }
+
+
+            .total-row {
+                justify-content: center;
             }
 
         }
@@ -397,15 +562,19 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
     <h1>
-        Shopping Cart
+        CLOTHÉ
     </h1>
 
 
     <a href="/">
-        Continue Shopping
+        ← Продолжить покупки
     </a>
 
 </header>
@@ -417,6 +586,10 @@
 
     {% if products %}
 
+
+        <!-- =========================
+             PRODUCTS
+        ========================= -->
 
         {% for item in products %}
 
@@ -479,7 +652,7 @@
                     <!-- PRICE -->
 
                     <p class="price">
-                        ${{ item.subtotal }}
+                        {{ item.subtotal }} сом
                     </p>
 
 
@@ -492,7 +665,7 @@
                     class="remove"
                     href="{% url 'remove_from_cart' item.product.pk %}"
                 >
-                    Remove
+                    Удалить
                 </a>
 
 
@@ -503,21 +676,111 @@
 
 
 
-        <!-- TOTAL -->
+        <!-- =========================
+             PROMO CODE
+        ========================= -->
+
+        <div class="promo-box">
+
+            <h3>
+                Промокод
+            </h3>
+
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="promo-form">
+
+                    <input
+                        type="text"
+                        name="promo_code"
+                        placeholder="Введите промокод"
+                        value="{{ promo_code }}"
+                    >
+
+
+                    <button type="submit">
+                        Применить
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            {% if promo_error %}
+
+                <p class="promo-error">
+                    {{ promo_error }}
+                </p>
+
+            {% endif %}
+
+
+            {% if discount %}
+
+                <p class="promo-success">
+                    ✓ Промокод CLOTHE10 применён — скидка 10%
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+
+        <!-- =========================
+             TOTAL
+        ========================= -->
 
         <div class="total">
 
 
-            <h2>
-                Total: ${{ total }}
-            </h2>
+            <div class="total-row">
+
+                <span>
+                    Сумма:
+                </span>
+
+                <span class="old-total">
+                    {{ total }} сом
+                </span>
+
+            </div>
+
+
+            {% if discount %}
+
+                <div class="total-row">
+
+                    <span>
+                        Скидка 10%:
+                    </span>
+
+                    <span class="discount">
+                        −{{ discount|floatformat:0 }} сом
+                    </span>
+
+                </div>
+
+            {% endif %}
+
+
+            <div class="final-total">
+
+                Итого:
+                {{ final_total|floatformat:0 }} сом
+
+            </div>
 
 
             <a
                 href="{% url 'checkout' %}"
                 class="checkout"
             >
-                Checkout
+                Оформить заказ
             </a>
 
 
@@ -527,18 +790,20 @@
     {% else %}
 
 
-        <!-- EMPTY CART -->
+        <!-- =========================
+             EMPTY CART
+        ========================= -->
 
         <div class="empty">
 
 
             <h2>
-                Your cart is empty
+                Корзина пуста
             </h2>
 
 
             <p>
-                You haven't added any products yet.
+                Вы ещё не добавили товары.
             </p>
 
 
@@ -546,7 +811,7 @@
                 href="/"
                 class="shop"
             >
-                Start Shopping
+                Перейти к покупкам
             </a>
 
 

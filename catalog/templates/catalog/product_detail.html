@@ -1,68 +1,467 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="ru">
 
 <head>
+
     <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>
-        {{ product.name }} - Clothing Store
+        {{ product.name }} - CLOTHÉ
     </title>
+
 
     <style>
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
+        * {
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 1000px;
 
-            margin: 60px auto;
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f5f5;
+
+            color: #222;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            height: 80px;
 
             background: white;
 
-            padding: 40px;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 60px;
+
+            border-bottom: 1px solid #eee;
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        .logo {
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        nav {
 
             display: flex;
 
-            gap: 50px;
+            align-items: center;
 
-            border-radius: 10px;
+            gap: 30px;
         }
 
-        .container img {
-            width: 450px;
-            height: 500px;
 
-            object-fit: cover;
+        nav a {
 
-            border-radius: 8px;
+            color: #222;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            transition: 0.2s;
         }
+
+
+        nav a:hover {
+
+            color: #a45c61;
+        }
+
+
+        /* =========================
+           DARK MODE BUTTON
+        ========================= */
+
+        .theme-button {
+
+            border: none;
+
+            background: transparent;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            padding: 8px 10px;
+
+            border-radius: 50%;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .theme-button:hover {
+
+            background: #eeeeee;
+
+            transform: scale(1.1);
+        }
+
+
+        /* =========================
+           PRODUCT CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 60px auto;
+
+            padding: 40px;
+
+            background: white;
+
+            display: flex;
+
+            gap: 60px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.06
+                );
+
+            transition:
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        /* =========================
+           IMAGE
+        ========================= */
+
+        .image-box {
+
+            width: 50%;
+        }
+
+
+        .image-box img {
+
+            width: 100%;
+
+            height: 520px;
+
+            object-fit: contain;
+
+            background: #f8f8f8;
+
+            border-radius: 12px;
+
+            transition:
+                background 0.3s ease;
+        }
+
+
+        .no-image {
+
+            width: 100%;
+
+            height: 520px;
+
+            background: #f5f5f5;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #999;
+
+            font-size: 18px;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =========================
+           INFO
+        ========================= */
 
         .info {
-            padding-top: 30px;
+
+            width: 50%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
         }
+
+
+        .category {
+
+            color: #a45c61;
+
+            font-size: 14px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 15px;
+        }
+
 
         .info h1 {
+
             font-size: 40px;
+
+            margin: 0 0 20px;
+
+            line-height: 1.2;
         }
+
 
         .description {
+
             color: #666;
 
-            line-height: 1.6;
+            line-height: 1.7;
+
+            font-size: 16px;
+
+            margin-bottom: 25px;
+
+            transition: color 0.3s ease;
         }
 
+
         .price {
+
             font-size: 30px;
 
             font-weight: bold;
+
+            margin: 0 0 20px;
         }
 
+
+        /* =========================
+           RATING
+        ========================= */
+
+        .rating {
+
+            margin-bottom: 30px;
+
+            padding: 18px;
+
+            background: #fafafa;
+
+            border-radius: 10px;
+
+            width: 100%;
+
+            transition:
+                background 0.3s ease;
+        }
+
+
+        .rating-title {
+
+            font-size: 14px;
+
+            color: #777;
+
+            margin-bottom: 8px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        /* =========================
+           CURRENT RATING
+        ========================= */
+
+        .stars {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 3px;
+        }
+
+
+        .star {
+
+            font-size: 25px;
+
+            color: #d9a441;
+        }
+
+
+        .rating-number {
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            margin-left: 10px;
+        }
+
+
+        .rating-count {
+
+            color: #888;
+
+            font-size: 14px;
+
+            margin-left: 5px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        /* =========================
+           USER RATING
+        ========================= */
+
+        .rating-form {
+
+            margin-top: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .rating-form > span {
+
+            font-size: 14px;
+
+            color: #555;
+
+            transition: color 0.3s ease;
+        }
+
+
+        .rate-buttons {
+
+            display: flex;
+
+            gap: 2px;
+        }
+
+
+        .rate-buttons button {
+
+            border: none;
+
+            background: transparent;
+
+            color: #d9d9d9;
+
+            font-size: 29px;
+
+            cursor: pointer;
+
+            padding: 0;
+
+            line-height: 1;
+
+            transition:
+                color 0.15s ease,
+                transform 0.15s ease;
+        }
+
+
+        /* =========================
+           STAR HOVER
+        ========================= */
+
+        .rate-buttons button:hover {
+
+            transform: scale(1.15);
+
+            color: #d9a441;
+        }
+
+
+        /* =========================
+           SELECTED STAR
+        ========================= */
+
+        .rate-buttons button.active {
+
+            color: #d9a441;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
         .button {
-            display: inline-block;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 220px;
+
+            min-height: 55px;
 
             background: #111;
 
@@ -72,19 +471,408 @@
 
             text-decoration: none;
 
-            border-radius: 5px;
+            border: none;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
         }
+
 
         .button:hover {
-            background: #333;
+
+            background: #a45c61;
+
+            transform: translateY(-2px);
         }
 
+
+        /* =========================
+           BACK
+        ========================= */
+
         .back {
-            display: block;
+
+            display: inline-block;
 
             margin-top: 20px;
 
-            color: #111;
+            color: #222;
+
+            text-decoration: none;
+
+            width: fit-content;
+
+            border-bottom: 1px solid #222;
+
+            transition:
+                color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+
+        .back:hover {
+
+            color: #a45c61;
+
+            border-color: #a45c61;
+        }
+
+
+        /* =========================
+           NOTIFICATION
+        ========================= */
+
+        .cart-notification {
+
+            position: fixed;
+
+            top: 100px;
+
+            right: 30px;
+
+            background: #111;
+
+            color: white;
+
+            padding: 15px 25px;
+
+            border-radius: 8px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform: translateY(-15px);
+
+            transition: 0.3s;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 8px 25px rgba(
+                    0,
+                    0,
+                    0,
+                    0.2
+                );
+        }
+
+
+        .cart-notification.show {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+
+        .check {
+
+            color: #8fcf8f;
+
+            margin-right: 8px;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 40px 20px;
+
+            color: #777;
+
+            font-size: 14px;
+
+            transition: color 0.3s ease;
+        }
+
+
+        /* =================================================
+           DARK MODE
+        ================================================= */
+
+
+        body.dark-mode {
+
+            background: #121212;
+
+            color: #eeeeee;
+        }
+
+
+        body.dark-mode header {
+
+            background: #1b1b1b;
+
+            border-bottom-color: #333;
+        }
+
+
+        body.dark-mode .logo {
+
+            color: #ffffff;
+        }
+
+
+        body.dark-mode nav a {
+
+            color: #eeeeee;
+        }
+
+
+        body.dark-mode nav a:hover {
+
+            color: #d98b91;
+        }
+
+
+        body.dark-mode .theme-button {
+
+            background: transparent;
+
+            color: white;
+        }
+
+
+        body.dark-mode .theme-button:hover {
+
+            background: #333333;
+        }
+
+
+        body.dark-mode .container {
+
+            background: #1b1b1b;
+
+            box-shadow:
+                0 8px 30px rgba(
+                    0,
+                    0,
+                    0,
+                    0.4
+                );
+        }
+
+
+        body.dark-mode .description {
+
+            color: #aaaaaa;
+        }
+
+
+        body.dark-mode .rating {
+
+            background: #242424;
+        }
+
+
+        body.dark-mode .rating-title {
+
+            color: #aaaaaa;
+        }
+
+
+        body.dark-mode .rating-form > span {
+
+            color: #cccccc;
+        }
+
+
+        body.dark-mode .rating-count {
+
+            color: #999999;
+        }
+
+
+        body.dark-mode .back {
+
+            color: #eeeeee;
+
+            border-color: #eeeeee;
+        }
+
+
+        body.dark-mode .back:hover {
+
+            color: #d98b91;
+
+            border-color: #d98b91;
+        }
+
+
+        body.dark-mode .image-box img {
+
+            background: #242424;
+        }
+
+
+        body.dark-mode .no-image {
+
+            background: #242424;
+
+            color: #888888;
+        }
+
+
+        body.dark-mode footer {
+
+            color: #888888;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            header {
+
+                padding: 0 20px;
+            }
+
+
+            nav {
+
+                gap: 15px;
+            }
+
+
+            nav a {
+
+                font-size: 13px;
+            }
+
+
+            .container {
+
+                margin: 30px 15px;
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 30px;
+            }
+
+
+            .image-box {
+
+                width: 100%;
+            }
+
+
+            .info {
+
+                width: 100%;
+            }
+
+
+            .image-box img,
+            .no-image {
+
+                height: 400px;
+            }
+
+
+            .info h1 {
+
+                font-size: 32px;
+            }
+
+
+            .button {
+
+                width: 100%;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 550px) {
+
+            header {
+
+                height: auto;
+
+                padding: 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
+
+            .image-box img,
+            .no-image {
+
+                height: 320px;
+            }
+
+
+            .info h1 {
+
+                font-size: 28px;
+            }
+
+
+            .price {
+
+                font-size: 26px;
+            }
+
+
+            .rating {
+
+                padding: 15px;
+            }
+
+
+            .rating-form {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .cart-notification {
+
+                top: 90px;
+
+                left: 20px;
+
+                right: 20px;
+
+                text-align: center;
+            }
         }
 
     </style>
@@ -95,57 +883,711 @@
 <body>
 
 
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a
+        href="{% url 'home' %}"
+        class="logo"
+    >
+        CLOTHÉ
+    </a>
+
+
+    <nav>
+
+        <a href="{% url 'home' %}">
+            Главная
+        </a>
+
+
+        <a href="{% url 'home' %}#categories">
+            Категории
+        </a>
+
+
+        <a href="{% url 'home' %}#products">
+            Магазин
+        </a>
+
+
+        <a href="{% url 'cart' %}">
+            🛒 Корзина
+        </a>
+
+
+        <!-- DARK MODE -->
+
+        <button
+            type="button"
+            class="theme-button"
+            id="themeButton"
+            onclick="toggleDarkMode()"
+            title="Сменить тему"
+        >
+            🌙
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     PRODUCT
+========================= -->
+
 <div class="container">
 
 
-    {% if product.image %}
+    <!-- IMAGE -->
 
-        <img
-            src="{{ product.image.url }}"
-            alt="{{ product.name }}"
-        >
+    <div class="image-box">
 
-    {% endif %}
+        {% if product.image %}
 
+            <img
+                src="{{ product.image.url }}"
+                alt="{{ product.name }}"
+            >
+
+        {% else %}
+
+            <div class="no-image">
+
+                Нет изображения
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- INFO -->
 
     <div class="info">
 
 
+        <!-- CATEGORY -->
+
+        {% if product.category %}
+
+            <div class="category">
+
+                {{ product.category.name }}
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- NAME -->
+
         <h1>
+
             {{ product.name }}
+
         </h1>
 
 
-        <p class="description">
-            {{ product.description }}
-        </p>
+        <!-- DESCRIPTION -->
 
+        {% if product.description %}
+
+            <p class="description">
+
+                {{ product.description }}
+
+            </p>
+
+        {% endif %}
+
+
+        <!-- PRICE -->
 
         <p class="price">
-            ${{ product.price }}
+
+            {{ product.price }} сом
+
         </p>
 
+
+        <!-- =========================
+             RATING
+        ========================= -->
+
+        <div class="rating">
+
+
+            <div class="rating-title">
+
+                Рейтинг товара
+
+            </div>
+
+
+            <!-- CURRENT RATING -->
+
+            <div class="stars">
+
+
+                {% for i in "12345" %}
+
+                    {% if product.rating >= forloop.counter %}
+
+                        <span class="star">
+                            ★
+                        </span>
+
+                    {% else %}
+
+                        <span
+                            class="star"
+                            style="color:#ddd;"
+                        >
+                            ☆
+                        </span>
+
+                    {% endif %}
+
+                {% endfor %}
+
+
+                <span class="rating-number">
+
+                    {{ product.rating|floatformat:1 }}
+
+                </span>
+
+
+                <span class="rating-count">
+
+                    ({{ product.rating_count }} оценок)
+
+                </span>
+
+
+            </div>
+
+
+            <!-- =========================
+                 USER RATING
+            ========================= -->
+
+            <form
+                method="POST"
+                action="{% url 'rate_product' product.pk %}"
+                class="rating-form"
+                id="ratingForm"
+            >
+
+                {% csrf_token %}
+
+
+                <span>
+
+                    Ваша оценка:
+
+                </span>
+
+
+                <div class="rate-buttons">
+
+
+                    <button
+                        type="submit"
+                        name="rating"
+                        value="1"
+                        class="rating-button"
+                        data-rating="1"
+                        title="1 звезда"
+                    >
+                        ★
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        name="rating"
+                        value="2"
+                        class="rating-button"
+                        data-rating="2"
+                        title="2 звезды"
+                    >
+                        ★
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        name="rating"
+                        value="3"
+                        class="rating-button"
+                        data-rating="3"
+                        title="3 звезды"
+                    >
+                        ★
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        name="rating"
+                        value="4"
+                        class="rating-button"
+                        data-rating="4"
+                        title="4 звезды"
+                    >
+                        ★
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        name="rating"
+                        value="5"
+                        class="rating-button"
+                        data-rating="5"
+                        title="5 звезд"
+                    >
+                        ★
+                    </button>
+
+
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+        <!-- =========================
+             ADD TO CART
+        ========================= -->
 
         <a
             href="{% url 'add_to_cart' product.pk %}"
             class="button"
+            onclick="addToCart(event, this)"
         >
-            Add to Cart
+
+            🛒 Добавить в корзину
+
         </a>
 
 
+        <!-- BACK -->
+
         <a
-            href="/"
+            href="{% url 'home' %}"
             class="back"
         >
-            ← Back to Shop
+
+            ← Вернуться в магазин
+
         </a>
 
 
     </div>
 
+</div>
+
+
+<!-- =========================
+     NOTIFICATION
+========================= -->
+
+<div
+    id="cartNotification"
+    class="cart-notification"
+>
+
+    <span class="check">
+
+        ✓
+
+    </span>
+
+
+    Товар добавлен в корзину
 
 </div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    © 2026 CLOTHÉ — Магазин одежды
+
+</footer>
+
+
+<script>
+
+
+/* =================================================
+   RATING
+================================================= */
+
+const ratingButtons =
+    document.querySelectorAll(
+        ".rating-button"
+    );
+
+
+const productId =
+    "{{ product.pk }}";
+
+
+/*
+    Сакталган рейтингди алуу
+*/
+
+const savedRating =
+    localStorage.getItem(
+        "product_rating_" + productId
+    );
+
+
+/*
+    Жылдыздарды боёо
+*/
+
+function paintStars(rating) {
+
+    ratingButtons.forEach(
+        function(button) {
+
+            const value =
+                Number(
+                    button.dataset.rating
+                );
+
+
+            if (value <= rating) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            } else {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/*
+    Мурда тандалган рейтинг
+*/
+
+if (savedRating) {
+
+    paintStars(
+        Number(savedRating)
+    );
+
+}
+
+
+/*
+    Жылдызды басканда
+*/
+
+ratingButtons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                const rating =
+                    Number(
+                        this.dataset.rating
+                    );
+
+
+                /*
+                    Дароо боёо
+                */
+
+                paintStars(
+                    rating
+                );
+
+
+                /*
+                    Браузерге сактоо
+                */
+
+                localStorage.setItem(
+                    "product_rating_" +
+                    productId,
+                    rating
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* =================================================
+   DARK MODE
+================================================= */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle(
+        "dark-mode"
+    );
+
+
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
+
+
+    if (
+        document.body.classList.contains(
+            "dark-mode"
+        )
+    ) {
+
+        /*
+            ☀️ режим
+        */
+
+        themeButton.innerHTML =
+            "☀️";
+
+
+        localStorage.setItem(
+            "darkMode",
+            "enabled"
+        );
+
+    } else {
+
+        /*
+            🌙 режим
+        */
+
+        themeButton.innerHTML =
+            "🌙";
+
+
+        localStorage.setItem(
+            "darkMode",
+            "disabled"
+        );
+
+    }
+
+}
+
+
+/*
+    Сакталган теманы текшерүү
+*/
+
+const savedDarkMode =
+    localStorage.getItem(
+        "darkMode"
+    );
+
+
+if (
+    savedDarkMode === "enabled"
+) {
+
+    document.body.classList.add(
+        "dark-mode"
+    );
+
+
+    const themeButton =
+        document.getElementById(
+            "themeButton"
+        );
+
+
+    if (themeButton) {
+
+        themeButton.innerHTML =
+            "☀️";
+
+    }
+
+}
+
+
+/* =================================================
+   ADD TO CART
+================================================= */
+
+function addToCart(
+    event,
+    button
+) {
+
+    event.preventDefault();
+
+
+    const url =
+        button.href;
+
+
+    const notification =
+        document.getElementById(
+            "cartNotification"
+        );
+
+
+    button.style.pointerEvents =
+        "none";
+
+
+    button.style.opacity =
+        "0.6";
+
+
+    fetch(
+        url,
+        {
+            method: "GET",
+
+            headers: {
+
+                "X-Requested-With":
+                    "XMLHttpRequest"
+
+            }
+
+        }
+    )
+
+
+    .then(
+        function(response) {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Ошибка сервера"
+                );
+
+            }
+
+
+            return response.json();
+
+        }
+    )
+
+
+    .then(
+        function(data) {
+
+            if (data.success) {
+
+
+                notification.classList.add(
+                    "show"
+                );
+
+
+                const oldText =
+                    button.innerHTML;
+
+
+                button.innerHTML =
+                    "✓ Добавлено";
+
+
+                button.style.background =
+                    "#a45c61";
+
+
+                setTimeout(
+                    function() {
+
+                        notification.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    1800
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.innerHTML =
+                            oldText;
+
+
+                        button.style.background =
+                            "";
+
+
+                        button.style.opacity =
+                            "";
+
+
+                        button.style.pointerEvents =
+                            "";
+
+                    },
+                    2000
+                );
+
+            }
+
+        }
+    )
+
+
+    .catch(
+        function(error) {
+
+            console.error(
+                "Ошибка:",
+                error
+            );
+
+
+            button.style.opacity =
+                "";
+
+
+            button.style.pointerEvents =
+                "";
+
+        }
+    );
+
+}
+
+</script>
 
 
 </body>
