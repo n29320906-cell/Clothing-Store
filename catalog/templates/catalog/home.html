@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -5,12 +6,10 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Магазин одежды</title>
+    <title>CLOTHÉ — Магазин одежды</title>
 
     <style>
 
@@ -18,47 +17,108 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #111;
+            background: #f5f0e9;
+            color: #28231f;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
 
         /* =========================
            HEADER
         ========================= */
 
         header {
-            background: #111;
-            color: white;
-            padding: 20px 60px;
+            height: 82px;
+
+            padding: 0 55px;
+
+            background: #f5f0e9;
 
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            border-bottom: 1px solid #ded6cc;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 28px;
+        .logo {
+            font-family: Georgia, serif;
+
+            font-size: 30px;
+
+            letter-spacing: 6px;
+
+            font-weight: bold;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+
+            gap: 30px;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #504941;
+
+            transition: .25s;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #a45c61;
         }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .icon-link {
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid #d5ccc2;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            transition: .25s;
+        }
+
+        .icon-link:hover {
+            background: #28231f;
+
+            color: white;
+        }
+
 
         /* =========================
            SEARCH
@@ -66,337 +126,567 @@
 
         .search-form {
             display: flex;
+
             align-items: center;
-            gap: 8px;
+
+            background: white;
+
+            border: 1px solid #ddd4ca;
+
+            border-radius: 30px;
+
+            overflow: hidden;
         }
 
         .search-form input {
-            width: 200px;
-            padding: 10px 12px;
+            width: 130px;
 
             border: none;
-            border-radius: 5px;
 
             outline: none;
-            font-size: 14px;
+
+            background: transparent;
+
+            padding: 10px 13px;
+
+            font-size: 12px;
         }
 
         .search-form button {
-            padding: 10px 15px;
-
-            background: white;
-            color: #111;
-
             border: none;
-            border-radius: 5px;
+
+            background: #28231f;
+
+            color: white;
+
+            padding: 10px 14px;
 
             cursor: pointer;
-            font-size: 14px;
+
+            font-size: 11px;
         }
 
-        .search-form button:hover {
-            background: #ddd;
-        }
 
         /* =========================
            HERO
         ========================= */
 
         .hero {
-            background: white;
-            text-align: center;
-            padding: 90px 20px;
+            max-width: 1450px;
+
+            margin: 25px auto;
+
+            min-height: 650px;
+
+            border-radius: 4px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(39,31,27,.72),
+                    rgba(39,31,27,.12)
+                ),
+                url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+
+            background-position: center;
         }
 
-        .hero h2 {
-            font-size: 50px;
-            margin: 0 0 15px;
-        }
+        .hero-content {
+            position: absolute;
 
-        .hero p {
-            color: #666;
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+            left: 8%;
 
-        .shop-button {
-            display: inline-block;
+            top: 50%;
 
-            background: #111;
+            transform: translateY(-50%);
+
             color: white;
 
-            padding: 14px 30px;
-
-            border-radius: 5px;
-            text-decoration: none;
-
-            font-size: 16px;
+            max-width: 600px;
         }
 
-        .shop-button:hover {
-            background: #333;
+        .hero-small {
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
+            margin-bottom: 22px;
+
+            color: #e9dcd0;
         }
+
+        .hero h1 {
+            margin: 0;
+
+            font-family: Georgia, serif;
+
+            font-weight: normal;
+
+            font-size: clamp(55px, 7vw, 100px);
+
+            line-height: .92;
+        }
+
+        .hero-text {
+            max-width: 430px;
+
+            margin: 25px 0;
+
+            line-height: 1.7;
+
+            color: #eee2d9;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 12px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            background: white;
+
+            color: #28231f;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            font-weight: bold;
+
+            transition: .3s;
+        }
+
+        .hero-button:hover {
+            background: #a45c61;
+
+            color: white;
+        }
+
+        .hero-button.dark {
+            background: transparent;
+
+            color: white;
+
+            border: 1px solid white;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            max-width: 1350px;
+
+            margin: auto;
+
+            padding: 85px 30px;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-label {
+            color: #a45c61;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            font-family: Georgia, serif;
+
+            font-weight: normal;
+
+            font-size: 44px;
+        }
+
 
         /* =========================
            CATEGORIES
         ========================= */
 
-        .categories {
-            padding: 40px 60px;
-            background: white;
-        }
-
-        .categories h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 28px;
-        }
-
         .category-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
         }
 
         .category {
-            background: #111;
-            color: white;
+            height: 210px;
 
-            padding: 12px 25px;
+            background: #ded3c7;
 
-            border-radius: 5px;
-            text-decoration: none;
+            display: flex;
 
-            font-size: 16px;
+            align-items: end;
+
+            padding: 25px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: .35s;
+        }
+
+        .category:nth-child(2) {
+            background: #cbb9a7;
+        }
+
+        .category:nth-child(3) {
+            background: #b7a397;
+        }
+
+        .category:nth-child(4) {
+            background: #d8c8ba;
         }
 
         .category:hover {
-            background: #333;
+            transform: translateY(-7px);
         }
+
+        .category::after {
+            content: "";
+
+            width: 130px;
+            height: 130px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.18);
+
+            position: absolute;
+
+            right: -35px;
+            top: -35px;
+        }
+
+        .category-name {
+            position: relative;
+
+            z-index: 2;
+
+            font-family: Georgia, serif;
+
+            font-size: 29px;
+        }
+
+        .category-number {
+            position: absolute;
+
+            top: 20px;
+            left: 22px;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            color: rgba(0,0,0,.5);
+        }
+
+
+        /* =========================
+           PRODUCTS BACKGROUND
+        ========================= */
+
+        .products-section {
+            background: #fffaf5;
+        }
+
 
         /* =========================
            PRODUCTS
         ========================= */
 
-        .products-section {
-            padding: 50px 60px;
-            background: #f5f5f5;
-        }
-
-        .products-section h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 28px;
-        }
-
         .products {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
 
-        /* =========================
-           PRODUCT CARD
-        ========================= */
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 24px;
+        }
 
         .card {
             background: white;
 
-            padding: 20px;
+            position: relative;
 
-            border-radius: 10px;
+            overflow: hidden;
+
+            transition: .35s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
 
             box-shadow:
-                0 2px 10px rgba(
-                    0,
-                    0,
-                    0,
-                    0.08
-                );
+                0 15px 35px
+                rgba(50,40,30,.12);
+        }
+
+        .product-image {
+            position: relative;
+
+            overflow: hidden;
         }
 
         .card img {
             width: 100%;
-            height: 280px;
+
+            height: 390px;
 
             object-fit: cover;
 
-            border-radius: 8px;
-
             display: block;
+
+            transition: .6s;
         }
+
+        .card:hover img {
+            transform: scale(1.04);
+        }
+
 
         /* =========================
-           PRODUCT TOP
-        ========================= */
-
-        .product-top {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            gap: 10px;
-        }
-
-        .product-top h3 {
-            font-size: 20px;
-
-            margin-top: 15px;
-            margin-bottom: 10px;
-
-            flex: 1;
-        }
-
-        /* =========================
-           FAVORITE HEART
+           FAVORITE
         ========================= */
 
         .favorite {
+            position: absolute;
+
+            right: 15px;
+            top: 15px;
+
+            width: 43px;
+            height: 43px;
+
             border: none;
 
-            background: transparent;
+            background: rgba(255,255,255,.92);
 
-            font-size: 35px;
+            border-radius: 50%;
+
+            font-size: 21px;
 
             cursor: pointer;
 
-            color: #777;
+            z-index: 5;
 
-            padding: 0;
+            color: #555;
 
-            line-height: 1;
-
-            transition: 0.2s;
-
-            flex-shrink: 0;
+            transition: .25s;
         }
 
         .favorite:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .favorite.active {
-            color: red;
+            background: #a45c61;
+
+            color: white;
         }
 
+
         /* =========================
-           DESCRIPTION
+           PRODUCT INFO
         ========================= */
 
+        .product-info {
+            padding: 18px 15px 20px;
+        }
+
+        .product-name {
+            font-size: 16px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
         .description {
-            color: #666;
+            color: #8c8178;
+
+            font-size: 12px;
 
             line-height: 1.5;
 
-            min-height: 45px;
+            min-height: 38px;
+
+            margin: 0 0 12px;
         }
 
-        /* =========================
-           PRICE
-        ========================= */
+        .product-bottom {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
 
         .price {
-            font-size: 20px;
+            font-size: 17px;
 
             font-weight: bold;
 
-            margin: 15px 0;
+            margin: 0;
         }
-
-        /* =========================
-           BUTTONS
-        ========================= */
 
         .button {
             display: inline-block;
 
-            background: #111;
+            padding: 10px 14px;
+
+            background: #28231f;
 
             color: white;
 
-            padding: 12px 20px;
+            font-size: 10px;
 
-            border-radius: 5px;
+            letter-spacing: 1px;
 
-            text-decoration: none;
-
-            margin-right: 5px;
-            margin-bottom: 5px;
+            transition: .25s;
         }
 
         .button:hover {
-            background: #333;
+            background: #a45c61;
         }
 
+
         /* =========================
-           FAVORITES SECTION
+           COLLECTION BANNER
+        ========================= */
+
+        .collection-banner {
+            max-width: 1350px;
+
+            margin: 80px auto;
+
+            min-height: 400px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(35,28,24,.78),
+                    rgba(35,28,24,.15)
+                ),
+                url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 70px;
+
+            color: white;
+        }
+
+        .collection-content {
+            max-width: 500px;
+        }
+
+        .collection-content span {
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            color: #e6d7cc;
+        }
+
+        .collection-content h2 {
+            font-family: Georgia, serif;
+
+            font-size: 55px;
+
+            font-weight: normal;
+
+            line-height: 1;
+
+            margin: 18px 0;
+        }
+
+        .collection-content p {
+            color: #ded6d0;
+
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           FAVORITES
         ========================= */
 
         .favorites-section {
-            padding: 50px 60px;
-            background: white;
-        }
-
-        .favorites-section h2 {
-            text-align: center;
-
-            font-size: 28px;
-
-            margin-bottom: 40px;
+            background: #f5f0e9;
         }
 
         .favorites-products {
             display: grid;
 
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns:
+                repeat(4, 1fr);
 
-            gap: 25px;
+            gap: 22px;
         }
 
         .favorite-card {
-            background: #f5f5f5;
+            background: white;
 
-            padding: 20px;
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 2px 10px rgba(
-                    0,
-                    0,
-                    0,
-                    0.08
-                );
+            padding: 10px;
         }
 
         .favorite-card img {
             width: 100%;
 
-            height: 250px;
+            height: 300px;
 
             object-fit: cover;
-
-            border-radius: 8px;
         }
 
         .favorite-card h3 {
-            margin: 15px 0 10px;
+            margin: 15px 7px 8px;
         }
 
         .favorite-card p {
-            color: #666;
-            line-height: 1.5;
+            color: #777;
+
+            padding: 0 7px;
         }
 
         .favorite-price {
-            font-size: 20px;
+            color: #222 !important;
 
             font-weight: bold;
-
-            color: #111 !important;
         }
 
         .favorite-actions {
@@ -404,40 +694,19 @@
 
             gap: 8px;
 
-            flex-wrap: wrap;
-
-            margin-top: 15px;
+            padding: 5px;
         }
 
         .remove-favorite {
             border: none;
 
-            background: #111;
-
-            color: white;
+            background: #eee6df;
 
             padding: 10px 15px;
 
-            border-radius: 5px;
-
             cursor: pointer;
-
-            font-size: 14px;
         }
 
-        .remove-favorite:hover {
-            background: #333;
-        }
-
-        .favorites-empty {
-            text-align: center;
-
-            color: #777;
-
-            font-size: 18px;
-
-            padding: 20px;
-        }
 
         /* =========================
            EMPTY
@@ -446,78 +715,159 @@
         .empty {
             text-align: center;
 
-            font-size: 20px;
-
-            color: #666;
-
-            width: 100%;
+            color: #888;
 
             grid-column: 1 / -1;
+
+            padding: 30px;
         }
+
+        .favorites-empty {
+            text-align: center;
+
+            color: #888;
+        }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            background: #111;
+            background: #28231f;
 
             color: white;
 
-            text-align: center;
-
-            padding: 30px;
-
-            margin-top: 50px;
+            padding: 60px 50px;
         }
 
-        footer p {
-            margin: 0;
+        .footer-inner {
+            max-width: 1350px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 40px;
         }
+
+        .footer-brand h3 {
+            font-family: Georgia, serif;
+
+            font-size: 30px;
+
+            letter-spacing: 5px;
+
+            margin: 0 0 15px;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+
+            line-height: 1.7;
+
+            max-width: 300px;
+        }
+
+        .footer-column h4 {
+            margin-top: 0;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .footer-column a {
+            display: block;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+            margin: 12px 0;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1350px;
+
+            margin: 45px auto 0;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #4a433e;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
 
         /* =========================
            TABLET
         ========================= */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1050px) {
 
-            .products {
-                grid-template-columns:
-                    repeat(2, 1fr);
+            header {
+                padding: 0 25px;
             }
 
+            nav {
+                gap: 15px;
+            }
+
+            .search-form {
+                display: none;
+            }
+
+            .hero {
+                margin: 15px;
+
+                min-height: 570px;
+            }
+
+            .section {
+                padding: 65px 25px;
+            }
+
+            .category-list,
+            .products,
             .favorites-products {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
-            header {
-                padding: 20px 30px;
+            .footer-inner {
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
 
-            .products-section {
-                padding: 40px 30px;
-            }
-
-            .categories {
-                padding: 40px 30px;
-            }
-
-            .favorites-section {
-                padding: 40px 30px;
-            }
         }
+
 
         /* =========================
            MOBILE
         ========================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
 
             header {
+                height: auto;
+
+                padding: 20px;
+
                 flex-direction: column;
 
-                gap: 20px;
+                gap: 18px;
             }
 
             nav {
@@ -528,47 +878,74 @@
                 gap: 15px;
             }
 
-            .search-form {
-                width: 100%;
-
-                justify-content: center;
-            }
-
-            .search-form input {
-                width: 180px;
+            .header-icons {
+                display: none;
             }
 
             .hero {
-                padding: 60px 20px;
+                min-height: 620px;
+
+                margin: 10px;
+
+                background-position: 60% center;
             }
 
-            .hero h2 {
+            .hero-content {
+                left: 25px;
+
+                right: 25px;
+            }
+
+            .hero h1 {
+                font-size: 57px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+
+                width: 200px;
+            }
+
+            .section {
+                padding: 55px 18px;
+            }
+
+            .section-heading h2 {
                 font-size: 35px;
             }
 
-            .hero p {
-                font-size: 17px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-            }
-
+            .category-list,
+            .products,
             .favorites-products {
                 grid-template-columns: 1fr;
             }
 
-            .products-section {
-                padding: 30px 20px;
+            .card img {
+                height: 450px;
             }
 
-            .categories {
-                padding: 30px 20px;
+            .collection-banner {
+                margin: 50px 15px;
+
+                padding: 40px 25px;
+
+                min-height: 500px;
             }
 
-            .favorites-section {
-                padding: 30px 20px;
+            .collection-content h2 {
+                font-size: 45px;
             }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: auto;
+            }
+
         }
 
     </style>
@@ -579,139 +956,188 @@
 <body>
 
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <header>
+<header>
 
-        <h1>
-            Магазин одежды
-        </h1>
-
-        <nav>
-
-            <a href="/">
-                Главная
-            </a>
-
-            <a href="#products">
-                Товары
-            </a>
-
-            <a href="#favorites">
-                Избранное ❤️
-            </a>
-
-            <a href="/cart/">
-                Корзина
-            </a>
-
-            <form
-                class="search-form"
-                method="get"
-                action="/"
-            >
-
-                <input
-                    type="text"
-                    name="q"
-                    placeholder="Поиск..."
-                    value="{{ search }}"
-                >
-
-                <button type="submit">
-                    Найти
-                </button>
-
-            </form>
-
-        </nav>
-
-    </header>
+    <a href="/" class="logo">
+        CLOTHÉ
+    </a>
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+    <nav>
 
-    <section class="hero">
-
-        <h2>
-            Добро пожаловать в магазин одежды
-        </h2>
-
-        <p>
-            Откройте для себя современную и стильную одежду
-        </p>
-
-        <a
-            href="#products"
-            class="shop-button"
-        >
-            Перейти к покупкам
+        <a href="/">
+            Главная
         </a>
 
-    </section>
-
-
-    <!-- =========================
-         CATEGORIES
-    ========================= -->
-
-    <section class="categories">
-
-        <h2>
+        <a href="#categories">
             Категории
-        </h2>
+        </a>
 
-        <div class="category-list">
+        <a href="#products">
+            Магазин
+        </a>
 
-            {% for category in categories %}
+        <a href="#favorites">
+            Избранное
+        </a>
 
-                <a
-                    href="{% url 'category_products' category.pk %}"
-                    class="category"
-                >
-                    {{ category.name }}
-                </a>
+    </nav>
 
-            {% empty %}
 
-                <p class="empty">
-                    Категории пока отсутствуют.
-                </p>
+    <div class="header-icons">
 
-            {% endfor %}
+        <a href="#favorites"
+           class="icon-link">
+            ♡
+        </a>
+
+        <a href="/cart/"
+           class="icon-link">
+            🛒
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            NEW COLLECTION · 2026
+        </div>
+
+        <h1>
+            ELEVATE<br>
+            YOUR<br>
+            STYLE
+        </h1>
+
+        <p class="hero-text">
+            Одежда, которая подчёркивает
+            индивидуальность. Новая коллекция
+            уже доступна.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                href="#products"
+                class="hero-button"
+            >
+                SHOP NOW
+            </a>
+
+            <a
+                href="#categories"
+                class="hero-button dark"
+            >
+                КАТЕГОРИИ
+            </a>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         PRODUCTS
-    ========================= -->
+<!-- =========================
+     CATEGORIES
+========================= -->
 
-    <section
-        class="products-section"
-        id="products"
-    >
+<section
+    class="section"
+    id="categories"
+>
+
+    <div class="section-heading">
+
+        <div class="section-label">
+            DISCOVER
+        </div>
 
         <h2>
-            Популярные товары
+            Shop by category
         </h2>
 
-        <div class="products">
+    </div>
 
-            {% for product in products %}
 
-                <div
-                    class="card"
-                    data-product-id="{{ product.id }}"
-                >
+    <div class="category-list">
 
-                    <!-- PRODUCT IMAGE -->
+        {% for category in categories %}
+
+            <a
+                href="{% url 'category_products' category.pk %}"
+                class="category"
+            >
+
+                <span class="category-number">
+                    0{{ forloop.counter }}
+                </span>
+
+                <span class="category-name">
+                    {{ category.name }}
+                </span>
+
+            </a>
+
+        {% empty %}
+
+            <p class="empty">
+                Категории пока отсутствуют.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section
+    class="section products-section"
+    id="products"
+>
+
+    <div class="section-heading">
+
+        <div class="section-label">
+            OUR FAVORITES
+        </div>
+
+        <h2>
+            Новая коллекция
+        </h2>
+
+    </div>
+
+
+    <div class="products">
+
+        {% for product in products %}
+
+            <div
+                class="card"
+                data-product-id="{{ product.id }}"
+            >
+
+                <div class="product-image">
 
                     {% if product.image %}
 
@@ -724,13 +1150,12 @@
 
                         <div
                             style="
-                                height: 280px;
-                                background: #eee;
-                                border-radius: 8px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                color: #777;
+                                height:390px;
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                background:#eee5dc;
+                                color:#888;
                             "
                         >
                             Нет изображения
@@ -739,571 +1164,613 @@
                     {% endif %}
 
 
-                    <!-- PRODUCT NAME + HEART -->
-
-                    <div class="product-top">
-
-                        <h3>
-                            {{ product.name }}
-                        </h3>
-
-                        <button
-                            type="button"
-                            class="favorite"
-                            data-product-id="{{ product.id }}"
-                            onclick="toggleFavorite(this)"
-                            aria-label="Добавить в избранное"
-                        >
-                            ♡
-                        </button>
-
-                    </div>
-
-
-                    <!-- DESCRIPTION -->
-
-                    <p class="description">
-
-                        {{ product.description|truncatewords:15 }}
-
-                    </p>
-
-
-                    <!-- PRICE -->
-
-                    <p class="price">
-
-                        {{ product.price }} сом
-
-                    </p>
-
-
-                    <!-- BUTTONS -->
-
-                    <a
-                        href="{% url 'product_detail' product.pk %}"
-                        class="button"
+                    <button
+                        type="button"
+                        class="favorite"
+                        data-product-id="{{ product.id }}"
+                        onclick="toggleFavorite(this)"
                     >
-                        Подробнее
-                    </a>
-
-                    <a
-                        href="{% url 'add_to_cart' product.pk %}"
-                        class="button"
-                    >
-                        В корзину
-                    </a>
+                        ♡
+                    </button>
 
                 </div>
 
-            {% empty %}
 
-                <p class="empty">
-                    Товаров пока нет.
-                </p>
+                <div class="product-info">
 
-            {% endfor %}
-
-        </div>
-
-    </section>
+                    <div class="product-name">
+                        {{ product.name }}
+                    </div>
 
 
-    <!-- =========================
-         FAVORITES
-    ========================= -->
+                    <p class="description">
+                        {{ product.description|truncatewords:15 }}
+                    </p>
 
-    <section
-        class="favorites-section"
-        id="favorites"
-    >
+
+                    <div class="product-bottom">
+
+                        <p class="price">
+                            {{ product.price }} сом
+                        </p>
+
+                        <div>
+
+                            <a
+                                href="{% url 'product_detail' product.pk %}"
+                                class="button"
+                            >
+                                Подробнее
+                            </a>
+
+                            <a
+                                href="{% url 'add_to_cart' product.pk %}"
+                                class="button"
+                            >
+                                В корзину
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% empty %}
+
+            <p class="empty">
+                Товаров пока нет.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COLLECTION BANNER
+========================= -->
+
+<section class="collection-banner">
+
+    <div class="collection-content">
+
+        <span>
+            CLOTHÉ · AUTUMN / WINTER
+        </span>
 
         <h2>
-            Избранное ❤️
+            NEW<br>
+            COLLECTION
         </h2>
 
-        <div
-            class="favorites-products"
-            id="favoritesProducts"
+        <p>
+            Минимализм, комфорт и стиль.
+            Откройте коллекцию, созданную
+            для вашего повседневного образа.
+        </p>
+
+        <a
+            href="#products"
+            class="hero-button"
         >
+            EXPLORE COLLECTION
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAVORITES
+========================= -->
+
+<section
+    class="section favorites-section"
+    id="favorites"
+>
+
+    <div class="section-heading">
+
+        <div class="section-label">
+            YOUR SELECTION
         </div>
 
-        <p
-            class="favorites-empty"
-            id="favoritesEmpty"
-        >
-            В избранном пока нет товаров.
-        </p>
+        <h2>
+            Избранное ♡
+        </h2>
 
-    </section>
+    </div>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        <p>
-            © 2026 Магазин одежды
-        </p>
-
-    </footer>
+    <div
+        class="favorites-products"
+        id="favoritesProducts"
+    >
+    </div>
 
 
-    <!-- =========================
-         FAVORITES JAVASCRIPT
-    ========================= -->
+    <p
+        class="favorites-empty"
+        id="favoritesEmpty"
+    >
+        В избранном пока нет товаров.
+    </p>
 
-    <script>
+</section>
 
-        // ==========================================
-        // ИЗБРАННЫЕ ТОВАРЛАРДЫ АЛУУ
-        // ==========================================
 
-        let favorites = JSON.parse(
-            localStorage.getItem("favorites") || "[]"
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+
+            <h3>
+                CLOTHÉ
+            </h3>
+
+            <p>
+                Современный магазин одежды
+                для тех, кто ценит стиль,
+                качество и индивидуальность.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Магазин
+            </h4>
+
+            <a href="#products">
+                Все товары
+            </a>
+
+            <a href="#categories">
+                Категории
+            </a>
+
+            <a href="#favorites">
+                Избранное
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Помощь
+            </h4>
+
+            <a href="/cart/">
+                Корзина
+            </a>
+
+            <a href="#">
+                Доставка
+            </a>
+
+            <a href="#">
+                Контакты
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Мы онлайн
+            </h4>
+
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                Telegram
+            </a>
+
+            <a href="#">
+                TikTok
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CLOTHÉ — Магазин одежды
+
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+    let favorites = JSON.parse(
+        localStorage.getItem("favorites") || "[]"
+    );
+
+
+    function updateFavorite(button) {
+
+        const productId =
+            button.dataset.productId;
+
+
+        if (favorites.includes(productId)) {
+
+            button.classList.add("active");
+
+            button.innerHTML = "♥";
+
+        } else {
+
+            button.classList.remove("active");
+
+            button.innerHTML = "♡";
+
+        }
+
+    }
+
+
+    function toggleFavorite(button) {
+
+        const productId =
+            button.dataset.productId;
+
+
+        if (favorites.includes(productId)) {
+
+            favorites = favorites.filter(
+                function(id) {
+                    return id !== productId;
+                }
+            );
+
+        } else {
+
+            favorites.push(productId);
+
+        }
+
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(favorites)
         );
 
 
-        // ==========================================
-        // ЖҮРӨКТҮ ЖАҢЫРТУУ
-        // ==========================================
+        updateFavorite(button);
 
-        function updateFavorite(button) {
+        showFavorites();
 
-            const productId =
-                button.dataset.productId;
+    }
 
 
-            if (favorites.includes(productId)) {
+    function showFavorites() {
 
-                button.classList.add("active");
-
-                button.innerHTML = "♥";
-
-                button.setAttribute(
-                    "aria-label",
-                    "Удалить из избранного"
-                );
-
-            } else {
-
-                button.classList.remove("active");
-
-                button.innerHTML = "♡";
-
-                button.setAttribute(
-                    "aria-label",
-                    "Добавить в избранное"
-                );
-
-            }
-
-        }
-
-
-        // ==========================================
-        // ЖҮРӨКТҮ БАСУУ
-        // ==========================================
-
-        function toggleFavorite(button) {
-
-            const productId =
-                button.dataset.productId;
-
-
-            if (favorites.includes(productId)) {
-
-                favorites = favorites.filter(
-                    function (id) {
-
-                        return id !== productId;
-
-                    }
-                );
-
-            } else {
-
-                favorites.push(productId);
-
-            }
-
-
-            localStorage.setItem(
-                "favorites",
-                JSON.stringify(favorites)
+        const container =
+            document.getElementById(
+                "favoritesProducts"
             );
 
 
-            updateFavorite(button);
-
-            showFavorites();
-
-        }
-
-
-        // ==========================================
-        // ИЗБРАННОЕ БӨЛҮМҮН КӨРСӨТҮҮ
-        // ==========================================
-
-        function showFavorites() {
-
-            const container =
-                document.getElementById(
-                    "favoritesProducts"
-                );
+        const empty =
+            document.getElementById(
+                "favoritesEmpty"
+            );
 
 
-            const empty =
-                document.getElementById(
-                    "favoritesEmpty"
-                );
+        const productCards =
+            document.querySelectorAll(
+                ".products .card"
+            );
 
 
-            const productCards =
-                document.querySelectorAll(
-                    ".products .card"
-                );
+        container.innerHTML = "";
 
 
-            container.innerHTML = "";
+        let count = 0;
 
 
-            let count = 0;
+        productCards.forEach(
+            function(card) {
+
+                const button =
+                    card.querySelector(
+                        ".favorite"
+                    );
 
 
-            productCards.forEach(
-                function (card) {
+                if (!button) {
+                    return;
+                }
 
-                    const button =
-                        card.querySelector(
-                            ".favorite"
+
+                const productId =
+                    button.dataset.productId;
+
+
+                if (
+                    favorites.includes(productId)
+                ) {
+
+                    const favoriteCard =
+                        document.createElement(
+                            "div"
                         );
 
 
-                    if (!button) {
-                        return;
-                    }
+                    favoriteCard.className =
+                        "favorite-card";
 
 
-                    const productId =
-                        button.dataset.productId;
+                    const image =
+                        card.querySelector(
+                            "img"
+                        );
 
 
-                    if (
-                        favorites.includes(
-                            productId
-                        )
-                    ) {
+                    if (image) {
 
-                        const favoriteCard =
+                        const newImage =
                             document.createElement(
-                                "div"
-                            );
-
-
-                        favoriteCard.className =
-                            "favorite-card";
-
-
-                        // Сүрөт
-                        const image =
-                            card.querySelector(
                                 "img"
                             );
 
+                        newImage.src =
+                            image.src;
 
-                        if (image) {
-
-                            const newImage =
-                                document.createElement(
-                                    "img"
-                                );
-
-                            newImage.src =
-                                image.src;
-
-                            newImage.alt =
-                                image.alt;
-
-                            favoriteCard.appendChild(
-                                newImage
-                            );
-
-                        } else {
-
-                            const noImage =
-                                document.createElement(
-                                    "div"
-                                );
-
-                            noImage.style.height =
-                                "250px";
-
-                            noImage.style.background =
-                                "#eee";
-
-                            noImage.style.borderRadius =
-                                "8px";
-
-                            noImage.style.display =
-                                "flex";
-
-                            noImage.style.alignItems =
-                                "center";
-
-                            noImage.style.justifyContent =
-                                "center";
-
-                            noImage.style.color =
-                                "#777";
-
-                            noImage.innerHTML =
-                                "Нет изображения";
-
-                            favoriteCard.appendChild(
-                                noImage
-                            );
-
-                        }
-
-
-                        // Товардын аты
-                        const title =
-                            card.querySelector(
-                                ".product-top h3"
-                            );
-
-
-                        const favoriteTitle =
-                            document.createElement(
-                                "h3"
-                            );
-
-
-                        favoriteTitle.innerHTML =
-                            title
-                                ? title.innerHTML
-                                : "Товар";
-
+                        newImage.alt =
+                            image.alt;
 
                         favoriteCard.appendChild(
-                            favoriteTitle
+                            newImage
                         );
-
-
-                        // Description
-                        const description =
-                            card.querySelector(
-                                ".description"
-                            );
-
-
-                        if (description) {
-
-                            const text =
-                                document.createElement(
-                                    "p"
-                                );
-
-                            text.innerHTML =
-                                description.innerHTML;
-
-                            favoriteCard.appendChild(
-                                text
-                            );
-
-                        }
-
-
-                        // Цена
-                        const price =
-                            card.querySelector(
-                                ".price"
-                            );
-
-
-                        if (price) {
-
-                            const favoritePrice =
-                                document.createElement(
-                                    "p"
-                                );
-
-
-                            favoritePrice.className =
-                                "favorite-price";
-
-
-                            favoritePrice.innerHTML =
-                                price.innerHTML;
-
-
-                            favoriteCard.appendChild(
-                                favoritePrice
-                            );
-
-                        }
-
-
-                        // Кнопкалар
-                        const actions =
-                            document.createElement(
-                                "div"
-                            );
-
-
-                        actions.className =
-                            "favorite-actions";
-
-
-                        // Подробнее
-                        const detailButton =
-                            card.querySelector(
-                                'a[href*="product/"]'
-                            );
-
-
-                        if (detailButton) {
-
-                            const detail =
-                                document.createElement(
-                                    "a"
-                                );
-
-                            detail.href =
-                                detailButton.href;
-
-                            detail.className =
-                                "button";
-
-                            detail.innerHTML =
-                                "Подробнее";
-
-                            actions.appendChild(
-                                detail
-                            );
-
-                        }
-
-
-                        // Удалить
-                        const removeButton =
-                            document.createElement(
-                                "button"
-                            );
-
-
-                        removeButton.className =
-                            "remove-favorite";
-
-
-                        removeButton.innerHTML =
-                            "♥ Удалить";
-
-
-                        removeButton.onclick =
-                            function () {
-
-                                favorites =
-                                    favorites.filter(
-                                        function (id) {
-
-                                            return id !==
-                                                productId;
-
-                                        }
-                                    );
-
-
-                                localStorage.setItem(
-                                    "favorites",
-                                    JSON.stringify(
-                                        favorites
-                                    )
-                                );
-
-
-                                updateFavorite(
-                                    button
-                                );
-
-
-                                showFavorites();
-
-                            };
-
-
-                        actions.appendChild(
-                            removeButton
-                        );
-
-
-                        favoriteCard.appendChild(
-                            actions
-                        );
-
-
-                        container.appendChild(
-                            favoriteCard
-                        );
-
-
-                        count++;
 
                     }
+
+
+                    const title =
+                        card.querySelector(
+                            ".product-name"
+                        );
+
+
+                    const favoriteTitle =
+                        document.createElement(
+                            "h3"
+                        );
+
+
+                    favoriteTitle.innerHTML =
+                        title
+                            ? title.innerHTML
+                            : "Товар";
+
+
+                    favoriteCard.appendChild(
+                        favoriteTitle
+                    );
+
+
+                    const description =
+                        card.querySelector(
+                            ".description"
+                        );
+
+
+                    if (description) {
+
+                        const text =
+                            document.createElement(
+                                "p"
+                            );
+
+                        text.innerHTML =
+                            description.innerHTML;
+
+                        favoriteCard.appendChild(
+                            text
+                        );
+
+                    }
+
+
+                    const price =
+                        card.querySelector(
+                            ".price"
+                        );
+
+
+                    if (price) {
+
+                        const favoritePrice =
+                            document.createElement(
+                                "p"
+                            );
+
+                        favoritePrice.className =
+                            "favorite-price";
+
+                        favoritePrice.innerHTML =
+                            price.innerHTML;
+
+                        favoriteCard.appendChild(
+                            favoritePrice
+                        );
+
+                    }
+
+
+                    const actions =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    actions.className =
+                        "favorite-actions";
+
+
+                    const detailButton =
+                        card.querySelector(
+                            'a[href*="product"]'
+                        );
+
+
+                    if (detailButton) {
+
+                        const detail =
+                            document.createElement(
+                                "a"
+                            );
+
+                        detail.href =
+                            detailButton.href;
+
+                        detail.className =
+                            "button";
+
+                        detail.innerHTML =
+                            "Подробнее";
+
+                        actions.appendChild(
+                            detail
+                        );
+
+                    }
+
+
+                    const removeButton =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    removeButton.className =
+                        "remove-favorite";
+
+                    removeButton.innerHTML =
+                        "♥ Удалить";
+
+
+                    removeButton.onclick =
+                        function() {
+
+                            favorites =
+                                favorites.filter(
+                                    function(id) {
+                                        return id !==
+                                            productId;
+                                    }
+                                );
+
+
+                            localStorage.setItem(
+                                "favorites",
+                                JSON.stringify(
+                                    favorites
+                                )
+                            );
+
+
+                            updateFavorite(
+                                button
+                            );
+
+
+                            showFavorites();
+
+                        };
+
+
+                    actions.appendChild(
+                        removeButton
+                    );
+
+
+                    favoriteCard.appendChild(
+                        actions
+                    );
+
+
+                    container.appendChild(
+                        favoriteCard
+                    );
+
+
+                    count++;
+
+                }
+
+            }
+        );
+
+
+        if (count === 0) {
+
+            empty.style.display =
+                "block";
+
+        } else {
+
+            empty.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            const buttons =
+                document.querySelectorAll(
+                    ".favorite"
+                );
+
+
+            buttons.forEach(
+                function(button) {
+
+                    updateFavorite(button);
 
                 }
             );
 
 
-            if (count === 0) {
-
-                empty.style.display =
-                    "block";
-
-            } else {
-
-                empty.style.display =
-                    "none";
-
-            }
+            showFavorites();
 
         }
+    );
 
-
-        // ==========================================
-        // БАРАК АЧЫЛГАНДА
-        // ==========================================
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-                const buttons =
-                    document.querySelectorAll(
-                        ".favorite"
-                    );
-
-
-                buttons.forEach(
-                    function (button) {
-
-                        updateFavorite(
-                            button
-                        );
-
-                    }
-                );
-
-
-                showFavorites();
-
-            }
-        );
-
-    </script>
+</script>
 
 
 </body>
