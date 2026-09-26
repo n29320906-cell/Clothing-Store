@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Магазин одежды</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #111;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px 60px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-form input {
+            width: 200px;
+            padding: 10px 12px;
+
+            border: none;
+            border-radius: 5px;
+
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-form button {
+            padding: 10px 15px;
+
+            background: white;
+            color: #111;
+
+            border: none;
+            border-radius: 5px;
+
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-form button:hover {
+            background: #ddd;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: white;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h2 {
+            font-size: 50px;
+            margin: 0 0 15px;
+        }
+
+        .hero p {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .shop-button {
+            display: inline-block;
+
+            background: #111;
+            color: white;
+
+            padding: 14px 30px;
+
+            border-radius: 5px;
+            text-decoration: none;
+
+            font-size: 16px;
+        }
+
+        .shop-button:hover {
+            background: #333;
+        }
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            padding: 40px 60px;
+            background: white;
+        }
+
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .category {
+            background: #111;
+            color: white;
+
+            padding: 12px 25px;
+
+            border-radius: 5px;
+            text-decoration: none;
+
+            font-size: 16px;
+        }
+
+        .category:hover {
+            background: #333;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+            padding: 50px 60px;
+            background: #f5f5f5;
+        }
+
+        .products-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .card {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 10px rgba(
+                    0,
+                    0,
+                    0,
+                    0.08
+                );
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            display: block;
+        }
+
+        /* =========================
+           PRODUCT TOP
+        ========================= */
+
+        .product-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .product-top h3 {
+            font-size: 20px;
+
+            margin-top: 15px;
+            margin-bottom: 10px;
+
+            flex: 1;
+        }
+
+        /* =========================
+           FAVORITE HEART
+        ========================= */
+
+        .favorite {
+            border: none;
+
+            background: transparent;
+
+            font-size: 35px;
+
+            cursor: pointer;
+
+            color: #777;
+
+            padding: 0;
+
+            line-height: 1;
+
+            transition: 0.2s;
+
+            flex-shrink: 0;
+        }
+
+        .favorite:hover {
+            transform: scale(1.2);
+        }
+
+        .favorite.active {
+            color: red;
+        }
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            color: #666;
+
+            line-height: 1.5;
+
+            min-height: 45px;
+        }
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price {
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin: 15px 0;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .button {
+            display: inline-block;
+
+            background: #111;
+
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 5px;
+
+            text-decoration: none;
+
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .button:hover {
+            background: #333;
+        }
+
+        /* =========================
+           FAVORITES SECTION
+        ========================= */
+
+        .favorites-section {
+            padding: 50px 60px;
+            background: white;
+        }
+
+        .favorites-section h2 {
+            text-align: center;
+
+            font-size: 28px;
+
+            margin-bottom: 40px;
+        }
+
+        .favorites-products {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 25px;
+        }
+
+        .favorite-card {
+            background: #f5f5f5;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 10px rgba(
+                    0,
+                    0,
+                    0,
+                    0.08
+                );
+        }
+
+        .favorite-card img {
+            width: 100%;
+
+            height: 250px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+        .favorite-card h3 {
+            margin: 15px 0 10px;
+        }
+
+        .favorite-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .favorite-price {
+            font-size: 20px;
+
+            font-weight: bold;
+
+            color: #111 !important;
+        }
+
+        .favorite-actions {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 15px;
+        }
+
+        .remove-favorite {
+            border: none;
+
+            background: #111;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+        .remove-favorite:hover {
+            background: #333;
+        }
+
+        .favorites-empty {
+            text-align: center;
+
+            color: #777;
+
+            font-size: 18px;
+
+            padding: 20px;
+        }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            text-align: center;
+
+            font-size: 20px;
+
+            color: #666;
+
+            width: 100%;
+
+            grid-column: 1 / -1;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px;
+
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .products {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .favorites-products {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            header {
+                padding: 20px 30px;
+            }
+
+            .products-section {
+                padding: 40px 30px;
+            }
+
+            .categories {
+                padding: 40px 30px;
+            }
+
+            .favorites-section {
+                padding: 40px 30px;
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .search-form {
+                width: 100%;
+
+                justify-content: center;
+            }
+
+            .search-form input {
+                width: 180px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h2 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .favorites-products {
+                grid-template-columns: 1fr;
+            }
+
+            .products-section {
+                padding: 30px 20px;
+            }
+
+            .categories {
+                padding: 30px 20px;
+            }
+
+            .favorites-section {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <h1>
+            Магазин одежды
+        </h1>
+
+        <nav>
+
+            <a href="/">
+                Главная
+            </a>
+
+            <a href="#products">
+                Товары
+            </a>
+
+            <a href="#favorites">
+                Избранное ❤️
+            </a>
+
+            <a href="/cart/">
+                Корзина
+            </a>
+
+            <form
+                class="search-form"
+                method="get"
+                action="/"
+            >
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Поиск..."
+                    value="{{ search }}"
+                >
+
+                <button type="submit">
+                    Найти
+                </button>
+
+            </form>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h2>
+            Добро пожаловать в магазин одежды
+        </h2>
+
+        <p>
+            Откройте для себя современную и стильную одежду
+        </p>
+
+        <a
+            href="#products"
+            class="shop-button"
+        >
+            Перейти к покупкам
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section class="categories">
+
+        <h2>
+            Категории
+        </h2>
+
+        <div class="category-list">
+
+            {% for category in categories %}
+
+                <a
+                    href="{% url 'category_products' category.pk %}"
+                    class="category"
+                >
+                    {{ category.name }}
+                </a>
+
+            {% empty %}
+
+                <p class="empty">
+                    Категории пока отсутствуют.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================= -->
+
+    <section
+        class="products-section"
+        id="products"
+    >
+
+        <h2>
+            Популярные товары
+        </h2>
+
+        <div class="products">
+
+            {% for product in products %}
+
+                <div
+                    class="card"
+                    data-product-id="{{ product.id }}"
+                >
+
+                    <!-- PRODUCT IMAGE -->
+
+                    {% if product.image %}
+
+                        <img
+                            src="{{ product.image.url }}"
+                            alt="{{ product.name }}"
+                        >
+
+                    {% else %}
+
+                        <div
+                            style="
+                                height: 280px;
+                                background: #eee;
+                                border-radius: 8px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: #777;
+                            "
+                        >
+                            Нет изображения
+                        </div>
+
+                    {% endif %}
+
+
+                    <!-- PRODUCT NAME + HEART -->
+
+                    <div class="product-top">
+
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+
+                        <button
+                            type="button"
+                            class="favorite"
+                            data-product-id="{{ product.id }}"
+                            onclick="toggleFavorite(this)"
+                            aria-label="Добавить в избранное"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <p class="description">
+
+                        {{ product.description|truncatewords:15 }}
+
+                    </p>
+
+
+                    <!-- PRICE -->
+
+                    <p class="price">
+
+                        {{ product.price }} сом
+
+                    </p>
+
+
+                    <!-- BUTTONS -->
+
+                    <a
+                        href="{% url 'product_detail' product.pk %}"
+                        class="button"
+                    >
+                        Подробнее
+                    </a>
+
+                    <a
+                        href="{% url 'add_to_cart' product.pk %}"
+                        class="button"
+                    >
+                        В корзину
+                    </a>
+
+                </div>
+
+            {% empty %}
+
+                <p class="empty">
+                    Товаров пока нет.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FAVORITES
+    ========================= -->
+
+    <section
+        class="favorites-section"
+        id="favorites"
+    >
+
+        <h2>
+            Избранное ❤️
+        </h2>
+
+        <div
+            class="favorites-products"
+            id="favoritesProducts"
+        >
+        </div>
+
+        <p
+            class="favorites-empty"
+            id="favoritesEmpty"
+        >
+            В избранном пока нет товаров.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p>
+            © 2026 Магазин одежды
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         FAVORITES JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        // ==========================================
+        // ИЗБРАННЫЕ ТОВАРЛАРДЫ АЛУУ
+        // ==========================================
+
+        let favorites = JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+        );
+
+
+        // ==========================================
+        // ЖҮРӨКТҮ ЖАҢЫРТУУ
+        // ==========================================
+
+        function updateFavorite(button) {
+
+            const productId =
+                button.dataset.productId;
+
+
+            if (favorites.includes(productId)) {
+
+                button.classList.add("active");
+
+                button.innerHTML = "♥";
+
+                button.setAttribute(
+                    "aria-label",
+                    "Удалить из избранного"
+                );
+
+            } else {
+
+                button.classList.remove("active");
+
+                button.innerHTML = "♡";
+
+                button.setAttribute(
+                    "aria-label",
+                    "Добавить в избранное"
+                );
+
+            }
+
+        }
+
+
+        // ==========================================
+        // ЖҮРӨКТҮ БАСУУ
+        // ==========================================
+
+        function toggleFavorite(button) {
+
+            const productId =
+                button.dataset.productId;
+
+
+            if (favorites.includes(productId)) {
+
+                favorites = favorites.filter(
+                    function (id) {
+
+                        return id !== productId;
+
+                    }
+                );
+
+            } else {
+
+                favorites.push(productId);
+
+            }
+
+
+            localStorage.setItem(
+                "favorites",
+                JSON.stringify(favorites)
+            );
+
+
+            updateFavorite(button);
+
+            showFavorites();
+
+        }
+
+
+        // ==========================================
+        // ИЗБРАННОЕ БӨЛҮМҮН КӨРСӨТҮҮ
+        // ==========================================
+
+        function showFavorites() {
+
+            const container =
+                document.getElementById(
+                    "favoritesProducts"
+                );
+
+
+            const empty =
+                document.getElementById(
+                    "favoritesEmpty"
+                );
+
+
+            const productCards =
+                document.querySelectorAll(
+                    ".products .card"
+                );
+
+
+            container.innerHTML = "";
+
+
+            let count = 0;
+
+
+            productCards.forEach(
+                function (card) {
+
+                    const button =
+                        card.querySelector(
+                            ".favorite"
+                        );
+
+
+                    if (!button) {
+                        return;
+                    }
+
+
+                    const productId =
+                        button.dataset.productId;
+
+
+                    if (
+                        favorites.includes(
+                            productId
+                        )
+                    ) {
+
+                        const favoriteCard =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        favoriteCard.className =
+                            "favorite-card";
+
+
+                        // Сүрөт
+                        const image =
+                            card.querySelector(
+                                "img"
+                            );
+
+
+                        if (image) {
+
+                            const newImage =
+                                document.createElement(
+                                    "img"
+                                );
+
+                            newImage.src =
+                                image.src;
+
+                            newImage.alt =
+                                image.alt;
+
+                            favoriteCard.appendChild(
+                                newImage
+                            );
+
+                        } else {
+
+                            const noImage =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            noImage.style.height =
+                                "250px";
+
+                            noImage.style.background =
+                                "#eee";
+
+                            noImage.style.borderRadius =
+                                "8px";
+
+                            noImage.style.display =
+                                "flex";
+
+                            noImage.style.alignItems =
+                                "center";
+
+                            noImage.style.justifyContent =
+                                "center";
+
+                            noImage.style.color =
+                                "#777";
+
+                            noImage.innerHTML =
+                                "Нет изображения";
+
+                            favoriteCard.appendChild(
+                                noImage
+                            );
+
+                        }
+
+
+                        // Товардын аты
+                        const title =
+                            card.querySelector(
+                                ".product-top h3"
+                            );
+
+
+                        const favoriteTitle =
+                            document.createElement(
+                                "h3"
+                            );
+
+
+                        favoriteTitle.innerHTML =
+                            title
+                                ? title.innerHTML
+                                : "Товар";
+
+
+                        favoriteCard.appendChild(
+                            favoriteTitle
+                        );
+
+
+                        // Description
+                        const description =
+                            card.querySelector(
+                                ".description"
+                            );
+
+
+                        if (description) {
+
+                            const text =
+                                document.createElement(
+                                    "p"
+                                );
+
+                            text.innerHTML =
+                                description.innerHTML;
+
+                            favoriteCard.appendChild(
+                                text
+                            );
+
+                        }
+
+
+                        // Цена
+                        const price =
+                            card.querySelector(
+                                ".price"
+                            );
+
+
+                        if (price) {
+
+                            const favoritePrice =
+                                document.createElement(
+                                    "p"
+                                );
+
+
+                            favoritePrice.className =
+                                "favorite-price";
+
+
+                            favoritePrice.innerHTML =
+                                price.innerHTML;
+
+
+                            favoriteCard.appendChild(
+                                favoritePrice
+                            );
+
+                        }
+
+
+                        // Кнопкалар
+                        const actions =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        actions.className =
+                            "favorite-actions";
+
+
+                        // Подробнее
+                        const detailButton =
+                            card.querySelector(
+                                'a[href*="product/"]'
+                            );
+
+
+                        if (detailButton) {
+
+                            const detail =
+                                document.createElement(
+                                    "a"
+                                );
+
+                            detail.href =
+                                detailButton.href;
+
+                            detail.className =
+                                "button";
+
+                            detail.innerHTML =
+                                "Подробнее";
+
+                            actions.appendChild(
+                                detail
+                            );
+
+                        }
+
+
+                        // Удалить
+                        const removeButton =
+                            document.createElement(
+                                "button"
+                            );
+
+
+                        removeButton.className =
+                            "remove-favorite";
+
+
+                        removeButton.innerHTML =
+                            "♥ Удалить";
+
+
+                        removeButton.onclick =
+                            function () {
+
+                                favorites =
+                                    favorites.filter(
+                                        function (id) {
+
+                                            return id !==
+                                                productId;
+
+                                        }
+                                    );
+
+
+                                localStorage.setItem(
+                                    "favorites",
+                                    JSON.stringify(
+                                        favorites
+                                    )
+                                );
+
+
+                                updateFavorite(
+                                    button
+                                );
+
+
+                                showFavorites();
+
+                            };
+
+
+                        actions.appendChild(
+                            removeButton
+                        );
+
+
+                        favoriteCard.appendChild(
+                            actions
+                        );
+
+
+                        container.appendChild(
+                            favoriteCard
+                        );
+
+
+                        count++;
+
+                    }
+
+                }
+            );
+
+
+            if (count === 0) {
+
+                empty.style.display =
+                    "block";
+
+            } else {
+
+                empty.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+        // ==========================================
+        // БАРАК АЧЫЛГАНДА
+        // ==========================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const buttons =
+                    document.querySelectorAll(
+                        ".favorite"
+                    );
+
+
+                buttons.forEach(
+                    function (button) {
+
+                        updateFavorite(
+                            button
+                        );
+
+                    }
+                );
+
+
+                showFavorites();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

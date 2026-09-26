@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        {{ product.name }} - Clothing Store
+    </title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+
+            margin: 60px auto;
+
+            background: white;
+
+            padding: 40px;
+
+            display: flex;
+
+            gap: 50px;
+
+            border-radius: 10px;
+        }
+
+        .container img {
+            width: 450px;
+            height: 500px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+        .info {
+            padding-top: 30px;
+        }
+
+        .info h1 {
+            font-size: 40px;
+        }
+
+        .description {
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 30px;
+
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+
+            background: #111;
+
+            color: white;
+
+            padding: 15px 30px;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: #333;
+        }
+
+        .back {
+            display: block;
+
+            margin-top: 20px;
+
+            color: #111;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    {% if product.image %}
+
+        <img
+            src="{{ product.image.url }}"
+            alt="{{ product.name }}"
+        >
+
+    {% endif %}
+
+
+    <div class="info">
+
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+
+        <p class="description">
+            {{ product.description }}
+        </p>
+
+
+        <p class="price">
+            ${{ product.price }}
+        </p>
+
+
+        <a
+            href="{% url 'add_to_cart' product.pk %}"
+            class="button"
+        >
+            Add to Cart
+        </a>
+
+
+        <a
+            href="/"
+            class="back"
+        >
+            ← Back to Shop
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

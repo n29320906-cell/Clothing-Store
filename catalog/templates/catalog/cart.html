@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shopping Cart</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f5f5;
+
+            color: #111;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #111;
+
+            color: white;
+
+            padding: 20px 60px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        header h1 {
+            margin: 0;
+
+            font-size: 28px;
+        }
+
+
+        header a {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 16px;
+        }
+
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1000px;
+
+            margin: 50px auto;
+
+            padding: 20px;
+        }
+
+
+        /* =========================
+           CART ITEM
+        ========================= */
+
+        .cart-item {
+            background: white;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .cart-item img {
+            width: 120px;
+
+            height: 140px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+
+        .info {
+            flex: 1;
+        }
+
+
+        .info h2 {
+            margin-top: 0;
+
+            margin-bottom: 10px;
+
+            font-size: 22px;
+        }
+
+
+        .info p {
+            color: #666;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        .quantity {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin: 15px 0;
+        }
+
+
+        .quantity-button {
+            width: 35px;
+
+            height: 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: white;
+
+            color: #111;
+
+            border: 1px solid #ccc;
+
+            border-radius: 50%;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .quantity-button:hover {
+            background: #111;
+
+            color: white;
+
+            border-color: #111;
+        }
+
+
+        .quantity span {
+            min-width: 25px;
+
+            text-align: center;
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price {
+            font-weight: bold;
+
+            font-size: 18px;
+
+            color: #111 !important;
+        }
+
+
+        /* =========================
+           REMOVE
+        ========================= */
+
+        .remove {
+            background: #111;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            transition: 0.2s;
+        }
+
+
+        .remove:hover {
+            background: #333;
+        }
+
+
+        /* =========================
+           TOTAL
+        ========================= */
+
+        .total {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 10px;
+
+            text-align: right;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .total h2 {
+            font-size: 28px;
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           CHECKOUT
+        ========================= */
+
+        .checkout {
+            display: inline-block;
+
+            background: #111;
+
+            color: white;
+
+            padding: 15px 30px;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+
+            transition: 0.2s;
+        }
+
+
+        .checkout:hover {
+            background: #333;
+        }
+
+
+        /* =========================
+           EMPTY CART
+        ========================= */
+
+        .empty {
+            background: white;
+
+            padding: 50px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .empty h2 {
+            margin-top: 0;
+        }
+
+
+        .empty p {
+            color: #666;
+        }
+
+
+        .shop {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            background: #111;
+
+            color: white;
+
+            padding: 12px 25px;
+
+            text-decoration: none;
+
+            border-radius: 5px;
+        }
+
+
+        .shop:hover {
+            background: #333;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 20px;
+            }
+
+
+            header h1 {
+                font-size: 22px;
+            }
+
+
+            .container {
+                margin: 20px auto;
+
+                padding: 15px;
+            }
+
+
+            .cart-item {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .cart-item img {
+                width: 100%;
+
+                height: 300px;
+            }
+
+
+            .remove {
+                margin-top: 10px;
+            }
+
+
+            .total {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        Shopping Cart
+    </h1>
+
+
+    <a href="/">
+        Continue Shopping
+    </a>
+
+</header>
+
+
+
+<div class="container">
+
+
+    {% if products %}
+
+
+        {% for item in products %}
+
+
+            <div class="cart-item">
+
+
+                {% if item.product.image %}
+
+                    <img
+                        src="{{ item.product.image.url }}"
+                        alt="{{ item.product.name }}"
+                    >
+
+                {% endif %}
+
+
+                <div class="info">
+
+
+                    <h2>
+                        {{ item.product.name }}
+                    </h2>
+
+
+                    <p>
+                        {{ item.product.description }}
+                    </p>
+
+
+                    <!-- QUANTITY -->
+
+                    <div class="quantity">
+
+
+                        <a
+                            href="{% url 'decrease_cart' item.product.pk %}"
+                            class="quantity-button"
+                        >
+                            −
+                        </a>
+
+
+                        <span>
+                            {{ item.quantity }}
+                        </span>
+
+
+                        <a
+                            href="{% url 'increase_cart' item.product.pk %}"
+                            class="quantity-button"
+                        >
+                            +
+                        </a>
+
+
+                    </div>
+
+
+                    <!-- PRICE -->
+
+                    <p class="price">
+                        ${{ item.subtotal }}
+                    </p>
+
+
+                </div>
+
+
+                <!-- REMOVE -->
+
+                <a
+                    class="remove"
+                    href="{% url 'remove_from_cart' item.product.pk %}"
+                >
+                    Remove
+                </a>
+
+
+            </div>
+
+
+        {% endfor %}
+
+
+
+        <!-- TOTAL -->
+
+        <div class="total">
+
+
+            <h2>
+                Total: ${{ total }}
+            </h2>
+
+
+            <a
+                href="{% url 'checkout' %}"
+                class="checkout"
+            >
+                Checkout
+            </a>
+
+
+        </div>
+
+
+    {% else %}
+
+
+        <!-- EMPTY CART -->
+
+        <div class="empty">
+
+
+            <h2>
+                Your cart is empty
+            </h2>
+
+
+            <p>
+                You haven't added any products yet.
+            </p>
+
+
+            <a
+                href="/"
+                class="shop"
+            >
+                Start Shopping
+            </a>
+
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>
