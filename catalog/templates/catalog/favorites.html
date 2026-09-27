@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CLOTHÉ — Избранное</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f0e9;
+
+            color: #28231f;
+
+            transition:
+                background .3s,
+                color .3s;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            min-height: 82px;
+
+            padding: 0 55px;
+
+            background: #f5f0e9;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            border-bottom:
+                1px solid #ded6cc;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+        }
+
+
+        .logo {
+
+            font-family: Georgia, serif;
+
+            font-size: 30px;
+
+            letter-spacing: 6px;
+
+            font-weight: bold;
+        }
+
+
+        nav {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        nav a {
+
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #504941;
+
+            transition: .25s;
+        }
+
+
+        nav a:hover {
+
+            color: #a45c61;
+        }
+
+
+        nav a.active {
+
+            color: #a45c61;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HEADER ICONS
+        ========================= */
+
+        .header-icons {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .icon-link {
+
+            width: 42px;
+
+            height: 42px;
+
+            border:
+                1px solid #d5ccc2;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+            transition: .25s;
+        }
+
+
+        .icon-link:hover {
+
+            background: #28231f;
+
+            color: white;
+        }
+
+
+        .theme-button {
+
+            width: 42px;
+
+            height: 42px;
+
+            border:
+                1px solid #d5ccc2;
+
+            border-radius: 50%;
+
+            background: transparent;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+
+        .theme-button:hover {
+
+            background: #28231f;
+
+            color: white;
+        }
+
+
+        /* =========================
+           PAGE
+        ========================= */
+
+        .page {
+
+            max-width: 1350px;
+
+            margin: auto;
+
+            padding:
+                90px 30px
+                120px;
+        }
+
+
+        .heading {
+
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+
+        .label {
+
+            color: #a45c61;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .heading h1 {
+
+            margin: 0;
+
+            font-family: Georgia, serif;
+
+            font-weight: normal;
+
+            font-size: 52px;
+        }
+
+
+        .heading p {
+
+            color: #888;
+
+            margin-top: 15px;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .favorites-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 24px;
+        }
+
+
+        .favorite-card {
+
+            background: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: .3s;
+        }
+
+
+        .favorite-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(50,40,30,.12);
+        }
+
+
+        .image-box {
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .image-box img {
+
+            width: 100%;
+
+            height: 390px;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: .5s;
+        }
+
+
+        .favorite-card:hover
+        .image-box img {
+
+            transform:
+                scale(1.04);
+        }
+
+
+        /* =========================
+           REMOVE
+        ========================= */
+
+        .remove-button {
+
+            position: absolute;
+
+            right: 15px;
+
+            top: 15px;
+
+            width: 43px;
+
+            height: 43px;
+
+            border: none;
+
+            background:
+                rgba(255,255,255,.94);
+
+            border-radius: 50%;
+
+            color: #a45c61;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            z-index: 5;
+
+            transition: .25s;
+        }
+
+
+        .remove-button:hover {
+
+            background: #a45c61;
+
+            color: white;
+
+            transform:
+                scale(1.1);
+        }
+
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .product-info {
+
+            padding:
+                20px 18px 22px;
+        }
+
+
+        .product-name {
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .description {
+
+            color: #8c8178;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            min-height: 36px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .bottom {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 10px;
+        }
+
+
+        .price {
+
+            font-size: 17px;
+
+            font-weight: bold;
+        }
+
+
+        .buttons {
+
+            display: flex;
+
+            gap: 7px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+
+        .button {
+
+            display: inline-block;
+
+            padding:
+                10px 13px;
+
+            background: #28231f;
+
+            color: white;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+
+        .button:hover {
+
+            background: #a45c61;
+        }
+
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 90px 20px;
+
+            display: none;
+        }
+
+
+        .empty-heart {
+
+            font-size: 65px;
+
+            color: #a45c61;
+
+            margin-bottom: 20px;
+        }
+
+
+        .empty h2 {
+
+            font-family: Georgia, serif;
+
+            font-size: 35px;
+
+            font-weight: normal;
+
+            margin: 0 0 15px;
+        }
+
+
+        .empty p {
+
+            color: #888;
+
+            margin-bottom: 30px;
+        }
+
+
+        .home-button {
+
+            display: inline-block;
+
+            background: #28231f;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+            transition: .25s;
+        }
+
+
+        .home-button:hover {
+
+            background: #a45c61;
+        }
+
+
+        /* =========================
+           NOTIFICATION
+        ========================= */
+
+        .notification {
+
+            position: fixed;
+
+            top: 100px;
+
+            right: 30px;
+
+            background: #28231f;
+
+            color: white;
+
+            padding:
+                15px 22px;
+
+            z-index: 9999;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(-15px);
+
+            transition: .3s;
+        }
+
+
+        .notification.show {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #28231f;
+
+            color: white;
+
+            padding: 60px 50px;
+        }
+
+
+        .footer-inner {
+
+            max-width: 1350px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr 1fr;
+
+            gap: 40px;
+        }
+
+
+        .footer-brand h3 {
+
+            font-family: Georgia, serif;
+
+            font-size: 30px;
+
+            letter-spacing: 5px;
+
+            margin:
+                0 0 15px;
+        }
+
+
+        .footer-brand p {
+
+            color: #aaa;
+
+            line-height: 1.7;
+
+            max-width: 300px;
+        }
+
+
+        .footer-column h4 {
+
+            margin-top: 0;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .footer-column a {
+
+            display: block;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+            margin: 12px 0;
+        }
+
+
+        .footer-column a:hover {
+
+            color: white;
+        }
+
+
+        .copyright {
+
+            max-width: 1350px;
+
+            margin:
+                45px auto 0;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid #4a433e;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+
+            background: #171717;
+
+            color: #eeeeee;
+        }
+
+
+        body.dark-mode header {
+
+            background: #202020;
+
+            border-color: #3a3a3a;
+        }
+
+
+        body.dark-mode nav a {
+
+            color: #ddd;
+        }
+
+
+        body.dark-mode nav a.active {
+
+            color: #d98b91;
+        }
+
+
+        body.dark-mode .logo {
+
+            color: white;
+        }
+
+
+        body.dark-mode
+        .icon-link,
+        body.dark-mode
+        .theme-button {
+
+            border-color: #555;
+
+            color: #eee;
+        }
+
+
+        body.dark-mode
+        .icon-link:hover,
+        body.dark-mode
+        .theme-button:hover {
+
+            background: white;
+
+            color: #202020;
+        }
+
+
+        body.dark-mode
+        .favorite-card {
+
+            background: #292929;
+
+            color: white;
+        }
+
+
+        body.dark-mode
+        .description {
+
+            color: #aaa;
+        }
+
+
+        body.dark-mode
+        .price {
+
+            color: white;
+        }
+
+
+        body.dark-mode
+        .remove-button {
+
+            background: #333;
+
+            color: #eee;
+        }
+
+
+        body.dark-mode
+        .remove-button:hover {
+
+            background: #a45c61;
+
+            color: white;
+        }
+
+
+        body.dark-mode
+        .empty p {
+
+            color: #999;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1200px) {
+
+            header {
+
+                padding: 0 25px;
+            }
+
+
+            .favorites-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            header {
+
+                flex-wrap: wrap;
+
+                padding:
+                    20px 25px;
+            }
+
+
+            nav {
+
+                order: 3;
+
+                width: 100%;
+
+                justify-content:
+                    center;
+
+                flex-wrap: wrap;
+            }
+
+
+            .favorites-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .page {
+
+                padding:
+                    60px 18px
+                    80px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+
+                flex-direction:
+                    column;
+
+                gap: 18px;
+            }
+
+
+            .header-icons {
+
+                justify-content:
+                    center;
+            }
+
+
+            .heading h1 {
+
+                font-size: 40px;
+            }
+
+
+            .favorite-card
+            .image-box img {
+
+                height: 420px;
+            }
+
+
+            .footer-inner {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align: center;
+            }
+
+
+            .footer-brand p {
+
+                margin: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <a
+        href="{% url 'home' %}"
+        class="logo"
+    >
+        CLOTHÉ
+    </a>
+
+
+    <nav>
+
+        <a href="{% url 'home' %}">
+            Главная
+        </a>
+
+
+        <a href="{% url 'home' %}#products">
+            Магазин
+        </a>
+
+
+        <a
+            href="{% url 'favorites' %}"
+            class="active"
+        >
+            Избранное
+        </a>
+
+    </nav>
+
+
+    <div class="header-icons">
+
+        <a
+            href="{% url 'favorites' %}"
+            class="icon-link"
+            title="Избранное"
+        >
+            ♥
+        </a>
+
+
+        <a
+            href="{% url 'cart' %}"
+            class="icon-link"
+            title="Корзина"
+        >
+            🛒
+        </a>
+
+
+        <button
+            type="button"
+            class="theme-button"
+            id="themeButton"
+            onclick="toggleDarkMode()"
+        >
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     PAGE
+========================= -->
+
+<main class="page">
+
+
+    <div class="heading">
+
+        <div class="label">
+            YOUR SELECTION
+        </div>
+
+
+        <h1>
+            Избранное ♥
+        </h1>
+
+
+        <p>
+            Ваши любимые товары
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         FAVORITES PRODUCTS
+    ========================= -->
+
+    <div
+        class="favorites-grid"
+        id="favoritesGrid"
+    >
+
+
+        {% for product in products %}
+
+            <article
+                class="favorite-card"
+                data-product-id="{{ product.id }}"
+            >
+
+                <div class="image-box">
+
+
+                    {% if product.image %}
+
+                        <img
+                            src="{{ product.image.url }}"
+                            alt="{{ product.name }}"
+                        >
+
+                    {% else %}
+
+                        <div
+                            style="
+                                height:390px;
+                                display:flex;
+                                align-items:center;
+                                justify-content:center;
+                                background:#eee5dc;
+                                color:#888;
+                            "
+                        >
+                            Нет изображения
+                        </div>
+
+                    {% endif %}
+
+
+                    <button
+                        type="button"
+                        class="remove-button"
+                        onclick="
+                            removeFavorite(
+                                '{{ product.id }}'
+                            )
+                        "
+                        title="Удалить из избранного"
+                    >
+                        ♥
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+
+                    <div class="product-name">
+                        {{ product.name }}
+                    </div>
+
+
+                    <div class="description">
+                        {{ product.description|truncatewords:15 }}
+                    </div>
+
+
+                    <div class="bottom">
+
+
+                        <div class="price">
+                            {{ product.price }} сом
+                        </div>
+
+
+                        <div class="buttons">
+
+
+                            <a
+                                href="{% url 'product_detail' product.pk %}"
+                                class="button"
+                            >
+                                Подробнее
+                            </a>
+
+
+                            <a
+                                href="{% url 'add_to_cart' product.pk %}"
+                                class="button"
+                                onclick="addToCart(event, this)"
+                            >
+                                В корзину
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- =========================
+         EMPTY
+    ========================= -->
+
+    <div
+        class="empty"
+        id="emptyFavorites"
+    >
+
+        <div class="empty-heart">
+            ♡
+        </div>
+
+
+        <h2>
+            Избранное пусто
+        </h2>
+
+
+        <p>
+            Добавьте понравившиеся товары,
+            нажав на сердечко.
+        </p>
+
+
+        <a
+            href="{% url 'home' %}#products"
+            class="home-button"
+        >
+            ПЕРЕЙТИ К ТОВАРАМ
+        </a>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     NOTIFICATION
+========================= -->
+
+<div
+    class="notification"
+    id="notification"
+>
+    ✓ Товар добавлен в корзину
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <h3>
+                CLOTHÉ
+            </h3>
+
+
+            <p>
+                Современный магазин одежды
+                для тех, кто ценит стиль,
+                качество и индивидуальность.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Магазин
+            </h4>
+
+
+            <a href="{% url 'home' %}#products">
+                Все товары
+            </a>
+
+
+            <a href="{% url 'favorites' %}">
+                Избранное
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Помощь
+            </h4>
+
+
+            <a href="{% url 'cart' %}">
+                Корзина
+            </a>
+
+
+            <a href="#">
+                Доставка
+            </a>
+
+
+            <a href="#">
+                Контакты
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Мы онлайн
+            </h4>
+
+
+            <a href="#">
+                Instagram
+            </a>
+
+
+            <a href="#">
+                Telegram
+            </a>
+
+
+            <a href="#">
+                TikTok
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CLOTHÉ — Магазин одежды
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   FAVORITES
+========================= */
+
+let favorites = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+);
+
+
+/* =========================
+   RENDER FAVORITES
+========================= */
+
+function renderFavorites() {
+
+    const cards =
+        document.querySelectorAll(
+            ".favorite-card"
+        );
+
+    const empty =
+        document.getElementById(
+            "emptyFavorites"
+        );
+
+    let count = 0;
+
+
+    cards.forEach(
+        function(card) {
+
+            const productId =
+                card.dataset.productId;
+
+
+            if (
+                favorites.includes(
+                    productId
+                )
+            ) {
+
+                card.style.display = "";
+
+                count++;
+
+            } else {
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    if (count === 0) {
+
+        empty.style.display =
+            "block";
+
+    } else {
+
+        empty.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =========================
+   REMOVE FAVORITE
+========================= */
+
+function removeFavorite(productId) {
+
+    favorites =
+        favorites.filter(
+            function(id) {
+
+                return id !==
+                    String(productId);
+
+            }
+        );
+
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(
+            favorites
+        )
+    );
+
+
+    renderFavorites();
+
+}
+
+
+/* =========================
+   ADD TO CART
+========================= */
+
+function addToCart(
+    event,
+    button
+) {
+
+    event.preventDefault();
+
+
+    const url =
+        button.href;
+
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+
+    button.style.pointerEvents =
+        "none";
+
+
+    button.style.opacity =
+        "0.6";
+
+
+    fetch(
+        url,
+        {
+
+            method: "GET",
+
+            headers: {
+
+                "X-Requested-With":
+                    "XMLHttpRequest"
+
+            }
+
+        }
+    )
+
+    .then(
+        function(response) {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Ошибка сервера"
+                );
+
+            }
+
+            return response.json();
+
+        }
+    )
+
+    .then(
+        function(data) {
+
+            if (data.success) {
+
+                notification.classList.add(
+                    "show"
+                );
+
+
+                const oldText =
+                    button.innerHTML;
+
+
+                button.innerHTML =
+                    "✓ Добавлено";
+
+
+                button.style.background =
+                    "#a45c61";
+
+
+                setTimeout(
+                    function() {
+
+                        notification.classList.remove(
+                            "show"
+                        );
+
+                    },
+                    1800
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.innerHTML =
+                            oldText;
+
+                        button.style.background =
+                            "";
+
+                        button.style.opacity =
+                            "";
+
+                        button.style.pointerEvents =
+                            "";
+
+                    },
+                    2000
+                );
+
+            }
+
+        }
+    )
+
+    .catch(
+        function(error) {
+
+            console.error(
+                error
+            );
+
+
+            button.style.opacity =
+                "";
+
+            button.style.pointerEvents =
+                "";
+
+        }
+    );
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle(
+        "dark-mode"
+    );
+
+
+    const button =
+        document.getElementById(
+            "themeButton"
+        );
+
+
+    if (
+        document.body.classList.contains(
+            "dark-mode"
+        )
+    ) {
+
+        button.innerHTML =
+            "☀️";
+
+
+        localStorage.setItem(
+            "darkMode",
+            "enabled"
+        );
+
+    } else {
+
+        button.innerHTML =
+            "🌙";
+
+
+        localStorage.setItem(
+            "darkMode",
+            "disabled"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   PAGE LOAD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        renderFavorites();
+
+
+        const themeButton =
+            document.getElementById(
+                "themeButton"
+            );
+
+
+        if (
+            localStorage.getItem(
+                "darkMode"
+            ) === "enabled"
+        ) {
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+
+            if (themeButton) {
+
+                themeButton.innerHTML =
+                    "☀️";
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

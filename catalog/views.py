@@ -50,6 +50,8 @@ def home(request):
 
     products = Product.objects.filter(
         available=True
+    ).select_related(
+        "category"
     )
 
     if search:
@@ -57,6 +59,10 @@ def home(request):
         products = products.filter(
             name__icontains=search
         )
+
+    # =========================
+    # CATEGORIES
+    # =========================
 
     categories = Category.objects.all()
 
@@ -67,6 +73,27 @@ def home(request):
             "products": products,
             "categories": categories,
             "search": search,
+        }
+    )
+
+
+# =========================
+# FAVORITES
+# =========================
+
+def favorites(request):
+
+    products = Product.objects.filter(
+        available=True
+    ).select_related(
+        "category"
+    )
+
+    return render(
+        request,
+        "catalog/favorites.html",
+        {
+            "products": products,
         }
     )
 
@@ -105,6 +132,8 @@ def category_products(request, pk):
     products = Product.objects.filter(
         category=category,
         available=True
+    ).select_related(
+        "category"
     )
 
     return render(
@@ -151,7 +180,7 @@ def add_to_cart(request, pk):
     request.session.modified = True
 
     # =========================
-    # AJAX REQUEST
+    # AJAX
     # =========================
 
     if request.headers.get(
@@ -165,12 +194,8 @@ def add_to_cart(request, pk):
         return JsonResponse(
             {
                 "success": True,
-
-                "message":
-                    "Товар добавлен в корзину",
-
-                "cart_count":
-                    cart_count,
+                "message": "Товар добавлен в корзину",
+                "cart_count": cart_count,
             }
         )
 
@@ -245,7 +270,7 @@ def cart(request):
     total = Decimal("0.00")
 
     # =========================
-    # CALCULATE CART TOTAL
+    # CALCULATE TOTAL
     # =========================
 
     for product_id, quantity in cart_data.items():
@@ -264,9 +289,7 @@ def cart(request):
         products.append(
             {
                 "product": product,
-
                 "quantity": quantity,
-
                 "subtotal": subtotal,
             }
         )
@@ -317,14 +340,14 @@ def cart(request):
             )
 
     # =========================
-    # CALCULATE DISCOUNT
+    # DISCOUNT
     # =========================
 
     if promo_code == "CLOTHE10":
 
         discount = (
-            total * Decimal("10") /
-            Decimal("100")
+            total * Decimal("10")
+            / Decimal("100")
         )
 
     # =========================
@@ -342,15 +365,10 @@ def cart(request):
         "catalog/cart.html",
         {
             "products": products,
-
             "total": total,
-
             "discount": discount,
-
             "final_total": final_total,
-
             "promo_code": promo_code,
-
             "promo_error": promo_error,
         }
     )
@@ -375,8 +393,9 @@ def remove_from_cart(request, pk):
 
     request.session["cart"] = cart_data
 
-    # If cart becomes empty,
-    # remove promo code too
+    # =========================
+    # REMOVE PROMOCODE
+    # =========================
 
     if not cart_data:
 
@@ -442,9 +461,7 @@ def checkout(request):
         items.append(
             {
                 "product": product,
-
                 "quantity": quantity,
-
                 "subtotal": subtotal,
             }
         )
@@ -463,8 +480,8 @@ def checkout(request):
     if promo_code == "CLOTHE10":
 
         discount = (
-            total * Decimal("10") /
-            Decimal("100")
+            total * Decimal("10")
+            / Decimal("100")
         )
 
     # =========================
@@ -497,14 +514,9 @@ def checkout(request):
         ).strip()
 
         order = Order.objects.create(
-
             name=name,
-
             phone=phone,
-
             address=address,
-
-            # Save discounted total
             total=final_total,
         )
 
@@ -515,15 +527,10 @@ def checkout(request):
         for item in items:
 
             OrderItem.objects.create(
-
                 order=order,
-
                 product=item["product"],
-
                 quantity=item["quantity"],
-
                 price=item["product"].price,
-
             )
 
         # =========================
@@ -553,13 +560,9 @@ def checkout(request):
         "catalog/checkout.html",
         {
             "items": items,
-
             "total": total,
-
             "discount": discount,
-
             "final_total": final_total,
-
             "promo_code": promo_code,
         }
     )
@@ -607,7 +610,7 @@ def rate_product(request, pk):
                 )
             )
 
-        except ValueError:
+        except (ValueError, TypeError):
 
             rating = 0
 

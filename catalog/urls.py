@@ -11,18 +11,14 @@ urlpatterns = [
         name="home"
     ),
 
+    # FAVORITES
     path(
-        "product/<int:pk>/",
-        views.product_detail,
-        name="product_detail"
+        "favorites/",
+        views.favorites,
+        name="favorites"
     ),
 
-    path(
-        "category/<int:pk>/",
-        views.category_products,
-        name="category_products"
-    ),
-
+    # CART
     path(
         "cart/",
         views.cart,
@@ -53,6 +49,7 @@ urlpatterns = [
         name="remove_from_cart"
     ),
 
+    # CHECKOUT
     path(
         "checkout/",
         views.checkout,
@@ -64,10 +61,24 @@ urlpatterns = [
         views.order_success,
         name="order_success"
     ),
-path(
-    "product/<int:pk>/rate/",
-    views.rate_product,
-    name="rate_product"
-),
 
+    # PRODUCTS
+    path(
+        "product/<int:pk>/",
+        views.product_detail,
+        name="product_detail"
+    ),
+
+    path(
+        "product/<int:pk>/rate/",
+        views.rate_product,
+        name="rate_product"
+    ),
+
+    # CATEGORIES
+    path(
+        "category/<int:pk>/",
+        views.category_products,
+        name="category_products"
+    ),
 ]

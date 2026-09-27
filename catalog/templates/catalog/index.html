@@ -1,0 +1,3042 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+
+<!--<head>-->
+
+<!--    <meta charset="UTF-8">-->
+
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, initial-scale=1.0">-->
+
+<!--    <title>CLOTHÉ — Магазин одежды</title>-->
+
+<!--    <style>-->
+
+<!--        * {-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+
+<!--        html {-->
+<!--            scroll-behavior: smooth;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background: #f5f0e9;-->
+<!--            color: #28231f;-->
+<!--            transition: background .3s, color .3s;-->
+<!--        }-->
+
+<!--        a {-->
+<!--            text-decoration: none;-->
+<!--            color: inherit;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           HEADER-->
+<!--        ========================= */-->
+
+<!--        header {-->
+<!--            min-height: 82px;-->
+<!--            padding: 0 55px;-->
+<!--            background: #f5f0e9;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: space-between;-->
+<!--            gap: 25px;-->
+<!--            border-bottom: 1px solid #ded6cc;-->
+<!--            position: sticky;-->
+<!--            top: 0;-->
+<!--            z-index: 100;-->
+<!--            transition: background .3s, border-color .3s, color .3s;-->
+<!--        }-->
+
+<!--        .logo {-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-size: 30px;-->
+<!--            letter-spacing: 6px;-->
+<!--            font-weight: bold;-->
+<!--            flex-shrink: 0;-->
+<!--        }-->
+
+<!--        nav {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            gap: 30px;-->
+<!--            flex-shrink: 0;-->
+<!--        }-->
+
+<!--        nav a {-->
+<!--            font-size: 13px;-->
+<!--            text-transform: uppercase;-->
+<!--            letter-spacing: 1.5px;-->
+<!--            color: #504941;-->
+<!--            transition: .25s;-->
+<!--            white-space: nowrap;-->
+<!--        }-->
+
+<!--        nav a:hover {-->
+<!--            color: #a45c61;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           SEARCH-->
+<!--        ========================= */-->
+
+<!--        .search-form {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            background: white;-->
+<!--            border: 1px solid #ddd4ca;-->
+<!--            border-radius: 30px;-->
+<!--            overflow: hidden;-->
+<!--            margin-left: auto;-->
+<!--            flex-shrink: 0;-->
+<!--            transition: .3s;-->
+<!--        }-->
+
+<!--        .search-form input {-->
+<!--            width: 150px;-->
+<!--            height: 40px;-->
+<!--            border: none;-->
+<!--            outline: none;-->
+<!--            background: transparent;-->
+<!--            padding: 0 15px;-->
+<!--            font-size: 13px;-->
+<!--            color: #28231f;-->
+<!--        }-->
+
+<!--        .search-form input::placeholder {-->
+<!--            color: #999;-->
+<!--        }-->
+
+<!--        .search-form button {-->
+<!--            width: 42px;-->
+<!--            height: 40px;-->
+<!--            border: none;-->
+<!--            background: #28231f;-->
+<!--            color: white;-->
+<!--            cursor: pointer;-->
+<!--            font-size: 14px;-->
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .search-form button:hover {-->
+<!--            background: #a45c61;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           HEADER ICONS-->
+<!--        ========================= */-->
+
+<!--        .header-icons {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 15px;-->
+<!--            flex-shrink: 0;-->
+<!--        }-->
+
+<!--        .icon-link {-->
+<!--            width: 42px;-->
+<!--            height: 42px;-->
+<!--            border: 1px solid #d5ccc2;-->
+<!--            border-radius: 50%;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 18px;-->
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .icon-link:hover {-->
+<!--            background: #28231f;-->
+<!--            color: white;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           DARK MODE BUTTON-->
+<!--        ========================= */-->
+
+<!--        .theme-button {-->
+<!--            width: 42px;-->
+<!--            height: 42px;-->
+<!--            border: 1px solid #d5ccc2;-->
+<!--            border-radius: 50%;-->
+<!--            background: transparent;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 18px;-->
+<!--            cursor: pointer;-->
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .theme-button:hover {-->
+<!--            background: #28231f;-->
+<!--            color: white;-->
+<!--            transform: rotate(15deg);-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           HERO-->
+<!--        ========================= */-->
+
+<!--        .hero {-->
+<!--            max-width: 1450px;-->
+<!--            margin: 25px auto;-->
+<!--            min-height: 650px;-->
+<!--            border-radius: 4px;-->
+<!--            overflow: hidden;-->
+<!--            position: relative;-->
+
+<!--            background:-->
+<!--                linear-gradient(-->
+<!--                    90deg,-->
+<!--                    rgba(39,31,27,.72),-->
+<!--                    rgba(39,31,27,.12)-->
+<!--                ),-->
+<!--                url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85");-->
+
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+<!--        }-->
+
+<!--        .hero-content {-->
+<!--            position: absolute;-->
+<!--            left: 8%;-->
+<!--            top: 50%;-->
+<!--            transform: translateY(-50%);-->
+<!--            color: white;-->
+<!--            max-width: 600px;-->
+<!--        }-->
+
+<!--        .hero-small {-->
+<!--            font-size: 12px;-->
+<!--            letter-spacing: 5px;-->
+<!--            margin-bottom: 22px;-->
+<!--            color: #e9dcd0;-->
+<!--        }-->
+
+<!--        .hero h1 {-->
+<!--            margin: 0;-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-weight: normal;-->
+<!--            font-size: clamp(55px, 7vw, 100px);-->
+<!--            line-height: .92;-->
+<!--        }-->
+
+<!--        .hero-text {-->
+<!--            max-width: 430px;-->
+<!--            margin: 25px 0;-->
+<!--            line-height: 1.7;-->
+<!--            color: #eee2d9;-->
+<!--        }-->
+
+<!--        .hero-buttons {-->
+<!--            display: flex;-->
+<!--            gap: 12px;-->
+<!--        }-->
+
+<!--        .hero-button {-->
+<!--            display: inline-block;-->
+<!--            padding: 15px 28px;-->
+<!--            background: white;-->
+<!--            color: #28231f;-->
+<!--            font-size: 11px;-->
+<!--            letter-spacing: 2px;-->
+<!--            font-weight: bold;-->
+<!--            transition: .3s;-->
+<!--        }-->
+
+<!--        .hero-button:hover {-->
+<!--            background: #a45c61;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .hero-button.dark {-->
+<!--            background: transparent;-->
+<!--            color: white;-->
+<!--            border: 1px solid white;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           SECTION-->
+<!--        ========================= */-->
+
+<!--        .section {-->
+<!--            max-width: 1350px;-->
+<!--            margin: auto;-->
+<!--            padding: 85px 30px;-->
+<!--            transition: background .3s, color .3s;-->
+<!--        }-->
+
+<!--        .section-heading {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 45px;-->
+<!--        }-->
+
+<!--        .section-label {-->
+<!--            color: #a45c61;-->
+<!--            font-size: 11px;-->
+<!--            letter-spacing: 4px;-->
+<!--            margin-bottom: 12px;-->
+<!--        }-->
+
+<!--        .section-heading h2 {-->
+<!--            margin: 0;-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-weight: normal;-->
+<!--            font-size: 44px;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           CATEGORIES-->
+<!--        ========================= */-->
+
+<!--        .category-list {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(4, 1fr);-->
+<!--            gap: 18px;-->
+<!--        }-->
+
+<!--        .category {-->
+<!--            height: 210px;-->
+<!--            background: #ded3c7;-->
+<!--            display: flex;-->
+<!--            align-items: end;-->
+<!--            padding: 25px;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            transition: .35s;-->
+<!--        }-->
+
+<!--        .category:nth-child(2) {-->
+<!--            background: #cbb9a7;-->
+<!--        }-->
+
+<!--        .category:nth-child(3) {-->
+<!--            background: #b7a397;-->
+<!--        }-->
+
+<!--        .category:nth-child(4) {-->
+<!--            background: #d8c8ba;-->
+<!--        }-->
+
+<!--        .category:hover {-->
+<!--            transform: translateY(-7px);-->
+<!--        }-->
+
+<!--        .category::after {-->
+<!--            content: "";-->
+<!--            width: 130px;-->
+<!--            height: 130px;-->
+<!--            border-radius: 50%;-->
+<!--            background: rgba(255,255,255,.18);-->
+<!--            position: absolute;-->
+<!--            right: -35px;-->
+<!--            top: -35px;-->
+<!--        }-->
+
+<!--        .category-name {-->
+<!--            position: relative;-->
+<!--            z-index: 2;-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-size: 29px;-->
+<!--        }-->
+
+<!--        .category-number {-->
+<!--            position: absolute;-->
+<!--            top: 20px;-->
+<!--            left: 22px;-->
+<!--            font-size: 11px;-->
+<!--            letter-spacing: 2px;-->
+<!--            color: rgba(0,0,0,.5);-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           PRODUCTS-->
+<!--        ========================= */-->
+
+<!--        .products-section {-->
+<!--            background: #fffaf5;-->
+<!--        }-->
+
+<!--        .products {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(4, 1fr);-->
+<!--            gap: 24px;-->
+<!--        }-->
+
+<!--        .card {-->
+<!--            background: white;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            transition: .35s;-->
+<!--        }-->
+
+<!--        .card:hover {-->
+<!--            transform: translateY(-6px);-->
+
+<!--            box-shadow:-->
+<!--                0 15px 35px rgba(50,40,30,.12);-->
+<!--        }-->
+
+<!--        .product-image {-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        .card img {-->
+<!--            width: 100%;-->
+<!--            height: 390px;-->
+<!--            object-fit: cover;-->
+<!--            display: block;-->
+<!--            transition: .6s;-->
+<!--        }-->
+
+<!--        .card:hover img {-->
+<!--            transform: scale(1.04);-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           FAVORITE-->
+<!--        ========================= */-->
+
+<!--        .favorite {-->
+<!--            position: absolute;-->
+<!--            right: 15px;-->
+<!--            top: 15px;-->
+<!--            width: 43px;-->
+<!--            height: 43px;-->
+<!--            border: none;-->
+<!--            background: rgba(255,255,255,.92);-->
+<!--            border-radius: 50%;-->
+<!--            font-size: 21px;-->
+<!--            cursor: pointer;-->
+<!--            z-index: 5;-->
+<!--            color: #555;-->
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .favorite:hover {-->
+<!--            transform: scale(1.1);-->
+<!--        }-->
+
+<!--        .favorite.active {-->
+<!--            background: #a45c61;-->
+<!--            color: white;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           PRODUCT INFO-->
+<!--        ========================= */-->
+
+<!--        .product-info {-->
+<!--            padding: 18px 15px 20px;-->
+<!--        }-->
+
+<!--        .product-name {-->
+<!--            font-size: 16px;-->
+<!--            font-weight: 600;-->
+<!--            margin-bottom: 7px;-->
+<!--        }-->
+
+<!--        .description {-->
+<!--            color: #8c8178;-->
+<!--            font-size: 12px;-->
+<!--            line-height: 1.5;-->
+<!--            min-height: 38px;-->
+<!--            margin: 0 0 12px;-->
+<!--        }-->
+
+<!--        .product-bottom {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: space-between;-->
+<!--            gap: 10px;-->
+<!--        }-->
+
+<!--        .price {-->
+<!--            font-size: 17px;-->
+<!--            font-weight: bold;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .button {-->
+<!--            display: inline-block;-->
+<!--            padding: 10px 14px;-->
+<!--            background: #28231f;-->
+<!--            color: white;-->
+<!--            font-size: 10px;-->
+<!--            letter-spacing: 1px;-->
+<!--            transition: .25s;-->
+<!--            border: none;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        .button:hover {-->
+<!--            background: #a45c61;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           FILTERS-->
+<!--        ========================= */-->
+
+<!--        .filters {-->
+<!--            display: grid;-->
+
+<!--            grid-template-columns:-->
+<!--                1.5fr-->
+<!--                1fr-->
+<!--                1fr-->
+<!--                1.5fr-->
+<!--                auto;-->
+
+<!--            gap: 15px;-->
+
+<!--            margin-bottom: 35px;-->
+
+<!--            padding: 22px;-->
+
+<!--            background: #f5f0e9;-->
+
+<!--            border: 1px solid #ded6cc;-->
+<!--        }-->
+
+<!--        .filter-group {-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            gap: 8px;-->
+<!--        }-->
+
+<!--        .filter-group label {-->
+<!--            font-size: 10px;-->
+<!--            text-transform: uppercase;-->
+<!--            letter-spacing: 1.5px;-->
+<!--            color: #7d7269;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .filter-group select,-->
+<!--        .filter-group input {-->
+<!--            height: 44px;-->
+
+<!--            border: 1px solid #d8cec4;-->
+
+<!--            background: white;-->
+
+<!--            padding: 0 12px;-->
+
+<!--            outline: none;-->
+
+<!--            font-size: 13px;-->
+
+<!--            color: #28231f;-->
+
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .filter-group select:focus,-->
+<!--        .filter-group input:focus {-->
+<!--            border-color: #a45c61;-->
+<!--        }-->
+
+<!--        .reset-filter {-->
+<!--            align-self: end;-->
+
+<!--            height: 44px;-->
+
+<!--            padding: 0 20px;-->
+
+<!--            border: none;-->
+
+<!--            background: #28231f;-->
+
+<!--            color: white;-->
+
+<!--            cursor: pointer;-->
+
+<!--            font-size: 10px;-->
+
+<!--            letter-spacing: 1.5px;-->
+
+<!--            text-transform: uppercase;-->
+
+<!--            transition: .25s;-->
+<!--        }-->
+
+<!--        .reset-filter:hover {-->
+<!--            background: #a45c61;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           SEARCH RESULT-->
+<!--        ========================= */-->
+
+<!--        .search-result {-->
+<!--            text-align: center;-->
+<!--            color: #8c8178;-->
+<!--            font-size: 13px;-->
+<!--            margin: -20px 0 30px;-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .search-result strong {-->
+<!--            color: #28231f;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           CART NOTIFICATION-->
+<!--        ========================= */-->
+
+<!--        .cart-notification {-->
+<!--            position: fixed;-->
+<!--            top: 100px;-->
+<!--            right: 30px;-->
+
+<!--            background: #28231f;-->
+
+<!--            color: white;-->
+
+<!--            padding: 16px 24px;-->
+
+<!--            border-radius: 4px;-->
+
+<!--            font-size: 14px;-->
+
+<!--            box-shadow:-->
+<!--                0 10px 30px rgba(0,0,0,.20);-->
+
+<!--            z-index: 9999;-->
+
+<!--            opacity: 0;-->
+
+<!--            visibility: hidden;-->
+
+<!--            transform: translateY(-20px);-->
+
+<!--            transition: all .3s ease;-->
+<!--        }-->
+
+<!--        .cart-notification.show {-->
+<!--            opacity: 1;-->
+<!--            visibility: visible;-->
+<!--            transform: translateY(0);-->
+<!--        }-->
+
+<!--        .cart-notification .check {-->
+<!--            color: #e8b9bc;-->
+<!--            font-size: 18px;-->
+<!--            font-weight: bold;-->
+<!--            margin-right: 8px;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           COLLECTION BANNER-->
+<!--        ========================= */-->
+
+<!--        .collection-banner {-->
+<!--            max-width: 1350px;-->
+<!--            margin: 80px auto;-->
+<!--            min-height: 400px;-->
+
+<!--            background:-->
+<!--                linear-gradient(-->
+<!--                    90deg,-->
+<!--                    rgba(35,28,24,.78),-->
+<!--                    rgba(35,28,24,.15)-->
+<!--                ),-->
+<!--                url("https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1800&q=85");-->
+
+<!--            background-size: cover;-->
+<!--            background-position: center;-->
+
+<!--            display: flex;-->
+<!--            align-items: center;-->
+
+<!--            padding: 70px;-->
+
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .collection-content {-->
+<!--            max-width: 500px;-->
+<!--        }-->
+
+<!--        .collection-content span {-->
+<!--            font-size: 11px;-->
+<!--            letter-spacing: 4px;-->
+<!--            color: #e6d7cc;-->
+<!--        }-->
+
+<!--        .collection-content h2 {-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-size: 55px;-->
+<!--            font-weight: normal;-->
+<!--            line-height: 1;-->
+<!--            margin: 18px 0;-->
+<!--        }-->
+
+<!--        .collection-content p {-->
+<!--            color: #ded6d0;-->
+<!--            line-height: 1.7;-->
+<!--            margin-bottom: 25px;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           FAVORITES SECTION-->
+<!--        ========================= */-->
+
+<!--        .favorites-section {-->
+<!--            background: #f5f0e9;-->
+<!--        }-->
+
+<!--        .favorites-products {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(4, 1fr);-->
+<!--            gap: 22px;-->
+<!--        }-->
+
+<!--        .favorite-card {-->
+<!--            background: white;-->
+<!--            padding: 10px;-->
+<!--            transition: .3s;-->
+<!--        }-->
+
+<!--        .favorite-card img {-->
+<!--            width: 100%;-->
+<!--            height: 300px;-->
+<!--            object-fit: cover;-->
+<!--        }-->
+
+<!--        .favorite-card h3 {-->
+<!--            margin: 15px 7px 8px;-->
+<!--        }-->
+
+<!--        .favorite-card p {-->
+<!--            color: #777;-->
+<!--            padding: 0 7px;-->
+<!--        }-->
+
+<!--        .favorite-price {-->
+<!--            color: #222 !important;-->
+<!--            font-weight: bold;-->
+<!--        }-->
+
+<!--        .favorite-actions {-->
+<!--            display: flex;-->
+<!--            gap: 8px;-->
+<!--            padding: 5px;-->
+<!--        }-->
+
+<!--        .remove-favorite {-->
+<!--            border: none;-->
+<!--            background: #eee6df;-->
+<!--            padding: 10px 15px;-->
+<!--            cursor: pointer;-->
+<!--            transition: .2s;-->
+<!--        }-->
+
+<!--        .remove-favorite:hover {-->
+<!--            background: #a45c61;-->
+<!--            color: white;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           EMPTY-->
+<!--        ========================= */-->
+
+<!--        .empty {-->
+<!--            text-align: center;-->
+<!--            color: #888;-->
+<!--            grid-column: 1 / -1;-->
+<!--            padding: 30px;-->
+<!--        }-->
+
+<!--        .favorites-empty {-->
+<!--            text-align: center;-->
+<!--            color: #888;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           FOOTER-->
+<!--        ========================= */-->
+
+<!--        footer {-->
+<!--            background: #28231f;-->
+<!--            color: white;-->
+<!--            padding: 60px 50px;-->
+<!--        }-->
+
+<!--        .footer-inner {-->
+<!--            max-width: 1350px;-->
+<!--            margin: auto;-->
+
+<!--            display: grid;-->
+
+<!--            grid-template-columns:-->
+<!--                2fr 1fr 1fr 1fr;-->
+
+<!--            gap: 40px;-->
+<!--        }-->
+
+<!--        .footer-brand h3 {-->
+<!--            font-family: Georgia, serif;-->
+<!--            font-size: 30px;-->
+<!--            letter-spacing: 5px;-->
+<!--            margin: 0 0 15px;-->
+<!--        }-->
+
+<!--        .footer-brand p {-->
+<!--            color: #aaa;-->
+<!--            line-height: 1.7;-->
+<!--            max-width: 300px;-->
+<!--        }-->
+
+<!--        .footer-column h4 {-->
+<!--            margin-top: 0;-->
+<!--            font-size: 12px;-->
+<!--            letter-spacing: 2px;-->
+<!--            text-transform: uppercase;-->
+<!--        }-->
+
+<!--        .footer-column a {-->
+<!--            display: block;-->
+<!--            color: #aaa;-->
+<!--            font-size: 13px;-->
+<!--            margin: 12px 0;-->
+<!--        }-->
+
+<!--        .footer-column a:hover {-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        .copyright {-->
+<!--            max-width: 1350px;-->
+<!--            margin: 45px auto 0;-->
+<!--            padding-top: 25px;-->
+<!--            border-top: 1px solid #4a433e;-->
+<!--            color: #777;-->
+<!--            font-size: 12px;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           DARK MODE-->
+<!--        ========================= */-->
+
+<!--        body.dark-mode {-->
+<!--            background: #171717;-->
+<!--            color: #eeeeee;-->
+<!--        }-->
+
+<!--        body.dark-mode header {-->
+<!--            background: #202020;-->
+<!--            border-bottom-color: #3a3a3a;-->
+<!--        }-->
+
+<!--        body.dark-mode nav a {-->
+<!--            color: #dddddd;-->
+<!--        }-->
+
+<!--        body.dark-mode nav a:hover {-->
+<!--            color: #d98b91;-->
+<!--        }-->
+
+<!--        body.dark-mode .logo {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .icon-link,-->
+<!--        body.dark-mode .theme-button {-->
+<!--            border-color: #555;-->
+<!--            color: #eeeeee;-->
+<!--        }-->
+
+<!--        body.dark-mode .icon-link:hover,-->
+<!--        body.dark-mode .theme-button:hover {-->
+<!--            background: #eeeeee;-->
+<!--            color: #202020;-->
+<!--        }-->
+
+<!--        body.dark-mode .section {-->
+<!--            background: #171717;-->
+<!--        }-->
+
+<!--        body.dark-mode .products-section {-->
+<!--            background: #202020;-->
+<!--        }-->
+
+<!--        body.dark-mode .card {-->
+<!--            background: #292929;-->
+<!--            color: #eeeeee;-->
+<!--        }-->
+
+<!--        body.dark-mode .card:hover {-->
+<!--            box-shadow:-->
+<!--                0 15px 35px rgba(0,0,0,.40);-->
+<!--        }-->
+
+<!--        body.dark-mode .product-name {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .description {-->
+<!--            color: #aaaaaa;-->
+<!--        }-->
+
+<!--        body.dark-mode .price {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .favorites-section {-->
+<!--            background: #171717;-->
+<!--        }-->
+
+<!--        body.dark-mode .favorite-card {-->
+<!--            background: #292929;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .favorite-card p {-->
+<!--            color: #aaaaaa;-->
+<!--        }-->
+
+<!--        body.dark-mode .favorite-price {-->
+<!--            color: #ffffff !important;-->
+<!--        }-->
+
+<!--        body.dark-mode .section-heading h2 {-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .remove-favorite {-->
+<!--            background: #3a3a3a;-->
+<!--            color: #ffffff;-->
+<!--        }-->
+
+<!--        body.dark-mode .remove-favorite:hover {-->
+<!--            background: #a45c61;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-form {-->
+<!--            background: #292929;-->
+<!--            border-color: #555;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-form input {-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-form input::placeholder {-->
+<!--            color: #999;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-form button {-->
+<!--            background: #eeeeee;-->
+<!--            color: #202020;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-form button:hover {-->
+<!--            background: #a45c61;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-result {-->
+<!--            color: #aaa;-->
+<!--        }-->
+
+<!--        body.dark-mode .search-result strong {-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        body.dark-mode .empty,-->
+<!--        body.dark-mode .favorites-empty {-->
+<!--            color: #999;-->
+<!--        }-->
+
+<!--        body.dark-mode .filters {-->
+<!--            background: #202020;-->
+<!--            border-color: #3a3a3a;-->
+<!--        }-->
+
+<!--        body.dark-mode .filter-group label {-->
+<!--            color: #aaa;-->
+<!--        }-->
+
+<!--        body.dark-mode .filter-group select,-->
+<!--        body.dark-mode .filter-group input {-->
+<!--            background: #292929;-->
+<!--            border-color: #555;-->
+<!--            color: white;-->
+<!--        }-->
+
+<!--        body.dark-mode .reset-filter {-->
+<!--            background: #eeeeee;-->
+<!--            color: #202020;-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           TABLET-->
+<!--        ========================= */-->
+
+<!--        @media (max-width: 1200px) {-->
+
+<!--            header {-->
+<!--                padding: 0 25px;-->
+<!--                gap: 15px;-->
+<!--            }-->
+
+<!--            nav {-->
+<!--                gap: 15px;-->
+<!--            }-->
+
+<!--            nav a {-->
+<!--                font-size: 11px;-->
+<!--            }-->
+
+<!--            .search-form {-->
+<!--                margin-left: 5px;-->
+<!--            }-->
+
+<!--            .search-form input {-->
+<!--                width: 120px;-->
+<!--            }-->
+
+<!--            .category-list,-->
+<!--            .products,-->
+<!--            .favorites-products {-->
+<!--                grid-template-columns: repeat(2, 1fr);-->
+<!--            }-->
+
+<!--            .footer-inner {-->
+<!--                grid-template-columns: repeat(2, 1fr);-->
+<!--            }-->
+
+<!--            .filters {-->
+<!--                grid-template-columns: repeat(2, 1fr);-->
+<!--            }-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           SMALL TABLET-->
+<!--        ========================= */-->
+
+<!--        @media (max-width: 900px) {-->
+
+<!--            header {-->
+<!--                flex-wrap: wrap;-->
+<!--                padding: 18px 25px;-->
+<!--                min-height: auto;-->
+<!--            }-->
+
+<!--            .logo {-->
+<!--                order: 1;-->
+<!--            }-->
+
+<!--            .header-icons {-->
+<!--                order: 2;-->
+<!--                margin-left: auto;-->
+<!--            }-->
+
+<!--            nav {-->
+<!--                order: 3;-->
+<!--                width: 100%;-->
+<!--                justify-content: center;-->
+<!--            }-->
+
+<!--            .search-form {-->
+<!--                order: 4;-->
+<!--                width: 100%;-->
+<!--                max-width: 350px;-->
+<!--                margin: 0 auto;-->
+<!--            }-->
+
+<!--            .search-form input {-->
+<!--                width: 100%;-->
+<!--            }-->
+
+<!--            .hero {-->
+<!--                margin: 15px;-->
+<!--                min-height: 570px;-->
+<!--            }-->
+
+<!--            .section {-->
+<!--                padding: 65px 25px;-->
+<!--            }-->
+
+<!--            .filters {-->
+<!--                grid-template-columns: repeat(2, 1fr);-->
+<!--            }-->
+<!--        }-->
+
+
+<!--        /* =========================-->
+<!--           MOBILE-->
+<!--        ========================= */-->
+
+<!--        @media (max-width: 650px) {-->
+
+<!--            header {-->
+<!--                height: auto;-->
+<!--                padding: 20px;-->
+<!--                flex-direction: column;-->
+<!--                gap: 18px;-->
+<!--            }-->
+
+<!--            .logo {-->
+<!--                order: 1;-->
+<!--            }-->
+
+<!--            nav {-->
+<!--                order: 2;-->
+<!--                width: 100%;-->
+<!--                flex-wrap: wrap;-->
+<!--                justify-content: center;-->
+<!--                gap: 15px;-->
+<!--            }-->
+
+<!--            .search-form {-->
+<!--                order: 3;-->
+<!--                width: 100%;-->
+<!--                max-width: 320px;-->
+<!--                margin: 0 auto;-->
+<!--            }-->
+
+<!--            .search-form input {-->
+<!--                width: 100%;-->
+<!--            }-->
+
+<!--            .header-icons {-->
+<!--                order: 4;-->
+<!--                display: flex;-->
+<!--                justify-content: center;-->
+<!--                margin: 0;-->
+<!--            }-->
+
+<!--            .hero {-->
+<!--                min-height: 620px;-->
+<!--                margin: 10px;-->
+<!--                background-position: 60% center;-->
+<!--            }-->
+
+<!--            .hero-content {-->
+<!--                left: 25px;-->
+<!--                right: 25px;-->
+<!--            }-->
+
+<!--            .hero h1 {-->
+<!--                font-size: 57px;-->
+<!--            }-->
+
+<!--            .hero-buttons {-->
+<!--                flex-direction: column;-->
+<!--                width: 200px;-->
+<!--            }-->
+
+<!--            .section {-->
+<!--                padding: 55px 18px;-->
+<!--            }-->
+
+<!--            .section-heading h2 {-->
+<!--                font-size: 35px;-->
+<!--            }-->
+
+<!--            .category-list,-->
+<!--            .products,-->
+<!--            .favorites-products {-->
+<!--                grid-template-columns: 1fr;-->
+<!--            }-->
+
+<!--            .card img {-->
+<!--                height: 450px;-->
+<!--            }-->
+
+<!--            .collection-banner {-->
+<!--                margin: 50px 15px;-->
+<!--                padding: 40px 25px;-->
+<!--                min-height: 500px;-->
+<!--            }-->
+
+<!--            .collection-content h2 {-->
+<!--                font-size: 45px;-->
+<!--            }-->
+
+<!--            .footer-inner {-->
+<!--                grid-template-columns: 1fr;-->
+<!--                text-align: center;-->
+<!--            }-->
+
+<!--            .footer-brand p {-->
+<!--                margin: auto;-->
+<!--            }-->
+
+<!--            .cart-notification {-->
+<!--                top: 90px;-->
+<!--                left: 20px;-->
+<!--                right: 20px;-->
+<!--                text-align: center;-->
+<!--            }-->
+
+<!--            .filters {-->
+<!--                grid-template-columns: 1fr;-->
+<!--                padding: 18px;-->
+<!--            }-->
+
+<!--            .reset-filter {-->
+<!--                width: 100%;-->
+<!--            }-->
+<!--        }-->
+
+<!--    </style>-->
+
+<!--</head>-->
+
+
+<!--<body>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     HEADER-->
+<!--========================= &ndash;&gt;-->
+
+<!--<header>-->
+
+<!--    <a href="/" class="logo">-->
+<!--        CLOTHÉ-->
+<!--    </a>-->
+
+
+<!--    <nav>-->
+
+<!--        <a href="/">-->
+<!--            Главная-->
+<!--        </a>-->
+
+<!--        <a href="#categories">-->
+<!--            Категории-->
+<!--        </a>-->
+
+<!--        <a href="#products">-->
+<!--            Магазин-->
+<!--        </a>-->
+
+<!--        <a href="#favorites">-->
+<!--            Избранное-->
+<!--        </a>-->
+
+<!--    </nav>-->
+
+
+<!--    &lt;!&ndash; SEARCH &ndash;&gt;-->
+
+<!--    <form-->
+<!--        class="search-form"-->
+<!--        id="searchForm"-->
+<!--    >-->
+
+<!--        <input-->
+<!--            type="text"-->
+<!--            id="searchInput"-->
+<!--            placeholder="Поиск..."-->
+<!--            autocomplete="off"-->
+<!--        >-->
+
+<!--        <button-->
+<!--            type="submit"-->
+<!--            title="Поиск"-->
+<!--        >-->
+<!--            🔍-->
+<!--        </button>-->
+
+<!--    </form>-->
+
+
+<!--    &lt;!&ndash; HEADER ICONS &ndash;&gt;-->
+
+<!--    <div class="header-icons">-->
+
+<!--        <a-->
+<!--            href="#favorites"-->
+<!--            class="icon-link"-->
+<!--            title="Избранное"-->
+<!--        >-->
+<!--            ♡-->
+<!--        </a>-->
+
+
+<!--        <a-->
+<!--            href="/cart/"-->
+<!--            class="icon-link"-->
+<!--            title="Корзина"-->
+<!--        >-->
+<!--            🛒-->
+<!--        </a>-->
+
+
+<!--        <button-->
+<!--            type="button"-->
+<!--            class="theme-button"-->
+<!--            id="themeButton"-->
+<!--            onclick="toggleDarkMode()"-->
+<!--            title="Сменить тему"-->
+<!--        >-->
+<!--            🌙-->
+<!--        </button>-->
+
+<!--    </div>-->
+
+<!--</header>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     HERO-->
+<!--========================= &ndash;&gt;-->
+
+<!--<section class="hero">-->
+
+<!--    <div class="hero-content">-->
+
+<!--        <div class="hero-small">-->
+<!--            NEW COLLECTION · 2026-->
+<!--        </div>-->
+
+
+<!--        <h1>-->
+<!--            ELEVATE<br>-->
+<!--            YOUR<br>-->
+<!--            STYLE-->
+<!--        </h1>-->
+
+
+<!--        <p class="hero-text">-->
+
+<!--            Одежда, которая подчёркивает-->
+<!--            индивидуальность. Новая коллекция-->
+<!--            уже доступна.-->
+
+<!--        </p>-->
+
+
+<!--        <div class="hero-buttons">-->
+
+<!--            <a-->
+<!--                href="#products"-->
+<!--                class="hero-button"-->
+<!--            >-->
+<!--                SHOP NOW-->
+<!--            </a>-->
+
+
+<!--            <a-->
+<!--                href="#categories"-->
+<!--                class="hero-button dark"-->
+<!--            >-->
+<!--                КАТЕГОРИИ-->
+<!--            </a>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     CATEGORIES-->
+<!--========================= &ndash;&gt;-->
+
+<!--<section-->
+<!--    class="section"-->
+<!--    id="categories"-->
+<!--&gt;-->
+
+<!--    <div class="section-heading">-->
+
+<!--        <div class="section-label">-->
+<!--            DISCOVER-->
+<!--        </div>-->
+
+<!--        <h2>-->
+<!--            Shop by category-->
+<!--        </h2>-->
+
+<!--    </div>-->
+
+
+<!--    <div class="category-list">-->
+
+<!--        {% for category in categories %}-->
+
+<!--            <a-->
+<!--                href="{% url 'category_products' category.pk %}"-->
+<!--                class="category"-->
+<!--            >-->
+
+<!--                <span class="category-number">-->
+<!--                    0{{ forloop.counter }}-->
+<!--                </span>-->
+
+<!--                <span class="category-name">-->
+<!--                    {{ category.name }}-->
+<!--                </span>-->
+
+<!--            </a>-->
+
+<!--        {% empty %}-->
+
+<!--            <p class="empty">-->
+<!--                Категории пока отсутствуют.-->
+<!--            </p>-->
+
+<!--        {% endfor %}-->
+
+<!--    </div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     PRODUCTS-->
+<!--========================= &ndash;&gt;-->
+
+<!--<section-->
+<!--    class="section products-section"-->
+<!--    id="products"-->
+<!--&gt;-->
+
+<!--    <div class="section-heading">-->
+
+<!--        <div class="section-label">-->
+<!--            OUR FAVORITES-->
+<!--        </div>-->
+
+<!--        <h2>-->
+<!--            Новая коллекция-->
+<!--        </h2>-->
+
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; =========================-->
+<!--         FILTERS-->
+<!--    ========================= &ndash;&gt;-->
+
+<!--    <div class="filters">-->
+
+
+<!--        &lt;!&ndash; CATEGORY &ndash;&gt;-->
+
+<!--        <div class="filter-group">-->
+
+<!--            <label for="categoryFilter">-->
+<!--                Категория-->
+<!--            </label>-->
+
+<!--            <select id="categoryFilter">-->
+
+<!--                <option value="all">-->
+<!--                    Все категории-->
+<!--                </option>-->
+
+<!--                {% for category in categories %}-->
+
+<!--                    <option-->
+<!--                        value="{{ category.name|lower }}"-->
+<!--                    >-->
+<!--                        {{ category.name }}-->
+<!--                    </option>-->
+
+<!--                {% endfor %}-->
+
+<!--            </select>-->
+
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; MIN PRICE &ndash;&gt;-->
+
+<!--        <div class="filter-group">-->
+
+<!--            <label for="minPrice">-->
+<!--                Цена от-->
+<!--            </label>-->
+
+<!--            <input-->
+<!--                type="number"-->
+<!--                id="minPrice"-->
+<!--                placeholder="0"-->
+<!--                min="0"-->
+<!--            >-->
+
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; MAX PRICE &ndash;&gt;-->
+
+<!--        <div class="filter-group">-->
+
+<!--            <label for="maxPrice">-->
+<!--                Цена до-->
+<!--            </label>-->
+
+<!--            <input-->
+<!--                type="number"-->
+<!--                id="maxPrice"-->
+<!--                placeholder="100000"-->
+<!--                min="0"-->
+<!--            >-->
+
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; SORT &ndash;&gt;-->
+
+<!--        <div class="filter-group">-->
+
+<!--            <label for="sortFilter">-->
+<!--                Сортировка-->
+<!--            </label>-->
+
+<!--            <select id="sortFilter">-->
+
+<!--                <option value="default">-->
+<!--                    По умолчанию-->
+<!--                </option>-->
+
+<!--                <option value="price-asc">-->
+<!--                    Цена: по возрастанию-->
+<!--                </option>-->
+
+<!--                <option value="price-desc">-->
+<!--                    Цена: по убыванию-->
+<!--                </option>-->
+
+<!--                <option value="name-asc">-->
+<!--                    Название: А–Я-->
+<!--                </option>-->
+
+<!--                <option value="name-desc">-->
+<!--                    Название: Я–А-->
+<!--                </option>-->
+
+<!--            </select>-->
+
+<!--        </div>-->
+
+
+<!--        &lt;!&ndash; RESET &ndash;&gt;-->
+
+<!--        <button-->
+<!--            type="button"-->
+<!--            class="reset-filter"-->
+<!--            onclick="resetFilters()"-->
+<!--        >-->
+<!--            Сбросить-->
+<!--        </button>-->
+
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; SEARCH RESULT &ndash;&gt;-->
+
+<!--    <p-->
+<!--        class="search-result"-->
+<!--        id="searchResult"-->
+<!--    ></p>-->
+
+
+<!--    &lt;!&ndash; PRODUCTS &ndash;&gt;-->
+
+<!--    <div class="products">-->
+
+<!--        {% for product in products %}-->
+
+<!--            <div-->
+<!--                class="card"-->
+<!--                data-product-id="{{ product.id }}"-->
+<!--                data-category="{{ product.category.name|lower }}"-->
+<!--                data-price="{{ product.price }}"-->
+<!--            >-->
+
+
+<!--                <div class="product-image">-->
+
+
+<!--                    {% if product.image %}-->
+
+<!--                        <img-->
+<!--                            src="{{ product.image.url }}"-->
+<!--                            alt="{{ product.name }}"-->
+<!--                        >-->
+
+<!--                    {% else %}-->
+
+<!--                        <div-->
+<!--                            style="-->
+<!--                                height:390px;-->
+<!--                                display:flex;-->
+<!--                                align-items:center;-->
+<!--                                justify-content:center;-->
+<!--                                background:#eee5dc;-->
+<!--                                color:#888;-->
+<!--                            "-->
+<!--                        >-->
+<!--                            Нет изображения-->
+<!--                        </div>-->
+
+<!--                    {% endif %}-->
+
+
+<!--                    &lt;!&ndash; FAVORITE &ndash;&gt;-->
+
+<!--                    <button-->
+<!--                        type="button"-->
+<!--                        class="favorite"-->
+<!--                        data-product-id="{{ product.id }}"-->
+<!--                        onclick="toggleFavorite(this)"-->
+<!--                    >-->
+<!--                        ♡-->
+<!--                    </button>-->
+
+<!--                </div>-->
+
+
+<!--                &lt;!&ndash; PRODUCT INFO &ndash;&gt;-->
+
+<!--                <div class="product-info">-->
+
+<!--                    <div class="product-name">-->
+<!--                        {{ product.name }}-->
+<!--                    </div>-->
+
+
+<!--                    <p class="description">-->
+<!--                        {{ product.description|truncatewords:15 }}-->
+<!--                    </p>-->
+
+
+<!--                    <div class="product-bottom">-->
+
+<!--                        <p class="price">-->
+<!--                            {{ product.price }} сом-->
+<!--                        </p>-->
+
+
+<!--                        <div>-->
+
+<!--                            <a-->
+<!--                                href="{% url 'product_detail' product.pk %}"-->
+<!--                                class="button"-->
+<!--                            >-->
+<!--                                Подробнее-->
+<!--                            </a>-->
+
+
+<!--                            <a-->
+<!--                                href="{% url 'add_to_cart' product.pk %}"-->
+<!--                                class="button add-cart-button"-->
+<!--                                onclick="addToCart(event, this)"-->
+<!--                            >-->
+<!--                                В корзину-->
+<!--                            </a>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+<!--            </div>-->
+
+
+<!--        {% empty %}-->
+
+<!--            <p class="empty">-->
+<!--                Товаров пока нет.-->
+<!--            </p>-->
+
+<!--        {% endfor %}-->
+
+<!--    </div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     COLLECTION BANNER-->
+<!--========================= &ndash;&gt;-->
+
+<!--<section class="collection-banner">-->
+
+<!--    <div class="collection-content">-->
+
+<!--        <span>-->
+<!--            CLOTHÉ · AUTUMN / WINTER-->
+<!--        </span>-->
+
+
+<!--        <h2>-->
+<!--            NEW<br>-->
+<!--            COLLECTION-->
+<!--        </h2>-->
+
+
+<!--        <p>-->
+
+<!--            Минимализм, комфорт и стиль.-->
+<!--            Откройте коллекцию, созданную-->
+<!--            для вашего повседневного образа.-->
+
+<!--        </p>-->
+
+
+<!--        <a-->
+<!--            href="#products"-->
+<!--            class="hero-button"-->
+<!--        >-->
+<!--            EXPLORE COLLECTION-->
+<!--        </a>-->
+
+<!--    </div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     FAVORITES-->
+<!--========================= &ndash;&gt;-->
+
+<!--<section-->
+<!--    class="section favorites-section"-->
+<!--    id="favorites"-->
+<!--&gt;-->
+
+<!--    <div class="section-heading">-->
+
+<!--        <div class="section-label">-->
+<!--            YOUR SELECTION-->
+<!--        </div>-->
+
+<!--        <h2>-->
+<!--            Избранное ♡-->
+<!--        </h2>-->
+
+<!--    </div>-->
+
+
+<!--    <div-->
+<!--        class="favorites-products"-->
+<!--        id="favoritesProducts"-->
+<!--    >-->
+<!--    </div>-->
+
+
+<!--    <p-->
+<!--        class="favorites-empty"-->
+<!--        id="favoritesEmpty"-->
+<!--    >-->
+<!--        В избранном пока нет товаров.-->
+<!--    </p>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     FOOTER-->
+<!--========================= &ndash;&gt;-->
+
+<!--<footer>-->
+
+<!--    <div class="footer-inner">-->
+
+
+<!--        <div class="footer-brand">-->
+
+<!--            <h3>-->
+<!--                CLOTHÉ-->
+<!--            </h3>-->
+
+
+<!--            <p>-->
+
+<!--                Современный магазин одежды-->
+<!--                для тех, кто ценит стиль,-->
+<!--                качество и индивидуальность.-->
+
+<!--            </p>-->
+
+<!--        </div>-->
+
+
+<!--        <div class="footer-column">-->
+
+<!--            <h4>-->
+<!--                Магазин-->
+<!--            </h4>-->
+
+
+<!--            <a href="#products">-->
+<!--                Все товары-->
+<!--            </a>-->
+
+
+<!--            <a href="#categories">-->
+<!--                Категории-->
+<!--            </a>-->
+
+
+<!--            <a href="#favorites">-->
+<!--                Избранное-->
+<!--            </a>-->
+
+<!--        </div>-->
+
+
+<!--        <div class="footer-column">-->
+
+<!--            <h4>-->
+<!--                Помощь-->
+<!--            </h4>-->
+
+
+<!--            <a href="/cart/">-->
+<!--                Корзина-->
+<!--            </a>-->
+
+
+<!--            <a href="#">-->
+<!--                Доставка-->
+<!--            </a>-->
+
+
+<!--            <a href="#">-->
+<!--                Контакты-->
+<!--            </a>-->
+
+<!--        </div>-->
+
+
+<!--        <div class="footer-column">-->
+
+<!--            <h4>-->
+<!--                Мы онлайн-->
+<!--            </h4>-->
+
+
+<!--            <a href="#">-->
+<!--                Instagram-->
+<!--            </a>-->
+
+
+<!--            <a href="#">-->
+<!--                Telegram-->
+<!--            </a>-->
+
+
+<!--            <a href="#">-->
+<!--                TikTok-->
+<!--            </a>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+
+<!--    <div class="copyright">-->
+
+<!--        © 2026 CLOTHÉ — Магазин одежды-->
+
+<!--    </div>-->
+
+<!--</footer>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     CART NOTIFICATION-->
+<!--========================= &ndash;&gt;-->
+
+<!--<div-->
+<!--    id="cartNotification"-->
+<!--    class="cart-notification"-->
+<!--&gt;-->
+
+<!--    <span class="check">-->
+<!--        ✓-->
+<!--    </span>-->
+
+<!--    Товар добавлен в корзину-->
+
+<!--</div>-->
+
+
+<!--&lt;!&ndash; =========================-->
+<!--     JAVASCRIPT-->
+<!--========================= &ndash;&gt;-->
+
+<!--<script>-->
+
+
+<!--/* =========================-->
+<!--   SEARCH FORM-->
+<!--========================= */-->
+
+<!--const searchForm =-->
+<!--    document.getElementById(-->
+<!--        "searchForm"-->
+<!--    );-->
+
+
+<!--const searchInput =-->
+<!--    document.getElementById(-->
+<!--        "searchInput"-->
+<!--    );-->
+
+
+<!--const searchResult =-->
+<!--    document.getElementById(-->
+<!--        "searchResult"-->
+<!--    );-->
+
+
+<!--searchForm.addEventListener(-->
+<!--    "submit",-->
+<!--    function(event) {-->
+
+<!--        event.preventDefault();-->
+
+<!--        searchProducts();-->
+
+<!--    }-->
+<!--);-->
+
+
+<!--searchInput.addEventListener(-->
+<!--    "input",-->
+<!--    function() {-->
+
+<!--        searchProducts();-->
+
+<!--    }-->
+<!--);-->
+
+
+<!--/* =========================-->
+<!--   SEARCH + FILTER-->
+<!--========================= */-->
+
+<!--function searchProducts() {-->
+
+
+<!--    const searchText =-->
+<!--        searchInput.value-->
+<!--            .trim()-->
+<!--            .toLowerCase();-->
+
+
+<!--    const category =-->
+<!--        document.getElementById(-->
+<!--            "categoryFilter"-->
+<!--        ).value;-->
+
+
+<!--    const minPrice =-->
+<!--        parseFloat(-->
+<!--            document.getElementById(-->
+<!--                "minPrice"-->
+<!--            ).value-->
+<!--        ) || 0;-->
+
+
+<!--    const maxPriceInput =-->
+<!--        document.getElementById(-->
+<!--            "maxPrice"-->
+<!--        ).value;-->
+
+
+<!--    const maxPrice =-->
+<!--        maxPriceInput === ""-->
+<!--            ? Infinity-->
+<!--            : parseFloat(maxPriceInput);-->
+
+
+<!--    const products =-->
+<!--        document.querySelectorAll(-->
+<!--            ".products .card"-->
+<!--        );-->
+
+
+<!--    let foundProducts = 0;-->
+
+
+<!--    products.forEach(-->
+<!--        function(card) {-->
+
+
+<!--            const productName =-->
+<!--                card.querySelector(-->
+<!--                    ".product-name"-->
+<!--                );-->
+
+
+<!--            const description =-->
+<!--                card.querySelector(-->
+<!--                    ".description"-->
+<!--                );-->
+
+
+<!--            const nameText =-->
+<!--                productName-->
+<!--                    ? productName.textContent-->
+<!--                        .trim()-->
+<!--                        .toLowerCase()-->
+<!--                    : "";-->
+
+
+<!--            const descriptionText =-->
+<!--                description-->
+<!--                    ? description.textContent-->
+<!--                        .trim()-->
+<!--                        .toLowerCase()-->
+<!--                    : "";-->
+
+
+<!--            const productCategory =-->
+<!--                card.dataset.category || "";-->
+
+
+<!--            const productPrice =-->
+<!--                parseFloat(-->
+<!--                    card.dataset.price-->
+<!--                ) || 0;-->
+
+
+<!--            /*-->
+<!--             * SEARCH-->
+<!--             */-->
+
+<!--            const matchesSearch =-->
+<!--                searchText === "" ||-->
+<!--                nameText.includes(searchText) ||-->
+<!--                descriptionText.includes(searchText);-->
+
+
+<!--            /*-->
+<!--             * CATEGORY-->
+<!--             */-->
+
+<!--            const matchesCategory =-->
+<!--                category === "all" ||-->
+<!--                productCategory === category;-->
+
+
+<!--            /*-->
+<!--             * PRICE-->
+<!--             */-->
+
+<!--            const matchesPrice =-->
+<!--                productPrice >= minPrice &&-->
+<!--                productPrice <= maxPrice;-->
+
+
+<!--            /*-->
+<!--             * SHOW / HIDE-->
+<!--             */-->
+
+<!--            if (-->
+<!--                matchesSearch &&-->
+<!--                matchesCategory &&-->
+<!--                matchesPrice-->
+<!--            ) {-->
+
+<!--                card.style.display = "";-->
+
+<!--                foundProducts++;-->
+
+<!--            } else {-->
+
+<!--                card.style.display = "none";-->
+
+<!--            }-->
+
+<!--        }-->
+<!--    );-->
+
+
+<!--    sortProducts();-->
+
+
+<!--    updateSearchResult(-->
+<!--        searchText,-->
+<!--        foundProducts-->
+<!--    );-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   SEARCH RESULT-->
+<!--========================= */-->
+
+<!--function updateSearchResult(-->
+<!--    searchText,-->
+<!--    foundProducts-->
+<!--) {-->
+
+
+<!--    if (-->
+<!--        searchText === ""-->
+<!--    ) {-->
+
+<!--        searchResult.style.display =-->
+<!--            "none";-->
+
+<!--        searchResult.innerHTML =-->
+<!--            "";-->
+
+<!--        return;-->
+
+<!--    }-->
+
+
+<!--    if (-->
+<!--        foundProducts === 0-->
+<!--    ) {-->
+
+<!--        searchResult.innerHTML =-->
+<!--            'По запросу "<strong>' +-->
+<!--            escapeHtml(searchText) +-->
+<!--            '</strong>" ничего не найдено.';-->
+
+<!--        searchResult.style.display =-->
+<!--            "block";-->
+
+<!--        return;-->
+
+<!--    }-->
+
+
+<!--    searchResult.innerHTML =-->
+<!--        'По запросу "<strong>' +-->
+<!--        escapeHtml(searchText) +-->
+<!--        '</strong>" найдено товаров: ' +-->
+<!--        foundProducts;-->
+
+
+<!--    searchResult.style.display =-->
+<!--        "block";-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   ESCAPE HTML-->
+<!--========================= */-->
+
+<!--function escapeHtml(text) {-->
+
+<!--    const div =-->
+<!--        document.createElement(-->
+<!--            "div"-->
+<!--        );-->
+
+<!--    div.textContent =-->
+<!--        text;-->
+
+<!--    return div.innerHTML;-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   SORT PRODUCTS-->
+<!--========================= */-->
+
+<!--function sortProducts() {-->
+
+
+<!--    const sortValue =-->
+<!--        document.getElementById(-->
+<!--            "sortFilter"-->
+<!--        ).value;-->
+
+
+<!--    const container =-->
+<!--        document.querySelector(-->
+<!--            ".products"-->
+<!--        );-->
+
+
+<!--    const cards =-->
+<!--        Array.from(-->
+<!--            container.querySelectorAll(-->
+<!--                ".card"-->
+<!--            )-->
+<!--        );-->
+
+
+<!--    cards.sort(-->
+<!--        function(a, b) {-->
+
+
+<!--            const priceA =-->
+<!--                parseFloat(-->
+<!--                    a.dataset.price-->
+<!--                ) || 0;-->
+
+
+<!--            const priceB =-->
+<!--                parseFloat(-->
+<!--                    b.dataset.price-->
+<!--                ) || 0;-->
+
+
+<!--            const nameA =-->
+<!--                a.querySelector(-->
+<!--                    ".product-name"-->
+<!--                ).textContent-->
+<!--                    .trim()-->
+<!--                    .toLowerCase();-->
+
+
+<!--            const nameB =-->
+<!--                b.querySelector(-->
+<!--                    ".product-name"-->
+<!--                ).textContent-->
+<!--                    .trim()-->
+<!--                    .toLowerCase();-->
+
+
+<!--            if (-->
+<!--                sortValue ===-->
+<!--                "price-asc"-->
+<!--            ) {-->
+
+<!--                return priceA - priceB;-->
+
+<!--            }-->
+
+
+<!--            if (-->
+<!--                sortValue ===-->
+<!--                "price-desc"-->
+<!--            ) {-->
+
+<!--                return priceB - priceA;-->
+
+<!--            }-->
+
+
+<!--            if (-->
+<!--                sortValue ===-->
+<!--                "name-asc"-->
+<!--            ) {-->
+
+<!--                return nameA.localeCompare(-->
+<!--                    nameB-->
+<!--                );-->
+
+<!--            }-->
+
+
+<!--            if (-->
+<!--                sortValue ===-->
+<!--                "name-desc"-->
+<!--            ) {-->
+
+<!--                return nameB.localeCompare(-->
+<!--                    nameA-->
+<!--                );-->
+
+<!--            }-->
+
+
+<!--            return 0;-->
+
+<!--        }-->
+<!--    );-->
+
+
+<!--    cards.forEach(-->
+<!--        function(card) {-->
+
+<!--            container.appendChild(-->
+<!--                card-->
+<!--            );-->
+
+<!--        }-->
+<!--    );-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   RESET FILTERS-->
+<!--========================= */-->
+
+<!--function resetFilters() {-->
+
+
+<!--    document.getElementById(-->
+<!--        "categoryFilter"-->
+<!--    ).value = "all";-->
+
+
+<!--    document.getElementById(-->
+<!--        "minPrice"-->
+<!--    ).value = "";-->
+
+
+<!--    document.getElementById(-->
+<!--        "maxPrice"-->
+<!--    ).value = "";-->
+
+
+<!--    document.getElementById(-->
+<!--        "sortFilter"-->
+<!--    ).value = "default";-->
+
+
+<!--    searchInput.value = "";-->
+
+
+<!--    searchProducts();-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   FILTER EVENTS-->
+<!--========================= */-->
+
+<!--document-->
+<!--    .getElementById(-->
+<!--        "categoryFilter"-->
+<!--    )-->
+<!--    .addEventListener(-->
+<!--        "change",-->
+<!--        searchProducts-->
+<!--    );-->
+
+
+<!--document-->
+<!--    .getElementById(-->
+<!--        "minPrice"-->
+<!--    )-->
+<!--    .addEventListener(-->
+<!--        "input",-->
+<!--        searchProducts-->
+<!--    );-->
+
+
+<!--document-->
+<!--    .getElementById(-->
+<!--        "maxPrice"-->
+<!--    )-->
+<!--    .addEventListener(-->
+<!--        "input",-->
+<!--        searchProducts-->
+<!--    );-->
+
+
+<!--document-->
+<!--    .getElementById(-->
+<!--        "sortFilter"-->
+<!--    )-->
+<!--    .addEventListener(-->
+<!--        "change",-->
+<!--        searchProducts-->
+<!--    );-->
+
+
+<!--/* =========================-->
+<!--   FAVORITES-->
+<!--========================= */-->
+
+<!--let favorites =-->
+<!--    JSON.parse(-->
+<!--        localStorage.getItem(-->
+<!--            "favorites"-->
+<!--        ) || "[]"-->
+<!--    );-->
+
+
+<!--function updateFavorite(button) {-->
+
+
+<!--    const productId =-->
+<!--        button.dataset.productId;-->
+
+
+<!--    if (-->
+<!--        favorites.includes(-->
+<!--            productId-->
+<!--        )-->
+<!--    ) {-->
+
+<!--        button.classList.add(-->
+<!--            "active"-->
+<!--        );-->
+
+<!--        button.innerHTML =-->
+<!--            "♥";-->
+
+<!--    } else {-->
+
+<!--        button.classList.remove(-->
+<!--            "active"-->
+<!--        );-->
+
+<!--        button.innerHTML =-->
+<!--            "♡";-->
+
+<!--    }-->
+
+<!--}-->
+
+
+<!--function toggleFavorite(button) {-->
+
+
+<!--    const productId =-->
+<!--        button.dataset.productId;-->
+
+
+<!--    if (-->
+<!--        favorites.includes(-->
+<!--            productId-->
+<!--        )-->
+<!--    ) {-->
+
+<!--        favorites =-->
+<!--            favorites.filter(-->
+<!--                function(id) {-->
+
+<!--                    return id !==-->
+<!--                        productId;-->
+
+<!--                }-->
+<!--            );-->
+
+<!--    } else {-->
+
+<!--        favorites.push(-->
+<!--            productId-->
+<!--        );-->
+
+<!--    }-->
+
+
+<!--    localStorage.setItem(-->
+<!--        "favorites",-->
+<!--        JSON.stringify(-->
+<!--            favorites-->
+<!--        )-->
+<!--    );-->
+
+
+<!--    updateFavorite(-->
+<!--        button-->
+<!--    );-->
+
+
+<!--    showFavorites();-->
+
+<!--}-->
+
+
+<!--function showFavorites() {-->
+
+
+<!--    const container =-->
+<!--        document.getElementById(-->
+<!--            "favoritesProducts"-->
+<!--        );-->
+
+
+<!--    const empty =-->
+<!--        document.getElementById(-->
+<!--            "favoritesEmpty"-->
+<!--        );-->
+
+
+<!--    const productCards =-->
+<!--        document.querySelectorAll(-->
+<!--            ".products .card"-->
+<!--        );-->
+
+
+<!--    container.innerHTML =-->
+<!--        "";-->
+
+
+<!--    let count = 0;-->
+
+
+<!--    productCards.forEach(-->
+<!--        function(card) {-->
+
+
+<!--            const button =-->
+<!--                card.querySelector(-->
+<!--                    ".favorite"-->
+<!--                );-->
+
+
+<!--            if (!button) {-->
+
+<!--                return;-->
+
+<!--            }-->
+
+
+<!--            const productId =-->
+<!--                button.dataset.productId;-->
+
+
+<!--            if (-->
+<!--                favorites.includes(-->
+<!--                    productId-->
+<!--                )-->
+<!--            ) {-->
+
+
+<!--                const favoriteCard =-->
+<!--                    document.createElement(-->
+<!--                        "div"-->
+<!--                    );-->
+
+
+<!--                favoriteCard.className =-->
+<!--                    "favorite-card";-->
+
+
+<!--                const image =-->
+<!--                    card.querySelector(-->
+<!--                        "img"-->
+<!--                    );-->
+
+
+<!--                if (image) {-->
+
+<!--                    const newImage =-->
+<!--                        document.createElement(-->
+<!--                            "img"-->
+<!--                        );-->
+
+
+<!--                    newImage.src =-->
+<!--                        image.src;-->
+
+
+<!--                    newImage.alt =-->
+<!--                        image.alt;-->
+
+
+<!--                    favoriteCard.appendChild(-->
+<!--                        newImage-->
+<!--                    );-->
+
+<!--                }-->
+
+
+<!--                const title =-->
+<!--                    card.querySelector(-->
+<!--                        ".product-name"-->
+<!--                    );-->
+
+
+<!--                const favoriteTitle =-->
+<!--                    document.createElement(-->
+<!--                        "h3"-->
+<!--                    );-->
+
+
+<!--                favoriteTitle.innerHTML =-->
+<!--                    title-->
+<!--                        ? title.innerHTML-->
+<!--                        : "Товар";-->
+
+
+<!--                favoriteCard.appendChild(-->
+<!--                    favoriteTitle-->
+<!--                );-->
+
+
+<!--                const description =-->
+<!--                    card.querySelector(-->
+<!--                        ".description"-->
+<!--                    );-->
+
+
+<!--                if (description) {-->
+
+<!--                    const text =-->
+<!--                        document.createElement(-->
+<!--                            "p"-->
+<!--                        );-->
+
+
+<!--                    text.innerHTML =-->
+<!--                        description.innerHTML;-->
+
+
+<!--                    favoriteCard.appendChild(-->
+<!--                        text-->
+<!--                    );-->
+
+<!--                }-->
+
+
+<!--                const price =-->
+<!--                    card.querySelector(-->
+<!--                        ".price"-->
+<!--                    );-->
+
+
+<!--                if (price) {-->
+
+<!--                    const favoritePrice =-->
+<!--                        document.createElement(-->
+<!--                            "p"-->
+<!--                        );-->
+
+
+<!--                    favoritePrice.className =-->
+<!--                        "favorite-price";-->
+
+
+<!--                    favoritePrice.innerHTML =-->
+<!--                        price.innerHTML;-->
+
+
+<!--                    favoriteCard.appendChild(-->
+<!--                        favoritePrice-->
+<!--                    );-->
+
+<!--                }-->
+
+
+<!--                const actions =-->
+<!--                    document.createElement(-->
+<!--                        "div"-->
+<!--                    );-->
+
+
+<!--                actions.className =-->
+<!--                    "favorite-actions";-->
+
+
+<!--                const detailButton =-->
+<!--                    card.querySelector(-->
+<!--                        'a[href*="product"]'-->
+<!--                    );-->
+
+
+<!--                if (detailButton) {-->
+
+<!--                    const detail =-->
+<!--                        document.createElement(-->
+<!--                            "a"-->
+<!--                        );-->
+
+
+<!--                    detail.href =-->
+<!--                        detailButton.href;-->
+
+
+<!--                    detail.className =-->
+<!--                        "button";-->
+
+
+<!--                    detail.innerHTML =-->
+<!--                        "Подробнее";-->
+
+
+<!--                    actions.appendChild(-->
+<!--                        detail-->
+<!--                    );-->
+
+<!--                }-->
+
+
+<!--                const removeButton =-->
+<!--                    document.createElement(-->
+<!--                        "button"-->
+<!--                    );-->
+
+
+<!--                removeButton.className =-->
+<!--                    "remove-favorite";-->
+
+
+<!--                removeButton.innerHTML =-->
+<!--                    "♥ Удалить";-->
+
+
+<!--                removeButton.onclick =-->
+<!--                    function() {-->
+
+
+<!--                        favorites =-->
+<!--                            favorites.filter(-->
+<!--                                function(id) {-->
+
+<!--                                    return id !==-->
+<!--                                        productId;-->
+
+<!--                                }-->
+<!--                            );-->
+
+
+<!--                        localStorage.setItem(-->
+<!--                            "favorites",-->
+<!--                            JSON.stringify(-->
+<!--                                favorites-->
+<!--                            )-->
+<!--                        );-->
+
+
+<!--                        updateFavorite(-->
+<!--                            button-->
+<!--                        );-->
+
+
+<!--                        showFavorites();-->
+
+<!--                    };-->
+
+
+<!--                actions.appendChild(-->
+<!--                    removeButton-->
+<!--                );-->
+
+
+<!--                favoriteCard.appendChild(-->
+<!--                    actions-->
+<!--                );-->
+
+
+<!--                container.appendChild(-->
+<!--                    favoriteCard-->
+<!--                );-->
+
+
+<!--                count++;-->
+
+<!--            }-->
+
+<!--        }-->
+<!--    );-->
+
+
+<!--    if (-->
+<!--        count === 0-->
+<!--    ) {-->
+
+<!--        empty.style.display =-->
+<!--            "block";-->
+
+<!--    } else {-->
+
+<!--        empty.style.display =-->
+<!--            "none";-->
+
+<!--    }-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   ADD TO CART-->
+<!--========================= */-->
+
+<!--function addToCart(-->
+<!--    event,-->
+<!--    button-->
+<!--) {-->
+
+
+<!--    event.preventDefault();-->
+
+
+<!--    const url =-->
+<!--        button.href;-->
+
+
+<!--    const notification =-->
+<!--        document.getElementById(-->
+<!--            "cartNotification"-->
+<!--        );-->
+
+
+<!--    button.style.pointerEvents =-->
+<!--        "none";-->
+
+
+<!--    button.style.opacity =-->
+<!--        "0.6";-->
+
+
+<!--    fetch(-->
+<!--        url,-->
+<!--        {-->
+
+<!--            method: "GET",-->
+
+<!--            headers: {-->
+
+<!--                "X-Requested-With":-->
+<!--                    "XMLHttpRequest"-->
+
+<!--            }-->
+
+<!--        }-->
+<!--    )-->
+
+<!--    .then(-->
+<!--        function(response) {-->
+
+<!--            if (!response.ok) {-->
+
+<!--                throw new Error(-->
+<!--                    "Ошибка сервера"-->
+<!--                );-->
+
+<!--            }-->
+
+<!--            return response.json();-->
+
+<!--        }-->
+<!--    )-->
+
+<!--    .then(-->
+<!--        function(data) {-->
+
+
+<!--            if (data.success) {-->
+
+
+<!--                notification.classList.add(-->
+<!--                    "show"-->
+<!--                );-->
+
+
+<!--                const oldText =-->
+<!--                    button.innerHTML;-->
+
+
+<!--                button.innerHTML =-->
+<!--                    "✓ Добавлено";-->
+
+
+<!--                button.style.background =-->
+<!--                    "#a45c61";-->
+
+
+<!--                setTimeout(-->
+<!--                    function() {-->
+
+<!--                        notification.classList.remove(-->
+<!--                            "show"-->
+<!--                        );-->
+
+<!--                    },-->
+<!--                    1800-->
+<!--                );-->
+
+
+<!--                setTimeout(-->
+<!--                    function() {-->
+
+
+<!--                        button.innerHTML =-->
+<!--                            oldText;-->
+
+
+<!--                        button.style.background =-->
+<!--                            "";-->
+
+
+<!--                        button.style.opacity =-->
+<!--                            "";-->
+
+
+<!--                        button.style.pointerEvents =-->
+<!--                            "";-->
+
+<!--                    },-->
+<!--                    2000-->
+<!--                );-->
+
+<!--            }-->
+
+<!--        }-->
+<!--    )-->
+
+<!--    .catch(-->
+<!--        function(error) {-->
+
+
+<!--            console.error(-->
+<!--                "Ошибка:",-->
+<!--                error-->
+<!--            );-->
+
+
+<!--            button.style.opacity =-->
+<!--                "";-->
+
+
+<!--            button.style.pointerEvents =-->
+<!--                "";-->
+
+<!--        }-->
+<!--    );-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   DARK MODE-->
+<!--========================= */-->
+
+<!--function toggleDarkMode() {-->
+
+
+<!--    document.body.classList.toggle(-->
+<!--        "dark-mode"-->
+<!--    );-->
+
+
+<!--    const themeButton =-->
+<!--        document.getElementById(-->
+<!--            "themeButton"-->
+<!--        );-->
+
+
+<!--    if (-->
+<!--        document.body.classList.contains(-->
+<!--            "dark-mode"-->
+<!--        )-->
+<!--    ) {-->
+
+
+<!--        themeButton.innerHTML =-->
+<!--            "☀️";-->
+
+
+<!--        localStorage.setItem(-->
+<!--            "darkMode",-->
+<!--            "enabled"-->
+<!--        );-->
+
+
+<!--    } else {-->
+
+
+<!--        themeButton.innerHTML =-->
+<!--            "🌙";-->
+
+
+<!--        localStorage.setItem(-->
+<!--            "darkMode",-->
+<!--            "disabled"-->
+<!--        );-->
+
+<!--    }-->
+
+<!--}-->
+
+
+<!--/* =========================-->
+<!--   PAGE LOAD-->
+<!--========================= */-->
+
+<!--document.addEventListener(-->
+<!--    "DOMContentLoaded",-->
+<!--    function() {-->
+
+
+<!--        /* FAVORITES */-->
+
+<!--        const buttons =-->
+<!--            document.querySelectorAll(-->
+<!--                ".favorite"-->
+<!--            );-->
+
+
+<!--        buttons.forEach(-->
+<!--            function(button) {-->
+
+<!--                updateFavorite(-->
+<!--                    button-->
+<!--                );-->
+
+<!--            }-->
+<!--        );-->
+
+
+<!--        showFavorites();-->
+
+
+<!--        /* DARK MODE */-->
+
+<!--        const themeButton =-->
+<!--            document.getElementById(-->
+<!--                "themeButton"-->
+<!--            );-->
+
+
+<!--        if (-->
+<!--            localStorage.getItem(-->
+<!--                "darkMode"-->
+<!--            ) === "enabled"-->
+<!--        ) {-->
+
+
+<!--            document.body.classList.add(-->
+<!--                "dark-mode"-->
+<!--            );-->
+
+
+<!--            if (themeButton) {-->
+
+<!--                themeButton.innerHTML =-->
+<!--                    "☀️";-->
+
+<!--            }-->
+
+<!--        }-->
+
+<!--    }-->
+<!--);-->
+
+<!--</script>-->
+
+
+<!--</body>-->
+
+<!--</html>-->
