@@ -8,6 +8,10 @@ from django.shortcuts import (
 
 from django.http import JsonResponse
 
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
 from .models import (
     Product,
     Category,
@@ -75,6 +79,199 @@ def home(request):
             "search": search,
         }
     )
+
+
+# =========================
+# REGISTER
+# =========================
+
+def register_view(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get(
+            "username",
+            ""
+        ).strip()
+
+        email = request.POST.get(
+            "email",
+            ""
+        ).strip()
+
+        password = request.POST.get(
+            "password",
+            ""
+        )
+
+        password2 = request.POST.get(
+            "password2",
+            ""
+        )
+
+        # =========================
+        # VALIDATION
+        # =========================
+
+        if not username or not password:
+
+            messages.error(
+                request,
+                "Заполните обязательные поля."
+            )
+
+            return render(
+                request,
+                "catalog/register.html"
+            )
+
+        if password != password2:
+
+            messages.error(
+                request,
+                "Пароли не совпадают."
+            )
+
+            return render(
+                request,
+                "catalog/register.html"
+            )
+
+        if len(password) < 8:
+
+            messages.error(
+                request,
+                "Пароль должен содержать минимум 8 символов."
+            )
+
+            return render(
+                request,
+                "catalog/register.html"
+            )
+
+        if User.objects.filter(
+            username=username
+        ).exists():
+
+            messages.error(
+                request,
+                "Такой логин уже существует."
+            )
+
+            return render(
+                request,
+                "catalog/register.html"
+            )
+
+        if email and User.objects.filter(
+            email=email
+        ).exists():
+
+            messages.error(
+                request,
+                "Такой email уже используется."
+            )
+
+            return render(
+                request,
+                "catalog/register.html"
+            )
+
+        # =========================
+        # CREATE USER
+        # =========================
+
+        user = User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
+        )
+
+        # =========================
+        # LOGIN AFTER REGISTER
+        # =========================
+
+        login(
+            request,
+            user
+        )
+
+        messages.success(
+            request,
+            f"Добро пожаловать, {username}!"
+        )
+
+        return redirect("home")
+
+    return render(
+        request,
+        "catalog/register.html"
+    )
+
+
+# =========================
+# LOGIN
+# =========================
+
+def login_view(request):
+
+    if request.method == "POST":
+
+        username = request.POST.get(
+            "username",
+            ""
+        ).strip()
+
+        password = request.POST.get(
+            "password",
+            ""
+        )
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is not None:
+
+            login(
+                request,
+                user
+            )
+
+            messages.success(
+                request,
+                f"Добро пожаловать, {user.username}!"
+            )
+
+            return redirect("home")
+
+        messages.error(
+            request,
+            "Неверный логин или пароль."
+        )
+
+    return render(
+        request,
+        "catalog/login.html"
+    )
+
+
+# =========================
+# LOGOUT
+# =========================
+
+def logout_view(request):
+
+    logout(request)
+
+    messages.success(
+        request,
+        "Вы вышли из аккаунта."
+    )
+
+    return redirect("home")
 
 
 # =========================

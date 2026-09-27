@@ -93,7 +93,7 @@
 
             justify-content: center;
 
-            gap: 30px;
+            gap: 25px;
 
             flex-shrink: 0;
         }
@@ -115,6 +115,45 @@
 
 
         nav a:hover {
+            color: #a45c61;
+        }
+
+
+        /* =========================
+           AUTHORIZATION
+        ========================= */
+
+        .auth-user {
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #a45c61;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        .auth-link {
+            font-size: 13px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #504941;
+
+            transition: .25s;
+
+            white-space: nowrap;
+        }
+
+
+        .auth-link:hover {
             color: #a45c61;
         }
 
@@ -1024,6 +1063,21 @@
         }
 
 
+        body.dark-mode .auth-link {
+            color: #dddddd;
+        }
+
+
+        body.dark-mode .auth-link:hover {
+            color: #d98b91;
+        }
+
+
+        body.dark-mode .auth-user {
+            color: #d98b91;
+        }
+
+
         body.dark-mode
         .icon-link,
         body.dark-mode
@@ -1188,8 +1242,14 @@
             }
 
 
-            nav a {
-                font-size: 11px;
+            nav a,
+            .auth-link {
+                font-size: 10px;
+            }
+
+
+            .auth-user {
+                font-size: 10px;
             }
 
 
@@ -1258,6 +1318,8 @@
 
                 justify-content:
                     center;
+
+                flex-wrap: wrap;
             }
 
 
@@ -1331,6 +1393,17 @@
                     center;
 
                 gap: 15px;
+            }
+
+
+            nav a,
+            .auth-link {
+                font-size: 11px;
+            }
+
+
+            .auth-user {
+                font-size: 11px;
             }
 
 
@@ -1500,11 +1573,51 @@
         </a>
 
 
-        <!-- ИЗБРАННОЕ = ОТДЕЛЬНАЯ СТРАНИЦА -->
-
         <a href="{% url 'favorites' %}">
             Избранное
         </a>
+
+
+        <!-- =====================
+             AUTHORIZATION
+        ====================== -->
+
+        {% if user.is_authenticated %}
+
+
+            <span class="auth-user">
+                {{ user.username }}
+            </span>
+
+
+            <a
+                href="{% url 'logout' %}"
+                class="auth-link"
+            >
+                Выйти
+            </a>
+
+
+        {% else %}
+
+
+            <a
+                href="{% url 'login' %}"
+                class="auth-link"
+            >
+                Войти
+            </a>
+
+
+            <a
+                href="{% url 'register' %}"
+                class="auth-link"
+            >
+                Регистрация
+            </a>
+
+
+        {% endif %}
 
 
     </nav>

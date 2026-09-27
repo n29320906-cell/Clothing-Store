@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CLOTHÉ — Вход</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f0e9;
+
+            color: #28231f;
+        }
+
+        .login-container {
+            width: 100%;
+
+            max-width: 450px;
+
+            padding: 25px;
+        }
+
+        .logo {
+            text-align: center;
+
+            font-family: Georgia, serif;
+
+            font-size: 36px;
+
+            letter-spacing: 7px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #8c8178;
+
+            margin-bottom: 30px;
+        }
+
+        .form-box {
+            background: white;
+
+            padding: 40px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(50,40,30,.10);
+        }
+
+        h1 {
+            margin-top: 0;
+
+            text-align: center;
+
+            font-family: Georgia, serif;
+
+            font-weight: normal;
+
+            font-size: 32px;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 18px;
+
+            margin-bottom: 7px;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+        }
+
+        input {
+            width: 100%;
+
+            height: 48px;
+
+            border:
+                1px solid #d8cec4;
+
+            padding: 0 14px;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #a45c61;
+        }
+
+        .button {
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 25px;
+
+            border: none;
+
+            background: #28231f;
+
+            color: white;
+
+            cursor: pointer;
+
+            letter-spacing: 2px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background: #a45c61;
+        }
+
+        .messages {
+            margin-bottom: 15px;
+        }
+
+        .message {
+            padding: 12px;
+
+            background: #f4dddd;
+
+            color: #8c4147;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .register-link {
+            text-align: center;
+
+            margin-top: 22px;
+
+            font-size: 13px;
+
+            color: #777;
+        }
+
+        .register-link a {
+            color: #a45c61;
+
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            font-size: 12px;
+
+            color: #777;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="logo">
+        CLOTHÉ
+    </div>
+
+    <div class="subtitle">
+        Добро пожаловать обратно
+    </div>
+
+    <div class="form-box">
+
+        <h1>
+            Вход
+        </h1>
+
+        {% if messages %}
+
+            <div class="messages">
+
+                {% for message in messages %}
+
+                    <div class="message">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <label>
+                Имя пользователя
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Введите username"
+                required
+            >
+
+            <label>
+                Пароль
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Введите пароль"
+                required
+            >
+
+            <button
+                type="submit"
+                class="button"
+            >
+                ВОЙТИ
+            </button>
+
+        </form>
+
+        <div class="register-link">
+
+            Нет аккаунта?
+
+            <a href="{% url 'register' %}">
+                Зарегистрироваться
+            </a>
+
+        </div>
+
+        <a
+            href="{% url 'home' %}"
+            class="back"
+        >
+            ← Вернуться в магазин
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

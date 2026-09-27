@@ -1,14 +1,52 @@
 from django.urls import path
-
 from . import views
 
 
 urlpatterns = [
 
+    # HOME
     path(
         "",
         views.home,
         name="home"
+    ),
+
+    # AUTH
+    path(
+        "register/",
+        views.register_view,
+        name="register"
+    ),
+
+    path(
+        "login/",
+        views.login_view,
+        name="login"
+    ),
+
+    path(
+        "logout/",
+        views.logout_view,
+        name="logout"
+    ),
+
+    # PRODUCTS
+    path(
+        "product/<int:pk>/",
+        views.product_detail,
+        name="product_detail"
+    ),
+
+    path(
+        "category/<int:pk>/",
+        views.category_products,
+        name="category_products"
+    ),
+
+    path(
+        "product/<int:pk>/rate/",
+        views.rate_product,
+        name="rate_product"
     ),
 
     # FAVORITES
@@ -56,29 +94,10 @@ urlpatterns = [
         name="checkout"
     ),
 
+    # ORDER SUCCESS
     path(
         "order-success/<int:pk>/",
         views.order_success,
         name="order_success"
-    ),
-
-    # PRODUCTS
-    path(
-        "product/<int:pk>/",
-        views.product_detail,
-        name="product_detail"
-    ),
-
-    path(
-        "product/<int:pk>/rate/",
-        views.rate_product,
-        name="rate_product"
-    ),
-
-    # CATEGORIES
-    path(
-        "category/<int:pk>/",
-        views.category_products,
-        name="category_products"
     ),
 ]
