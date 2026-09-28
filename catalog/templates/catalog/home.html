@@ -27,9 +27,7 @@
             font-family: Arial, sans-serif;
             background: #f5f0e9;
             color: #28231f;
-            transition:
-                background .3s,
-                color .3s;
+            transition: background .3s, color .3s;
         }
 
         a {
@@ -44,24 +42,19 @@
 
         header {
             min-height: 82px;
-
             padding: 0 55px;
 
             background: #f5f0e9;
 
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
 
             gap: 25px;
 
-            border-bottom:
-                1px solid #ded6cc;
+            border-bottom: 1px solid #ded6cc;
 
             position: sticky;
-
             top: 0;
 
             z-index: 100;
@@ -167,6 +160,10 @@
 
             align-items: center;
 
+            width: 480px;
+
+            height: 46px;
+
             background: white;
 
             border: 1px solid #ddd4ca;
@@ -184,9 +181,9 @@
 
 
         .search-form input {
-            width: 150px;
+            width: 100%;
 
-            height: 40px;
+            height: 46px;
 
             border: none;
 
@@ -194,9 +191,9 @@
 
             background: transparent;
 
-            padding: 0 15px;
+            padding: 0 18px;
 
-            font-size: 13px;
+            font-size: 14px;
 
             color: #28231f;
         }
@@ -208,9 +205,11 @@
 
 
         .search-form button {
-            width: 42px;
+            width: 60px;
 
-            height: 40px;
+            min-width: 60px;
+
+            height: 46px;
 
             border: none;
 
@@ -220,7 +219,7 @@
 
             cursor: pointer;
 
-            font-size: 14px;
+            font-size: 17px;
 
             transition: .25s;
         }
@@ -247,12 +246,11 @@
 
 
         .icon-link {
-            width: 42px;
+            width: 46px;
 
-            height: 42px;
+            height: 46px;
 
-            border:
-                1px solid #d5ccc2;
+            border: 1px solid #d5ccc2;
 
             border-radius: 50%;
 
@@ -262,7 +260,7 @@
 
             justify-content: center;
 
-            font-size: 18px;
+            font-size: 20px;
 
             transition: .25s;
         }
@@ -272,6 +270,8 @@
             background: #28231f;
 
             color: white;
+
+            transform: scale(1.06);
         }
 
 
@@ -280,12 +280,11 @@
         ========================= */
 
         .theme-button {
-            width: 42px;
+            width: 46px;
 
-            height: 42px;
+            height: 46px;
 
-            border:
-                1px solid #d5ccc2;
+            border: 1px solid #d5ccc2;
 
             border-radius: 50%;
 
@@ -352,8 +351,7 @@
 
             top: 50%;
 
-            transform:
-                translateY(-50%);
+            transform: translateY(-50%);
 
             color: white;
 
@@ -511,8 +509,7 @@
 
 
         .card:hover {
-            transform:
-                translateY(-6px);
+            transform: translateY(-6px);
 
             box-shadow:
                 0 15px 35px
@@ -541,13 +538,12 @@
 
 
         .card:hover img {
-            transform:
-                scale(1.04);
+            transform: scale(1.04);
         }
 
 
         /* =========================
-           FAVORITE BUTTON
+           FAVORITE
         ========================= */
 
         .favorite {
@@ -581,8 +577,7 @@
 
 
         .favorite:hover {
-            transform:
-                scale(1.1);
+            transform: scale(1.1);
         }
 
 
@@ -647,17 +642,26 @@
         }
 
 
-        .button {
-            display: inline-block;
+        /* =========================
+           BUTTONS
+        ========================= */
 
-            padding:
-                10px 14px;
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 13px 18px;
+
+            min-height: 44px;
 
             background: #28231f;
 
             color: white;
 
-            font-size: 10px;
+            font-size: 12px;
 
             letter-spacing: 1px;
 
@@ -666,11 +670,43 @@
             border: none;
 
             cursor: pointer;
+
+            border-radius: 4px;
         }
 
 
         .button:hover {
             background: #a45c61;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           CART ICON BUTTON
+        ========================= */
+
+        .add-cart-button {
+            width: 48px;
+
+            min-width: 48px;
+
+            height: 44px;
+
+            padding: 0;
+
+            margin-left: 6px;
+
+            font-size: 21px;
+
+            letter-spacing: 0;
+
+            border-radius: 50%;
+        }
+
+
+        .add-cart-button:hover {
+            transform: scale(1.08);
         }
 
 
@@ -823,7 +859,7 @@
             padding:
                 16px 24px;
 
-            border-radius: 4px;
+            border-radius: 10px;
 
             font-size: 14px;
 
@@ -837,8 +873,7 @@
 
             visibility: hidden;
 
-            transform:
-                translateY(-20px);
+            transform: translateY(-20px);
 
             transition:
                 all .3s ease;
@@ -850,8 +885,7 @@
 
             visibility: visible;
 
-            transform:
-                translateY(0);
+            transform: translateY(0);
         }
 
 
@@ -1078,20 +1112,16 @@
         }
 
 
-        body.dark-mode
-        .icon-link,
-        body.dark-mode
-        .theme-button {
+        body.dark-mode .icon-link,
+        body.dark-mode .theme-button {
             border-color: #555;
 
             color: #eeeeee;
         }
 
 
-        body.dark-mode
-        .icon-link:hover,
-        body.dark-mode
-        .theme-button:hover {
+        body.dark-mode .icon-link:hover,
+        body.dark-mode .theme-button:hover {
             background: #eeeeee;
 
             color: #202020;
@@ -1103,8 +1133,7 @@
         }
 
 
-        body.dark-mode
-        .products-section {
+        body.dark-mode .products-section {
             background: #202020;
         }
 
@@ -1116,98 +1145,83 @@
         }
 
 
-        body.dark-mode
-        .card:hover {
+        body.dark-mode .card:hover {
             box-shadow:
                 0 15px 35px
                 rgba(0,0,0,.40);
         }
 
 
-        body.dark-mode
-        .product-name {
+        body.dark-mode .product-name {
             color: white;
         }
 
 
-        body.dark-mode
-        .description {
+        body.dark-mode .description {
             color: #aaaaaa;
         }
 
 
-        body.dark-mode
-        .price {
+        body.dark-mode .price {
             color: white;
         }
 
 
-        body.dark-mode
-        .search-form {
+        body.dark-mode .search-form {
             background: #292929;
 
             border-color: #555;
         }
 
 
-        body.dark-mode
-        .search-form input {
+        body.dark-mode .search-form input {
             color: white;
         }
 
 
-        body.dark-mode
-        .search-form input::placeholder {
+        body.dark-mode .search-form input::placeholder {
             color: #999;
         }
 
 
-        body.dark-mode
-        .search-form button {
+        body.dark-mode .search-form button {
             background: #eeeeee;
 
             color: #202020;
         }
 
 
-        body.dark-mode
-        .search-form button:hover {
+        body.dark-mode .search-form button:hover {
             background: #a45c61;
 
             color: white;
         }
 
 
-        body.dark-mode
-        .search-result {
+        body.dark-mode .search-result {
             color: #aaa;
         }
 
 
-        body.dark-mode
-        .search-result strong {
+        body.dark-mode .search-result strong {
             color: white;
         }
 
 
-        body.dark-mode
-        .filters {
+        body.dark-mode .filters {
             background: #202020;
 
             border-color: #3a3a3a;
         }
 
 
-        body.dark-mode
-        .filter-group label {
+        body.dark-mode .filter-group label {
             color: #aaa;
         }
 
 
-        body.dark-mode
-        .filter-group select,
-        body.dark-mode
-        .filter-group input {
+        body.dark-mode .filter-group select,
+        body.dark-mode .filter-group input {
             background: #292929;
 
             border-color: #555;
@@ -1216,8 +1230,7 @@
         }
 
 
-        body.dark-mode
-        .reset-filter {
+        body.dark-mode .reset-filter {
             background: #eeeeee;
 
             color: #202020;
@@ -1227,6 +1240,23 @@
         /* =========================
            TABLET
         ========================= */
+
+        @media (max-width: 1400px) {
+
+            header {
+                padding: 0 30px;
+            }
+
+            .search-form {
+                width: 400px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+        }
+
 
         @media (max-width: 1200px) {
 
@@ -1238,7 +1268,7 @@
 
 
             nav {
-                gap: 15px;
+                gap: 12px;
             }
 
 
@@ -1254,12 +1284,14 @@
 
 
             .search-form {
+                width: 300px;
+
                 margin-left: 5px;
             }
 
 
             .search-form input {
-                width: 120px;
+                width: 100%;
             }
 
 
@@ -1328,7 +1360,7 @@
 
                 width: 100%;
 
-                max-width: 350px;
+                max-width: 500px;
 
                 margin: 0 auto;
             }
@@ -1412,7 +1444,9 @@
 
                 width: 100%;
 
-                max-width: 320px;
+                max-width: 100%;
+
+                height: 46px;
 
                 margin: 0 auto;
             }
@@ -1420,6 +1454,17 @@
 
             .search-form input {
                 width: 100%;
+
+                height: 46px;
+            }
+
+
+            .search-form button {
+                width: 55px;
+
+                min-width: 55px;
+
+                height: 46px;
             }
 
 
@@ -1535,6 +1580,35 @@
                 width: 100%;
             }
 
+
+            /* МОБИЛЬНЫЕ КНОПКИ */
+
+            .product-bottom {
+                align-items: flex-end;
+            }
+
+
+            .product-bottom > div {
+                display: flex;
+
+                align-items: center;
+
+                gap: 5px;
+            }
+
+
+            .button {
+                padding:
+                    11px 14px;
+
+                min-height: 44px;
+            }
+
+
+            .add-cart-button {
+                margin-left: 0;
+            }
+
         }
 
     </style>
@@ -1578,12 +1652,7 @@
         </a>
 
 
-        <!-- =====================
-             AUTHORIZATION
-        ====================== -->
-
         {% if user.is_authenticated %}
-
 
             <span class="auth-user">
                 {{ user.username }}
@@ -1600,7 +1669,6 @@
 
         {% else %}
 
-
             <a
                 href="{% url 'login' %}"
                 class="auth-link"
@@ -1615,7 +1683,6 @@
             >
                 Регистрация
             </a>
-
 
         {% endif %}
 
@@ -1657,8 +1724,6 @@
     <div class="header-icons">
 
 
-        <!-- ИЗБРАННОЕ -->
-
         <a
             href="{% url 'favorites' %}"
             class="icon-link"
@@ -1668,8 +1733,6 @@
         </a>
 
 
-        <!-- КОРЗИНА -->
-
         <a
             href="{% url 'cart' %}"
             class="icon-link"
@@ -1678,8 +1741,6 @@
             🛒
         </a>
 
-
-        <!-- DARK MODE -->
 
         <button
             type="button"
@@ -1702,9 +1763,7 @@
 
 <section class="hero">
 
-
     <div class="hero-content">
-
 
         <div class="hero-small">
             NEW COLLECTION · 2026
@@ -1729,14 +1788,12 @@
 
         <div class="hero-buttons">
 
-
             <a
                 href="#products"
                 class="hero-button"
             >
                 SHOP NOW
             </a>
-
 
         </div>
 
@@ -1757,7 +1814,6 @@
 
     <div class="section-heading">
 
-
         <div class="section-label">
             OUR FAVORITES
         </div>
@@ -1767,21 +1823,15 @@
             Новая коллекция
         </h2>
 
-
     </div>
 
 
-    <!-- =========================
-         FILTERS
-    ========================= -->
+    <!-- FILTERS -->
 
     <div class="filters">
 
 
-        <!-- CATEGORY -->
-
         <div class="filter-group">
-
 
             <label for="categoryFilter">
                 Категория
@@ -1789,7 +1839,6 @@
 
 
             <select id="categoryFilter">
-
 
                 <option value="all">
                     Все категории
@@ -1806,17 +1855,12 @@
 
                 {% endfor %}
 
-
             </select>
-
 
         </div>
 
 
-        <!-- MIN PRICE -->
-
         <div class="filter-group">
-
 
             <label for="minPrice">
                 Цена от
@@ -1830,14 +1874,10 @@
                 min="0"
             >
 
-
         </div>
 
 
-        <!-- MAX PRICE -->
-
         <div class="filter-group">
-
 
             <label for="maxPrice">
                 Цена до
@@ -1851,14 +1891,10 @@
                 min="0"
             >
 
-
         </div>
 
 
-        <!-- SORT -->
-
         <div class="filter-group">
-
 
             <label for="sortFilter">
                 Сортировка
@@ -1866,7 +1902,6 @@
 
 
             <select id="sortFilter">
-
 
                 <option value="default">
                     По умолчанию
@@ -1892,14 +1927,10 @@
                     Название: Я–А
                 </option>
 
-
             </select>
-
 
         </div>
 
-
-        <!-- RESET -->
 
         <button
             type="button"
@@ -1909,13 +1940,10 @@
             Сбросить
         </button>
 
-
     </div>
 
 
-    <!-- =========================
-         SEARCH RESULT
-    ========================= -->
+    <!-- SEARCH RESULT -->
 
     <p
         class="search-result"
@@ -1923,9 +1951,7 @@
     ></p>
 
 
-    <!-- =========================
-         PRODUCTS
-    ========================= -->
+    <!-- PRODUCTS -->
 
     <div class="products">
 
@@ -1946,15 +1972,12 @@
 
                     {% if product.image %}
 
-
                         <img
                             src="{{ product.image.url }}"
                             alt="{{ product.name }}"
                         >
 
-
                     {% else %}
-
 
                         <div
                             style="
@@ -1969,11 +1992,8 @@
                             Нет изображения
                         </div>
 
-
                     {% endif %}
 
-
-                    <!-- FAVORITE -->
 
                     <button
                         type="button"
@@ -1988,8 +2008,6 @@
 
                 </div>
 
-
-                <!-- PRODUCT INFO -->
 
                 <div class="product-info">
 
@@ -2015,6 +2033,8 @@
                         <div>
 
 
+                            <!-- ПОДРОБНЕЕ -->
+
                             <a
                                 href="{% url 'product_detail' product.pk %}"
                                 class="button"
@@ -2023,20 +2043,21 @@
                             </a>
 
 
+                            <!-- КОРЗИНА -->
+
                             <a
                                 href="{% url 'add_to_cart' product.pk %}"
                                 class="button add-cart-button"
                                 onclick="addToCart(event, this)"
+                                title="Добавить в корзину"
                             >
-                                В корзину
+                                🛒
                             </a>
 
 
                         </div>
 
-
                     </div>
-
 
                 </div>
 
@@ -2046,11 +2067,9 @@
 
         {% empty %}
 
-
             <p class="empty">
                 Товаров пока нет.
             </p>
-
 
         {% endfor %}
 
@@ -2061,14 +2080,12 @@
 
 
 <!-- =========================
-     COLLECTION BANNER
+     COLLECTION
 ========================= -->
 
 <section class="collection-banner">
 
-
     <div class="collection-content">
-
 
         <span>
             CLOTHÉ · AUTUMN / WINTER
@@ -2082,11 +2099,9 @@
 
 
         <p>
-
             Минимализм, комфорт и стиль.
             Откройте коллекцию, созданную
             для вашего повседневного образа.
-
         </p>
 
 
@@ -2097,9 +2112,7 @@
             EXPLORE COLLECTION
         </a>
 
-
     </div>
-
 
 </section>
 
@@ -2116,64 +2129,47 @@
 
         <div class="footer-brand">
 
-
             <h3>
                 CLOTHÉ
             </h3>
 
 
             <p>
-
                 Современный магазин одежды
                 для тех, кто ценит стиль,
                 качество и индивидуальность.
-
             </p>
-
 
         </div>
 
 
-        <!-- SHOP -->
-
         <div class="footer-column">
-
 
             <h4>
                 Магазин
             </h4>
 
 
-            <a
-                href="{% url 'home' %}#products"
-            >
+            <a href="{% url 'home' %}#products">
                 Все товары
             </a>
 
 
-            <a
-                href="{% url 'favorites' %}"
-            >
+            <a href="{% url 'favorites' %}">
                 Избранное
             </a>
-
 
         </div>
 
 
-        <!-- HELP -->
-
         <div class="footer-column">
-
 
             <h4>
                 Помощь
             </h4>
 
 
-            <a
-                href="{% url 'cart' %}"
-            >
+            <a href="{% url 'cart' %}">
                 Корзина
             </a>
 
@@ -2187,14 +2183,10 @@
                 Контакты
             </a>
 
-
         </div>
 
 
-        <!-- SOCIAL -->
-
         <div class="footer-column">
-
 
             <h4>
                 Мы онлайн
@@ -2214,7 +2206,6 @@
             <a href="#">
                 TikTok
             </a>
-
 
         </div>
 
@@ -2241,14 +2232,11 @@
     class="cart-notification"
 >
 
-
     <span class="check">
         ✓
     </span>
 
-
     Товар добавлен в корзину
-
 
 </div>
 
@@ -2310,7 +2298,6 @@ searchInput.addEventListener(
 
 function searchProducts() {
 
-
     const searchText =
         searchInput.value
             .trim()
@@ -2356,7 +2343,6 @@ function searchProducts() {
 
     products.forEach(
         function(card) {
-
 
             const productName =
                 card.querySelector(
@@ -2456,7 +2442,6 @@ function updateSearchResult(
     foundProducts
 ) {
 
-
     if (
         searchText === ""
     ) {
@@ -2531,7 +2516,6 @@ function escapeHtml(text) {
 
 function sortProducts() {
 
-
     const sortValue =
         document.getElementById(
             "sortFilter"
@@ -2554,7 +2538,6 @@ function sortProducts() {
 
     cards.sort(
         function(a, b) {
-
 
             const priceA =
                 parseFloat(
@@ -2653,7 +2636,6 @@ function sortProducts() {
 
 function resetFilters() {
 
-
     document.getElementById(
         "categoryFilter"
     ).value = "all";
@@ -2746,7 +2728,6 @@ function updateFavorite(
     button
 ) {
 
-
     const productId =
         button.dataset.productId;
 
@@ -2786,7 +2767,6 @@ function toggleFavorite(
     button
 ) {
 
-
     const productId =
         button.dataset.productId;
 
@@ -2796,7 +2776,6 @@ function toggleFavorite(
             productId
         )
     ) {
-
 
         favorites =
             favorites.filter(
@@ -2808,9 +2787,7 @@ function toggleFavorite(
                 }
             );
 
-
     } else {
-
 
         favorites.push(
             productId
@@ -2843,7 +2820,6 @@ function addToCart(
     button
 ) {
 
-
     event.preventDefault();
 
 
@@ -2868,23 +2844,18 @@ function addToCart(
     fetch(
         url,
         {
-
             method: "GET",
 
             headers: {
-
                 "X-Requested-With":
                     "XMLHttpRequest"
-
             }
-
         }
     )
 
 
     .then(
         function(response) {
-
 
             if (
                 !response.ok
@@ -2906,11 +2877,9 @@ function addToCart(
     .then(
         function(data) {
 
-
             if (
                 data.success
             ) {
-
 
                 notification.classList.add(
                     "show"
@@ -2922,7 +2891,7 @@ function addToCart(
 
 
                 button.innerHTML =
-                    "✓ Добавлено";
+                    "✓";
 
 
                 button.style.background =
@@ -2944,9 +2913,8 @@ function addToCart(
                 setTimeout(
                     function() {
 
-
                         button.innerHTML =
-                            oldText;
+                            "🛒";
 
 
                         button.style.background =
@@ -2973,7 +2941,6 @@ function addToCart(
     .catch(
         function(error) {
 
-
             console.error(
                 "Ошибка:",
                 error
@@ -2999,7 +2966,6 @@ function addToCart(
 
 function toggleDarkMode() {
 
-
     document.body.classList.toggle(
         "dark-mode"
     );
@@ -3017,7 +2983,6 @@ function toggleDarkMode() {
         )
     ) {
 
-
         themeButton.innerHTML =
             "☀️";
 
@@ -3027,9 +2992,7 @@ function toggleDarkMode() {
             "enabled"
         );
 
-
     } else {
-
 
         themeButton.innerHTML =
             "🌙";
@@ -3054,9 +3017,7 @@ document.addEventListener(
     function() {
 
 
-        /* =====================
-           FAVORITES
-        ===================== */
+        /* FAVORITES */
 
         const buttons =
             document.querySelectorAll(
@@ -3075,9 +3036,7 @@ document.addEventListener(
         );
 
 
-        /* =====================
-           DARK MODE
-        ===================== */
+        /* DARK MODE */
 
         const themeButton =
             document.getElementById(
@@ -3090,7 +3049,6 @@ document.addEventListener(
                 "darkMode"
             ) === "enabled"
         ) {
-
 
             document.body.classList.add(
                 "dark-mode"

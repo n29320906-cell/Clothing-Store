@@ -127,16 +127,20 @@
             >
 
 
-            <label>
-                Phone
-            </label>
+           <label>Phone</label>
 
-            <input
-                type="tel"
-                name="phone"
-                placeholder="+996 555 123 456"
-                required
-            >
+<input
+    type="text"
+    name="phone"
+    id="phone"
+    placeholder="996555123456"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    maxlength="12"
+    minlength="9"
+    required
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+>
 
 
             <label>

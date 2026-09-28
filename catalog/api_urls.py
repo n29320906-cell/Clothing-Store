@@ -1,6 +1,5 @@
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from .api_views import RegisterView
 
 from .api_views import (
     ProductViewSet,
@@ -9,6 +8,10 @@ from .api_views import (
 )
 
 
+# =========================
+# ROUTER
+# =========================
+
 router = DefaultRouter()
 
 router.register(
@@ -16,11 +19,6 @@ router.register(
     ProductViewSet,
     basename="product"
 )
-path(
-    "register/",
-    RegisterView.as_view(),
-    name="register"
-),
 
 router.register(
     "categories",
@@ -29,12 +27,23 @@ router.register(
 )
 
 
+# =========================
+# API URLS
+# =========================
+
 urlpatterns = [
+
     path(
         "register/",
         RegisterAPIView.as_view(),
-        name="register"
+        name="api_register"
     ),
+
 ]
+
+
+# =========================
+# ROUTER URLS
+# =========================
 
 urlpatterns += router.urls

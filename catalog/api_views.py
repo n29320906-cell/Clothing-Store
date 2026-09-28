@@ -1,7 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
+from rest_framework.permissions import AllowAny
 
 from .models import Product, Category
 from .serializers import (
@@ -11,12 +12,20 @@ from .serializers import (
 )
 
 
+# =========================
+# PRODUCT API
+# =========================
+
 class ProductViewSet(ModelViewSet):
 
     queryset = Product.objects.all()
 
     serializer_class = ProductSerializer
 
+
+# =========================
+# CATEGORY API
+# =========================
 
 class CategoryViewSet(ModelViewSet):
 
@@ -25,9 +34,13 @@ class CategoryViewSet(ModelViewSet):
     serializer_class = CategorySerializer
 
 
+# =========================
+# REGISTER API
+# =========================
+
 class RegisterAPIView(APIView):
 
-    permission_classes = []
+    permission_classes = [AllowAny]
 
     def post(self, request):
 
@@ -53,11 +66,13 @@ class RegisterAPIView(APIView):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    from rest_framework import generics
-    from rest_framework.permissions import AllowAny
 
-    from .serializers import RegisterSerializer
+# =========================
+# REGISTER GENERIC API
+# =========================
 
-    class RegisterView(generics.CreateAPIView):
-        serializer_class = RegisterSerializer
-        permission_classes = [AllowAny]
+class RegisterView(generics.CreateAPIView):
+
+    serializer_class = RegisterSerializer
+
+    permission_classes = [AllowAny]

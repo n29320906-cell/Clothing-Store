@@ -4,14 +4,20 @@ from . import views
 
 urlpatterns = [
 
+    # =========================
     # HOME
+    # =========================
+
     path(
         "",
         views.home,
         name="home"
     ),
 
+    # =========================
     # AUTH
+    # =========================
+
     path(
         "register/",
         views.register_view,
@@ -30,7 +36,20 @@ urlpatterns = [
         name="logout"
     ),
 
+    # =========================
+    # FAVORITES
+    # =========================
+
+    path(
+        "favorites/",
+        views.favorites,
+        name="favorites"
+    ),
+
+    # =========================
     # PRODUCTS
+    # =========================
+
     path(
         "product/<int:pk>/",
         views.product_detail,
@@ -43,20 +62,10 @@ urlpatterns = [
         name="category_products"
     ),
 
-    path(
-        "product/<int:pk>/rate/",
-        views.rate_product,
-        name="rate_product"
-    ),
-
-    # FAVORITES
-    path(
-        "favorites/",
-        views.favorites,
-        name="favorites"
-    ),
-
+    # =========================
     # CART
+    # =========================
+
     path(
         "cart/",
         views.cart,
@@ -87,17 +96,29 @@ urlpatterns = [
         name="remove_from_cart"
     ),
 
+    # =========================
     # CHECKOUT
+    # =========================
+
     path(
         "checkout/",
         views.checkout,
         name="checkout"
     ),
 
-    # ORDER SUCCESS
     path(
         "order-success/<int:pk>/",
         views.order_success,
         name="order_success"
+    ),
+
+    # =========================
+    # PRODUCT RATING
+    # =========================
+
+    path(
+        "product/<int:pk>/rate/",
+        views.rate_product,
+        name="rate_product"
     ),
 ]
